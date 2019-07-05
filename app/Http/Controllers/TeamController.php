@@ -25,7 +25,7 @@ class TeamController extends Controller
             $queryBuilder->where('team_name','like', '%'.$request->input('team_name').'%');
         }
 
-        $teams = $queryBuilder->paginate(8);
+        $teams = $queryBuilder->get();
         //dd($teams);
         
         return view('team.team',

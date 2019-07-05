@@ -7,9 +7,9 @@
 
   <nav>
     <div class="nav-wrapper">
-      <form action="{{ route('company.index') }}" method="get">
+      <form action="{{ route('athlete.index') }}" method="get">
         <div class="input-field">
-          <input id="search" type="search" name="company_name" required>
+          <input id="search" type="search" name="name" required>
           <label class="label-icon" for="search"><i class="material-icons">search</i></label>
           <i class="material-icons">close</i>
         </div>
@@ -25,38 +25,30 @@
         <thead>
           <tr>
               <th>Id</th>
-              <th>Nome società</th>
-              <th>Numero di atleti</th>
-              <th>Numero di team</th>
+              <th>Nome atleta</th>
+              <th>Società</th>
               <th>Azioni</th>
           </tr>
         </thead>
         <tbody>
-    @foreach ($companys as $company)     
+    @foreach ($athletes as $athlete)        
           <tr>
-            <td>{{$company->id}}</td>
-            <td>{{$company->company_name}}</td>
-
+            <td>{{$athlete->id}}</td>
+            <td>{{$athlete->name}}</td>
             <td>
-            @if($company->athletes_count)
-               {{$company->athletes_count}}
+            @if($athlete->company->company_name)
+              {{$athlete->company->company_name}}
             @endif
             </td>
-
-            <td>
-            @if($company->teams_count)
-               {{$company->teams_count}}
-            @endif
-            </td>
-            <td><a href="/company/{{$company->id}}/edit" class="waves-effect waves-light btn-small"><i class="tiny material-icons left">edit</i>UPDATE</a></td>
+             <td><a href="/athlete/{{$athlete->id}}/edit" class="waves-effect waves-light btn-small"><i class="tiny material-icons left">edit</i>UPDATE</a></td>
           </tr>
     @endforeach
         </tbody>
       </table>
 
 
+
 </form>
-{{ $companys->links('vendor.pagination.default') }}
 @endsection
 
 @section('footer')

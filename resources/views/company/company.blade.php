@@ -56,7 +56,7 @@
 
 
 </form>
-{{ $companys->links('vendor.pagination.default') }}
+{{-- $companys->links('vendor.pagination.default') --}}
 @endsection
 
 @section('footer')

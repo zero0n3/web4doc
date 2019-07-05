@@ -20,6 +20,7 @@ class CompanyController extends Controller
      */
     public function index( Request $request ){
     	
+
     	$queryBuilder = Company::orderBy('company_name','asc')->withCount('athletes')->withCount('teams');
         
         if($request->has('id')){
@@ -30,7 +31,7 @@ class CompanyController extends Controller
             $queryBuilder->where('company_name','like', '%'.$request->input('company_name').'%');
         }
         //dd($queryBuilder);
-        $companys = $queryBuilder->paginate(10);
+        $companys = $queryBuilder->get();
         //dd($companys);
         return view('company.company',
             [

@@ -19,7 +19,7 @@
 
   <form>
   <input type="hidden" name="_token" id="_token" value="{{csrf_token()}}">
-
+<h6>Team trovati: {{ $teams->count() }}</h6>
 
      <table class="responsive-table">
         <thead>
@@ -57,7 +57,7 @@
 
 
 </form>
-{{ $teams->links('vendor.pagination.default') }}
+{{-- $teams->links('vendor.pagination.default') --}}
 @endsection
 
 @section('footer')
