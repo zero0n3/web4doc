@@ -26,6 +26,8 @@
           <tr>
               <th>Id</th>
               <th>Nome atleta</th>
+              <th>Data di nascita</th>
+              <th>Sesso</th>
               <th>Società</th>
               <th>Azioni</th>
           </tr>
@@ -35,6 +37,8 @@
           <tr>
             <td>{{$athlete->id}}</td>
             <td>{{$athlete->name}}</td>
+            <td>{{date('d-m-Y', strtotime($athlete->dob))}}</td>
+            <td>{{$athlete->sex}}</td>
             <td>
             @if($athlete->company->company_name)
               {{$athlete->company->company_name}}

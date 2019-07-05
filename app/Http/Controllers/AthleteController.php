@@ -110,6 +110,8 @@ class AthleteController extends Controller
         */
         $athlete = Athlete::find($id);
         $athlete->name = request()->input('name');
+        $athlete->dob = request()->input('dob');
+        $athlete->sex = request()->input('sex');
         //$album->user_id = 1;
         $res = $athlete->save();
 

@@ -19,20 +19,17 @@
         <label for="">Data di nascita</label>
         <input type="date" name="dob" id="dob" value="{{$athlete->dob}}" class="form-control" placeholder="Data di nascita">
       </div>
+      <div class="col s3">
         <div class="input-field col s3">
-          <select name="sex">
-
-            @if($athlete->sex === 'M')
-              <option value="M" selected>Maschio</option>
-              <option value="F">Femmina</option>
-            @else 
-              <option value="M">Maschi</option>
-              <option value="F" selected>Femmina</option> 
-            @endif
-
-          </select>
-          <label>Sesso</label>
+      <select>
+        <option value="" disabled selected>Choose your option</option>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+      </select>
+      <label>Materialize Select</label>
     </div>
+  </div>
     </div>
       
 
@@ -44,3 +41,13 @@
 
 
 @endsection
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, options);
+  });
+
+  // Or with jQuery
+
+  $(document).ready(function(){
+    $('select').formSelect();
+  });
