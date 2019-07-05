@@ -4,7 +4,7 @@
 
 @section('content')
  <h3>{{$title}}</h3>
-
+ 
   <nav>
     <div class="nav-wrapper">
       <form action="{{ route('company.index') }}" method="get">
@@ -15,7 +15,7 @@
         </div>
       </form>
     </div>
-  </nav>
+  </nav>.
 
   <form>
   <input type="hidden" name="_token" id="_token" value="{{csrf_token()}}">
