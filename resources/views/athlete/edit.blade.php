@@ -12,27 +12,41 @@
 
     <div class="row">
       <div class="col s12">
-               <label for="">Nome Atleta</label>
+          <label for="">Nome Atleta</label>
           <input type="text" name="name" id="name" value="{{$athlete->name}}" class="form-control" placeholder="Nome Atleta">
       </div>
       <div class="col s3">
         <label for="">Data di nascita</label>
         <input type="date" name="dob" id="dob" value="{{$athlete->dob}}" class="form-control" placeholder="Data di nascita">
       </div>
-        <div class="input-field col s3">
-          <select name="sex">
 
-            @if($athlete->sex === 'M')
-              <option value="M" selected>Maschio</option>
-              <option value="F">Femmina</option>
-            @else 
-              <option value="M">Maschi</option>
-              <option value="F" selected>Femmina</option> 
-            @endif
+      <div class="input-field col s3">
+        <select name="sex">
 
-          </select>
-          <label>Sesso</label>
-    </div>
+          @if($athlete->sex === 'M')
+            <option value="M" selected>Maschio</option>
+            <option value="F">Femmina</option>
+          @else 
+            <option value="M">Maschio</option>
+            <option value="F" selected>Femmina</option> 
+          @endif
+
+        </select>
+        <label>Sesso</label>
+      </div>
+
+      <div class="input-field col s3">
+        <select name="company_id">
+
+        @foreach($companys as $company)
+            <option value="{{ $company->id }}" {{$company->id == $athlete->company_id  ? 'selected' : ''}}>{{ $company->company_name}}</option>
+        @endforeach
+
+
+        </select>
+        <label>Società di riferimento</label>
+      </div>
+
     </div>
       
 

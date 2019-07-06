@@ -19,7 +19,7 @@
 
   <form>
   <input type="hidden" name="_token" id="_token" value="{{csrf_token()}}">
-
+<h6>Atleti trovati: {{ $athletes->count() }}</h6>
 
       <table class="responsive-table">
         <thead>

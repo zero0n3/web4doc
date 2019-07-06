@@ -17,6 +17,7 @@
               <th>Nome atleta</th>
               <th>Altezza</th>
               <th>Peso</th>
+              <th>Azioni</th>
           </tr>
         </thead>
         <tbody>
@@ -28,6 +29,7 @@
             <td>{{$checkup->athlete->name}}</td>
             <td>{{$checkup->height}}</td>
             <td>{{$checkup->weight}}</td>
+            <td><a href="/checkup/{{$checkup->id}}/edit" class="waves-effect waves-light btn-small"><i class="tiny material-icons left">edit</i>UPDATE</a></td>
           </tr>
     @empty
           <tr>
@@ -47,6 +49,7 @@
 
   </ul>
 </form>
+{{ $checkups->links('vendor.pagination.default') }}
 @endsection
 
 @section('footer')
@@ -55,4 +58,3 @@
 
 @endsection
 
-{{ $checkups->links() }}

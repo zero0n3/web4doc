@@ -82,7 +82,7 @@ class TeamController extends Controller
         //$sql = 'SELECT id, album_name, description from albums WHERE ID = :id';
         //$album = DB::select($sql, ['id'=>$id]);
         $team = Team::find($id);
-        //dd($company);
+        //dd($team);
         //return view('albums.edit')->with('album', $album[0]);
         return view('team.edit',
             [

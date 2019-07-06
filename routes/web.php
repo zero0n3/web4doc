@@ -53,7 +53,8 @@ Route::resource('/athlete', 'AthleteController');
 
 // GESTIONE CHECKUPS
 // #fattoamano
-Route::get('/checkup', 'CheckupController@index');   //-> qui uso il comando per creare un Controller da riga di comando
+Route::resource('/checkup', 'CheckupController');
+//Route::get('/checkup', 'CheckupController@index');   //-> qui uso il comando per creare un Controller da riga di comando
 
 
 // #fattoamano
