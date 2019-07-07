@@ -42,6 +42,11 @@ class AthleteController extends Controller
     public function create()
     {
         //
+        $companys = Company::all();
+        return view('athlete.create', [
+                'title' => 'Crea Atleta',
+                'companys' => $companys,
+                ]);
     }
 
     /**
@@ -53,6 +58,21 @@ class AthleteController extends Controller
     public function store(Request $request)
     {
         //
+        $athlete = new Athlete();
+        $athlete->name = $request->input('name');
+        $athlete->dob = $request->input('dob');
+        $athlete->sex = $request->input('sex');
+        $athlete->status = 0;
+        $athlete->company_id = $request->input('company_id');
+       
+         
+        $res = $athlete->save();
+       
+        
+        $name = request()->input('name');
+        $messaggio = $res ? 'Atleta   ' . $name . ' creato' : 'Atleta ' . $name . ' non creato';
+        session()->flash('message', $messaggio);
+        return redirect()->route('athlete.index');
     }
 
     /**
@@ -64,7 +84,14 @@ class AthleteController extends Controller
     public function show($id)
     {
         //
-
+        $athlete = Athlete::find($id);
+        //$companys = Company::all();
+        //dd($athlete);
+        //return view('albums.edit')->with('album', $album[0]);
+        return view('athlete.dashboard', [
+                'title' => $athlete->name,
+                'athlete' => $athlete,
+                ]);
     }
 
     /**

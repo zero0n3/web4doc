@@ -48,6 +48,7 @@ Route::resource('/team', 'TeamController');
 
 // GESTIONE ATHLETES
 // #fattoamano
+//Route::get('/athlete/{id}/dashboard', 'AthleteController@show')->name('athlete.dashboard');  
 Route::resource('/athlete', 'AthleteController');
 //Route::get('/athlete', 'AthleteController@index');   //-> qui uso il comando per creare un Controller da riga di comando
 
