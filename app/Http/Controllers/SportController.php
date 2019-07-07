@@ -41,6 +41,9 @@ class SportController extends Controller
     public function create()
     {
         //
+        return view('sport.create', [
+                'title' => 'Crea Sport',
+                ]);
     }
 
     /**
@@ -52,6 +55,17 @@ class SportController extends Controller
     public function store(Request $request)
     {
         //
+        $sport = new Sport();
+        $sport->name = $request->input('sport_name');
+        $sport->status = 0;       
+         
+        $res = $sport->save();
+       
+        
+        $sport_name = request()->input('sport_name');
+        $messaggio = $res ? 'Sport   ' . $sport_name . ' creato' : 'Sport ' . $sport_name . ' non creato';
+        session()->flash('message', $messaggio);
+        return redirect()->route('sport.index');
     }
 
     /**

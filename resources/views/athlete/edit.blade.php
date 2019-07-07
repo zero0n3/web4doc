@@ -37,12 +37,9 @@
 
       <div class="input-field col s3">
         <select name="company_id">
-
         @foreach($companys as $company)
             <option value="{{ $company->id }}" {{$company->id == $athlete->company_id  ? 'selected' : ''}}>{{ $company->company_name}}</option>
         @endforeach
-
-
         </select>
         <label>Società di riferimento</label>
       </div>

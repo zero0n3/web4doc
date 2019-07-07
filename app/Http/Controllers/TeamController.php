@@ -44,6 +44,11 @@ class TeamController extends Controller
     public function create()
     {
         //
+        $companys = Company::all();
+        return view('team.create', [
+                'title' => 'Crea Team',
+                'companys' => $companys,
+                ]);
     }
 
     /**
@@ -55,6 +60,19 @@ class TeamController extends Controller
     public function store(Request $request)
     {
         //
+        $team = new Team();
+        $team->team_name = $request->input('team_name');
+        $team->team_status = 0;
+        $team->company_id = $request->input('company_id');
+       
+         
+        $res = $team->save();
+       
+        
+        $team_name = request()->input('team_name');
+        $messaggio = $res ? 'Team   ' . $team_name . ' creato' : 'Team ' . $team_name . ' non creato';
+        session()->flash('message', $messaggio);
+        return redirect()->route('team.index');
     }
 
     /**
@@ -82,12 +100,14 @@ class TeamController extends Controller
         //$sql = 'SELECT id, album_name, description from albums WHERE ID = :id';
         //$album = DB::select($sql, ['id'=>$id]);
         $team = Team::find($id);
+        $companys = Company::all();
         //dd($team);
         //return view('albums.edit')->with('album', $album[0]);
         return view('team.edit',
             [
                 'title' => 'Modifica Team',
-                'team' => $team
+                'team' => $team,
+                'companys' => $companys,
             ]);
 
     }
@@ -112,6 +132,7 @@ class TeamController extends Controller
         */
         $team = Team::find($id);
         $team->team_name = request()->input('name');
+        $team->company_id = request()->input('company_id');
         //$album->user_id = 1;
         $res = $team->save();
 

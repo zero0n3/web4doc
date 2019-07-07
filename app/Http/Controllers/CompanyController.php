@@ -48,6 +48,9 @@ class CompanyController extends Controller
     public function create()
     {
         //
+        return view('company.create', [
+                'title' => 'Crea società',
+                ]);
     }
 
     /**
@@ -59,6 +62,19 @@ class CompanyController extends Controller
     public function store(Request $request)
     {
         //
+        $company = new Company();
+        $company->company_name = $request->input('company_name');
+        $company->company_status = 0;
+        $company->user_id =  1;
+       
+         
+        $res = $company->save();
+       
+        
+        $company_name = request()->input('company_name');
+        $messaggio = $res ? 'Società   ' . $company_name . ' creata' : 'Società ' . $company_name . ' non creata';
+        session()->flash('message', $messaggio);
+        return redirect()->route('company.index');
     }
 
     /**
