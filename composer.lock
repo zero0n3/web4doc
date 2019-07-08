@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7353e6b015199ec612a56cf9eb064b93",
+    "content-hash": "58d3071376b392b5570617cda421b960",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -1102,6 +1102,50 @@
             "time": "2019-01-10T14:06:47+00:00"
         },
         {
+            "name": "flynsarmy/csv-seeder",
+            "version": "v1.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Flynsarmy/laravel-csv-seeder.git",
+                "reference": "9b6b261082bf7ff245eeb355261e1038cbd89262"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Flynsarmy/laravel-csv-seeder/zipball/9b6b261082bf7ff245eeb355261e1038cbd89262",
+                "reference": "9b6b261082bf7ff245eeb355261e1038cbd89262",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": ">=4.1.0",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Flynsarmy\\CsvSeeder\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Flyn San",
+                    "email": "flynsarmy@gmail.com"
+                }
+            ],
+            "description": "Allows seeding of the database with CSV files",
+            "keywords": [
+                "csv",
+                "laravel",
+                "seed",
+                "seeding",
+                "seeds"
+            ],
+            "time": "2015-09-04T04:13:30+00:00"
+        },
+        {
             "name": "fzaninotto/faker",
             "version": "v1.8.0",
             "source": {
@@ -1307,16 +1351,16 @@
         },
         {
             "name": "laravel-frontend-presets/bulma",
-            "version": "v2.0.4",
+            "version": "v2.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-frontend-presets/bulma.git",
-                "reference": "a857f1569f3153c0bee7e9ef130f0aae832b7b6f"
+                "reference": "88f6c5ff3cc21f0b3c1aed17d639ff60bd48aca7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-frontend-presets/bulma/zipball/a857f1569f3153c0bee7e9ef130f0aae832b7b6f",
-                "reference": "a857f1569f3153c0bee7e9ef130f0aae832b7b6f",
+                "url": "https://api.github.com/repos/laravel-frontend-presets/bulma/zipball/88f6c5ff3cc21f0b3c1aed17d639ff60bd48aca7",
+                "reference": "88f6c5ff3cc21f0b3c1aed17d639ff60bd48aca7",
                 "shasum": ""
             },
             "require": {
@@ -1345,7 +1389,7 @@
                 "laravel",
                 "preset"
             ],
-            "time": "2019-02-09T09:32:24+00:00"
+            "time": "2019-05-23T16:39:50+00:00"
         },
         {
             "name": "laravel/framework",
@@ -5111,16 +5155,16 @@
         },
         {
             "name": "phpunit/php-token-stream",
-            "version": "3.0.1",
+            "version": "3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-token-stream.git",
-                "reference": "c99e3be9d3e85f60646f152f9002d46ed7770d18"
+                "reference": "c4a66b97f040e3e20b3aa2a243230a1c3a9f7c8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/c99e3be9d3e85f60646f152f9002d46ed7770d18",
-                "reference": "c99e3be9d3e85f60646f152f9002d46ed7770d18",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/c4a66b97f040e3e20b3aa2a243230a1c3a9f7c8c",
+                "reference": "c4a66b97f040e3e20b3aa2a243230a1c3a9f7c8c",
                 "shasum": ""
             },
             "require": {
@@ -5156,7 +5200,7 @@
             "keywords": [
                 "tokenizer"
             ],
-            "time": "2018-10-30T05:52:18+00:00"
+            "time": "2019-07-08T05:24:54+00:00"
         },
         {
             "name": "phpunit/phpunit",
