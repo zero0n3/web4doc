@@ -28,8 +28,8 @@ class DatabaseSeeder extends Seeder
         User::truncate();
         Athlete::truncate();
         Checkup::truncate();
-        AthleteSport::truncate();
-        AthleteTeam::truncate();
+        //AthleteSport::truncate();
+        //AthleteTeam::truncate();
 
         // $this->call(UsersTableSeeder::class);
         $this->call(SeedUserTable::class); //#fattoamano
@@ -38,7 +38,12 @@ class DatabaseSeeder extends Seeder
         $this->call(SeedSportTable::class); //#fattoamano
         $this->call(SeedAthleteTable::class); //#fattoamano
         $this->call(SeedCheckupTable::class); //#fattoamano
-        $this->call(SeedAthleteSportTable::class); //#fattoamano
-        $this->call(SeedAthleteTeamTable::class); //#fattoamano
+        //$this->call(SeedAthleteSportTable::class); //#fattoamano
+        //$this->call(SeedAthleteTeamTable::class); //#fattoamano
+        $this->call(CsvCompanyTable::class); //#fattoamano
+        $this->call(CsvAthleteTable::class); //#fattoamano
+        $this->call(CsvSportTable::class); //#fattoamano
+        $this->call(CsvAthleteSportTable::class); //#fattoamano
+        
     }
 }

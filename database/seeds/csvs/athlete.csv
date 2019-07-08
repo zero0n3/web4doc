@@ -1,0 +1,5 @@
+id,name,dob,sex,status,company_id,%created_at,%updated_at,%deleted_at
+1,simone,1982-01-09,M,0,1
+2,luca,1982-01-09,M,0,1
+3,andrea,1982-01-09,M,0,2
+4,marco,1982-01-09,M,0,3
