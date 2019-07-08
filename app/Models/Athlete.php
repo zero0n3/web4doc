@@ -8,7 +8,7 @@ class Athlete extends Model
 {
     //
 	//nel caso i nomi non coincidessero
-	protected $table = 'athletes';
+	protected $table = 'athlete2s';
 	protected $primaryKey = 'id';
 	protected $fillable = [
 		'name',
@@ -25,14 +25,14 @@ class Athlete extends Model
     public function sports()
 	{
         //return $this->belongsToMany(Sport::class, 'athlete_sports');
-        return $this->belongsToMany('App\Models\Sport', 'athlete_sports');
+        return $this->belongsToMany('App\Models\Sport', 'athlete_sport2s');
     }
 
-    public function teams()
+   /* public function teams()
 	{
         //return $this->belongsToMany(Sport::class, 'athlete_sports');
         return $this->belongsToMany('App\Models\Team', 'athlete_teams');
-    }
+    }*/
 
     public function company()
   	{

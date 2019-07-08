@@ -2,7 +2,7 @@
     <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">Web4Doc</a>
       <ul class="right hide-on-med-and-down">
         <li><a href="/company">Società</a></li>
-        <li><a href="/team">Team</a></li>
+        <li><!--<a href="/team">-->Team<!--</a>--></li>
         <li><a href="/athlete">Atleti</a></li>
         <li><a href="/checkup">Visite</a></li>
         <li><a href="/sport">Sport</a></li>
@@ -10,7 +10,7 @@
 
       <ul id="nav-mobile" class="sidenav">
         <li><a href="/company">Società</a></li>
-        <li><a href="/team">Team</a></li>
+        <li><!--<a href="/team">-->Team<!--</a>--></li>
         <li><a href="/athlete">Atleti</a></li>
         <li><a href="/checkup">Visite</a></li>
         <li><a href="/sport">Sport</a></li>

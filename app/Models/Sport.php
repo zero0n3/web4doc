@@ -14,7 +14,7 @@ class Sport extends Model //implements Searchable
     //use Searchable;
 
 	//nel caso i nomi non coincidessero
-	protected $table = 'sports';
+	protected $table = 'sport2s';
 	protected $primaryKey = 'id';
 	protected $fillable = [
 		'name',
@@ -25,7 +25,7 @@ class Sport extends Model //implements Searchable
     public function athletes()
 	{
         //return $this->belongsToMany(Athlete::class, 'athletesports');
-        return $this->belongsToMany('App\Models\Athlete', 'athlete_sports');
+        return $this->belongsToMany('App\Models\Athlete', 'athlete_sport2s');
     }
 
 /*

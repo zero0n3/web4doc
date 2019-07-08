@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model {
 //nel caso i nomi non coincidessero
-  protected $table = 'companys';
+  protected $table = 'company2s';
   protected $primaryKey = 'id';
   protected $fillable = [
     'company_name',
@@ -19,9 +19,9 @@ class Company extends Model {
     return $this->hasMany(Athlete::class);
   }
 
-  public function teams(){
+  /*public function teams(){
     return $this->hasMany(Team::class);
-  }
+  }*/
 
 	public function user()
 	{

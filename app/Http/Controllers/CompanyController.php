@@ -21,7 +21,7 @@ class CompanyController extends Controller
     public function index( Request $request ){
     	
 
-    	$queryBuilder = Company::orderBy('company_name','asc')->withCount('athletes')->withCount('teams');
+    	$queryBuilder = Company::orderBy('company_name','asc');//->withCount('athletes');//->withCount('teams');
         
         if($request->has('id')){
             $queryBuilder->where('ID','=', $request->input('id'));

@@ -37,13 +37,14 @@ class DatabaseSeeder extends Seeder
         $this->call(SeedTeamTable::class); //#fattoamano
         $this->call(SeedSportTable::class); //#fattoamano
         $this->call(SeedAthleteTable::class); //#fattoamano
-        $this->call(SeedCheckupTable::class); //#fattoamano
+        
         //$this->call(SeedAthleteSportTable::class); //#fattoamano
         //$this->call(SeedAthleteTeamTable::class); //#fattoamano
         $this->call(CsvCompanyTable::class); //#fattoamano
         $this->call(CsvAthleteTable::class); //#fattoamano
         $this->call(CsvSportTable::class); //#fattoamano
         $this->call(CsvAthleteSportTable::class); //#fattoamano
+        $this->call(SeedCheckupTable::class); //#fattoamano
         
     }
 }

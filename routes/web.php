@@ -33,24 +33,30 @@ Route::get('/', function () {
 // #fattoamano
 //Route::get('/company', 'CompanyController@index');   //-> qui uso il comando per creare un Controller da riga di comando
 //Route::get('/company/search','CompanyController@search')->name('search');
+//v2
 Route::resource('/company', 'CompanyController');
 
 
 // GESTIONE SPORTS
 // #fattoamano
 //Route::get('/sport', 'SportController@index');   //-> qui uso il comando per creare un Controller da riga di comando
+//v2
 Route::resource('/sport', 'SportController');
+
+
+// GESTIONE ATHLETES
+// #fattoamano
+//Route::get('/athlete/{id}/dashboard', 'AthleteController@show')->name('athlete.dashboard'); 
+//v2 
+Route::resource('/athlete', 'AthleteController');
+//Route::get('/athlete', 'AthleteController@index');   //-> qui uso il comando per creare un Controller da riga di comando
+
 
 // GESTIONE TEAMS
 // #fattoamano
 //Route::get('/team', 'TeamController@index');   //-> qui uso il comando per creare un Controller da riga di comando
 Route::resource('/team', 'TeamController');
 
-// GESTIONE ATHLETES
-// #fattoamano
-//Route::get('/athlete/{id}/dashboard', 'AthleteController@show')->name('athlete.dashboard');  
-Route::resource('/athlete', 'AthleteController');
-//Route::get('/athlete', 'AthleteController@index');   //-> qui uso il comando per creare un Controller da riga di comando
 
 // GESTIONE CHECKUPS
 // #fattoamano
