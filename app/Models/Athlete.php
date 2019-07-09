@@ -15,7 +15,7 @@ class Athlete extends Model
 		'status',
 		'sex', 
 		'dob',
-		'company_id'
+		//'company_id'
 	];
 
 	 /**
@@ -36,7 +36,8 @@ class Athlete extends Model
 
     public function company()
   	{
-    	return $this->belongsTo(Company::class, 'company_id','id');
+    	//return $this->belongsTo(Company::class, 'company_id','id');
+      return $this->belongsToMany('App\Models\Company', 'athlete_company2s');
   	}
 
     public function checkups(){

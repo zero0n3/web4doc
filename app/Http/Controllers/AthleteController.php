@@ -115,7 +115,7 @@ class AthleteController extends Controller
                                     'athlete' => $athlete,
                                     'companys' => $companys,
                                 ]);
-
+        
     }
 
     /**

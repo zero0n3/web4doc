@@ -19,8 +19,8 @@ class CreateAthlete2Table extends Migration
             $table->date('dob');
             $table->char('sex', 1);
             $table->integer('status')->unsigned();
-            $table->unsignedBigInteger('company_id');
-            $table->foreign('company_id')->references('id')->on('companys')->onDelete('cascade');
+            //$table->unsignedBigInteger('company_id');
+            //$table->foreign('company_id')->references('id')->on('companys')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });

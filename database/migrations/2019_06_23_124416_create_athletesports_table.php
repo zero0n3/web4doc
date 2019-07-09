@@ -18,7 +18,7 @@ class CreateAthleteSportsTable extends Migration
             $table->unsignedBigInteger('sport_id')->unsigned();
             $table->foreign('athlete_id')->references('id')->on('athletes')->onDelete('cascade');
             $table->foreign('sport_id')->references('id')->on('sports')->onDelete('cascade');
-            $table->primary(['athlete_id', 'sport_id']);
+            //$table->primary(['athlete_id', 'sport_id']);
             $table->timestamps();
             $table->softDeletes();
         });
