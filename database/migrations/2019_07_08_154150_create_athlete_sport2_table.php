@@ -17,10 +17,10 @@ class CreateAthleteSport2Table extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('athlete_id')->unsigned();
             $table->unsignedBigInteger('sport_id')->unsigned();
-            $table->unsignedBigInteger('company_id')->unsigned();
+            //$table->unsignedBigInteger('company_id')->unsigned();
             $table->foreign('athlete_id')->references('id')->on('athlete2s')->onDelete('cascade');
             $table->foreign('sport_id')->references('id')->on('sport2s')->onDelete('cascade');
-            $table->foreign('company_id')->references('id')->on('company2s')->onDelete('cascade');
+            //$table->foreign('company_id')->references('id')->on('company2s')->onDelete('cascade');
             //$table->primary(['athlete_id', 'sport_id', 'company_id']);
             $table->timestamps();
             $table->softDeletes();
