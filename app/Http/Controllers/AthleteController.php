@@ -12,8 +12,9 @@ use DB;
 class AthleteController extends Controller
 {
     public function index( Request $request ){
-    	
-    	$queryBuilder = Athlete::orderBy('name','asc')->with('company');
+    	//return "ciao";
+    	$queryBuilder = Athlete::with('companys')
+        ->orderBy('name', 'asc');
 
         if($request->has('id')){
             $queryBuilder->where('ID','=', $request->input('id'));
@@ -24,7 +25,7 @@ class AthleteController extends Controller
         }
 
         $athletes = $queryBuilder->get();
-        //dd($athletes);
+        dd($athletes);
 
         return view('athlete.athlete',
             [

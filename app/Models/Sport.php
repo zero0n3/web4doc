@@ -22,12 +22,7 @@ class Sport extends Model //implements Searchable
 	];
     
 	//join
-    public function athletes()
-	{
-        //return $this->belongsToMany(Athlete::class, 'athletesports');
-        return $this->belongsToMany('App\Models\Athlete', 'athlete_sport2s');
-    }
-
+    
 /*
      public function getSearchResult(): SearchResult
      {

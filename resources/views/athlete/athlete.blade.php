@@ -34,6 +34,7 @@
               <th>Data di nascita</th>
               <th>Sesso</th>
               <th>Società</th>
+              <th>Sport</th>
               <th>Azioni</th>
           </tr>
         </thead>
@@ -45,9 +46,12 @@
             <td>{{date('d-m-Y', strtotime($athlete->dob))}}</td>
             <td>{{$athlete->sex}}</td>
             <td>
-            @if($athlete->company->company_name)
-              {{$athlete->company->company_name}}
-            @endif
+              @foreach ($athlete->companys as $company)
+                {{$company->company_name}} - {{$company->pivot->sport_id}}<br>
+              @endforeach
+            </td>
+            <td>
+              sport
             </td>
              <td><a href="/athlete/{{$athlete->id}}/edit" class="waves-effect waves-light btn-small"><i class="tiny material-icons left">edit</i>UPDATE</a></td>
           </tr>

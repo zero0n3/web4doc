@@ -22,25 +22,18 @@ class Athlete extends Model
      * The sports that belong to the user.
      */
 
-    public function sports()
+  public function user()
+  {
+    return $this->belongsTo(User::class, 'user_id','id');
+  }
+
+
+  public function companys()
 	{
-        //return $this->belongsToMany(Sport::class, 'athlete_sports');
-        return $this->belongsToMany('App\Models\Sport', 'athlete_sport2s');
-    }
+    return $this->belongsToMany(Company::class, 'athlete_company2s')->withPivot('sport_id');
+	}
 
-   /* public function teams()
-	{
-        //return $this->belongsToMany(Sport::class, 'athlete_sports');
-        return $this->belongsToMany('App\Models\Team', 'athlete_teams');
-    }*/
-
-    public function company()
-  	{
-    	//return $this->belongsTo(Company::class, 'company_id','id');
-      return $this->belongsToMany('App\Models\Company', 'athlete_company2s');
-  	}
-
-    public function checkups(){
-      return $this->hasMany(Checkup::class);
-    }
+  public function checkups(){
+    return $this->hasMany(Checkup::class);
+  }
 }

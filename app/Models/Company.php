@@ -17,17 +17,13 @@ class Company extends Model {
 
   public function athletes(){
     //return $this->hasMany(Athlete::class);
-    return $this->belongsToMany('App\Models\Athlete', 'athlete_company2s');
+    return $this->belongsToMany(Athlete::class, 'athlete_company2s')->withPivot('sport_id');
   }
 
   /*public function teams(){
     return $this->hasMany(Team::class);
   }*/
 
-	public function user()
-	{
-		return $this->belongsTo(User::class, 'user_id','id');
-	}
 
   /*
   public function getSearchResult(): SearchResult
