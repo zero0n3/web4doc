@@ -18,8 +18,6 @@ class CreateCompany2Table extends Migration
             //name - status
             $table->string('company_name');
             $table->integer('company_status')->unsigned();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });

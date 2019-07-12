@@ -14,7 +14,7 @@ class CreateAthleteSport2Table extends Migration
     public function up()
     {
         Schema::create('athlete_sport2s', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            //$table->bigIncrements('id');
             $table->unsignedBigInteger('athlete_id')->unsigned();
             $table->unsignedBigInteger('sport_id')->unsigned();
             //$table->unsignedBigInteger('company_id')->unsigned();
