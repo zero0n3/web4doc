@@ -14,8 +14,8 @@ use DB;
 class AthleteController extends Controller
 {
     public function index( Request $request ){
-    	$queryBuilder = Athlete::with('sports')->get();
-        dd($queryBuilder);
+    	$queryBuilder = Athlete::find(1);//with('sports')
+        dd($queryBuilder->companys);
 
 
         $queryBuilder = Athlete::where('id', 1)//with('sports')

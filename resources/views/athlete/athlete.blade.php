@@ -46,8 +46,8 @@
             <td>{{date('d-m-Y', strtotime($athlete->dob))}}</td>
             <td>{{$athlete->sex}}</td>
             <td>
-              @foreach ($athlete->companys as $company)
-                {{$company->company_name}} - {{$company->pivot->sport_id}}<br>
+              @foreach ($athlete->sports as $sport)
+                {{$sport->name}} - {{$sport->pivot->company_id}}<br>
               @endforeach
             </td>
             <td>

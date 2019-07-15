@@ -16,8 +16,8 @@ class Company extends Model {
   ];
 
   public function athletesports(){
-    //return $this->hasMany(AthleteSport::class);
-    return $this->belongsToMany(Athlete::class, 'athlete_company2s')->using(AthleteTeam::class);
+    return $this->hasMany(AthleteSport::class);
+    //return $this->belongsToMany(Athlete::class, 'athlete_company2s')->using(AthleteTeam::class);
   }
   
 

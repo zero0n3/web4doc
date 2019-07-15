@@ -1241,16 +1241,16 @@
         },
         {
             "name": "jeroenzwart/laravel-csv-seeder",
-            "version": "v1.2.2",
+            "version": "v1.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jeroenzwart/laravel-csv-seeder.git",
-                "reference": "4d63e8a3035e2845a8986fd9466319119229b66c"
+                "reference": "82d98421959a0ada95f98161285341a848b47bfa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jeroenzwart/laravel-csv-seeder/zipball/4d63e8a3035e2845a8986fd9466319119229b66c",
-                "reference": "4d63e8a3035e2845a8986fd9466319119229b66c",
+                "url": "https://api.github.com/repos/jeroenzwart/laravel-csv-seeder/zipball/82d98421959a0ada95f98161285341a848b47bfa",
+                "reference": "82d98421959a0ada95f98161285341a848b47bfa",
                 "shasum": ""
             },
             "require": {
@@ -1291,7 +1291,7 @@
                 "seeding",
                 "seeds"
             ],
-            "time": "2019-04-21T22:55:36+00:00"
+            "time": "2019-07-13T17:14:40+00:00"
         },
         {
             "name": "justinrainbow/json-schema",

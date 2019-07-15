@@ -28,31 +28,14 @@ class Athlete extends Model
 	{
 		return $this->belongsTo(User::class, 'user_id','id');
 	}
-	
 	public function checkups(){
 		return $this->hasMany(Checkup::class);
 	}
 
-    public function companys()
-    {
-        return $this->hasManyThrough(
-            Company::class,
-            AthleteSport::class,
-            'company_id', // Foreign key on users table...
-            'id', // Foreign key on posts table...
-            'id', // Local key on countries table...
-            'id' // Local key on users table...
-        );
-    }
-
-
-
 
 	public function sports()
 	{
-
 	    return $this->belongsToMany(Sport::class, 'athlete_sport2s')->withPivot('company_id');
-
 	}
 
 

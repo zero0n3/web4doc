@@ -20,7 +20,27 @@ class Sport extends Model //implements Searchable
 		'name',
 		'status'
 	];
+
+
+    public function athletes()
+    {
+        return $this->belongsToMany(Athlete::class, 'athlete_sport2s');//->withPivot('company_id');
+    }
+
+
+
+    /*
+    public function relations() {
+       return $this->hasMany(AthleteSportCompany::class);
+    }*/
     
+
+    /*
+    public function athletecompany()
+    {
+        return $this->hasMany(AthleteCompany::class);
+    }
+*/
 	//join
     
 /*

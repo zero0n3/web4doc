@@ -47,13 +47,15 @@ class Athlete extends Model
 
 
 
-
+/*
 	public function sports()
 	{
 
-	    return $this->belongsToMany(Sport::class, 'athlete_sport2s')->withPivot('company_id');
+	    return $this->belongsToMany(Sport::class, 'athlete_sport2s')
+	    ->using(AthleteSport::class)
+	    ->withPivot('company_id');
 
-	}
+	}*/
 
 
 
