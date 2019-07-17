@@ -13,7 +13,7 @@ class CreateAthleteSport2Table extends Migration
      */
     public function up()
     {
-        Schema::create('athlete_sport2s', function (Blueprint $table) {
+        Schema::create('athlete_sport', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('athlete_id')->unsigned();
             $table->unsignedBigInteger('sport_id')->unsigned();
@@ -37,6 +37,6 @@ class CreateAthleteSport2Table extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('athlete_sport2s');
+        Schema::dropIfExists('athlete_sport');
     }
 }
