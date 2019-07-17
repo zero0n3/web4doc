@@ -39,6 +39,11 @@
           </tr>
         </thead>
         <tbody>
+
+
+
+
+
     @foreach ($athletes as $athlete)        
           <tr>
             <td>{{$athlete->id}}</td>
@@ -47,7 +52,7 @@
             <td>{{$athlete->sex}}</td>
             <td>
               @foreach ($athlete->sports as $sport)
-                {{$sport->name}} - {{$sport->pivot->company_id}}<br>
+                {{$sport->name}} - {{$sport->pivot->company->company_id}}<br>
               @endforeach
             </td>
             <td>

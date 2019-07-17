@@ -3,6 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Sport; //#fattoamano
+use App\Models\Company; //#fattoamano
+use App\Models\AthleteSport; //#fattoamano
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
 class Athlete extends Model
 {
@@ -33,6 +37,35 @@ class Athlete extends Model
 		return $this->hasMany(Checkup::class);
 	}
 
+
+	//fiverr
+    public function __construct($value = null, array $attributes = array()){
+      $this->value = $value;
+      parent::__construct($attributes);
+    }
+
+    public function sports(){
+      return $this->belongsToMany(Sport::class)
+      ->withPivot('company_id');
+    }
+
+    /*public function teams(){
+      return $this->belongstoMany(Team::class);
+    }*/  
+
+     public function newPivot(Model $parent, array $attributes, $table, $exists,$using = null) {
+      if ($parent instanceof Sport) {
+           return new AthleteSport($parent, $attributes, $table, $exists,"");
+       }
+       return parent::newPivot($parent, $attributes, $table, $exists,"");
+   }
+   //fiverr
+
+
+
+
+
+/*
     public function companys()
     {
         return $this->hasManyThrough(
@@ -55,7 +88,7 @@ class Athlete extends Model
 
 	}
 
-
+*/
 
 /*
   public function companys()

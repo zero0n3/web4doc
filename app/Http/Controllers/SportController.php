@@ -6,12 +6,25 @@ use Illuminate\Http\Request;
 use Storage;
 use App\Models\Sport;
 use App\Models\Athlete;
+use App\Models\Company;
+use App\Models\AthleteSport;
+
 use DB;
 
 class SportController extends Controller
 {
 
     //
+    public function index(Request $request) {
+        $queryBuilder = Sport::with('athletes');
+        $sports = $queryBuilder->get(); 
+
+        
+        return view('sport_view')        
+        ->with('sports',$sports);   
+
+    }
+    /*
     public function index( Request $request ){
     	
     	$queryBuilder = Sport::orderBy('name','asc')->withCount('athletes');
@@ -32,7 +45,7 @@ class SportController extends Controller
                 'sports' => $sports
             ]);
 
-    }
+    }*/
     /**
      * Show the form for creating a new resource.
      *

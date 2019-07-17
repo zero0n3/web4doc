@@ -6,18 +6,52 @@ use Illuminate\Http\Request;
 use Storage;
 use App\Models\Company;
 use App\Models\Athlete;
-use App\Models\Team;
+use App\Models\Sport;
+use App\Models\AthleteSport;
+
 //use Spatie\Searchable\Search;
 use DB;
 
 class CompanyController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    public function index(Request $request) {
+        $queryBuilder = Athlete::with('sports');
+        $athletes = $queryBuilder->get(); 
+
+        $queryBuilder2 = DB::table('athlete_sport');
+        $athlete_sports = $queryBuilder2->get()->groupBy('team_id'); 
+
+        //dd($athlete_sports);
+
+        foreach($athlete_sports as $athlete_sp){ //dd($athlete_sp[0]);
+            $groupBySport=$athlete_sp->groupBy('sport_id');
+
+            //dd($groupBySport);
+
+            foreach($groupBySport as $gs){
+                $groupByAthlete=$gs->groupBy('athlete_id');
+
+                //dd($groupByAthlete);
+            }
+        }
+        
+        $teams=Team::all();
+        $sports=Sport::all();
+        $athletes=Athlete::all();
+        
+        return view('team_view')
+        ->with('athlete_sports',$athlete_sports)
+        ->with('teams',$teams)
+        ->with('sports',$sports)
+        ->with('athletes',$athletes);    
+
+    }
+/*
     public function index( Request $request ){
     	
 
@@ -39,7 +73,7 @@ class CompanyController extends Controller
                 'companys' => $companys
             ]);
     }
-
+*/
     /**
      * Show the form for creating a new resource.
      *
@@ -175,6 +209,5 @@ class CompanyController extends Controller
 
     
     }
-
 
 }

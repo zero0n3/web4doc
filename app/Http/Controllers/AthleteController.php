@@ -14,7 +14,20 @@ use DB;
 class AthleteController extends Controller
 {
     public function index( Request $request ){
-    	$queryBuilder = Athlete::with('sports')->get();
+        $queryBuilder = Athlete::with('sports');
+        $athletes = $queryBuilder->get();        
+        
+        return view('athlete.athlete',
+            [
+                'title' => 'Lista atleti',
+                'athletes' => $athletes
+            ]);
+    }
+
+
+
+/*
+        $queryBuilder = Athlete::with('sports')->get();
         dd($queryBuilder);
 
 
@@ -40,7 +53,7 @@ class AthleteController extends Controller
             ]);
 
     }
-
+*/
     /**
      * Show the form for creating a new resource.
      *
