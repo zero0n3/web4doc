@@ -1,13 +1,11 @@
 <?php
 
 
-use App\Models\AthleteTeam; //#fattoamano
 use App\Models\AthleteSport; //#fattoamano
 use App\Models\Checkup; //#fattoamano
 use App\Models\Athlete; //#fattoamano
 use App\Models\Sport; //#fattoamano
 use App\Models\Team; //#fattoamano
-use App\Models\Company; //#fattoamano
 use App\User; //#fattoamano
 use Illuminate\Database\Seeder;
 
@@ -22,13 +20,12 @@ class DatabaseSeeder extends Seeder
     {
 
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        User::truncate();
         Sport::truncate();
         Team::truncate();
-        Company::truncate();
-        User::truncate();
+        AthleteSport::truncate();
         Athlete::truncate();
         Checkup::truncate();
-        //AthleteSport::truncate();
         //AthleteTeam::truncate();
 
         // $this->call(UsersTableSeeder::class);
@@ -40,7 +37,7 @@ class DatabaseSeeder extends Seeder
         
         //$this->call(SeedAthleteSportTable::class); //#fattoamano
         //$this->call(SeedAthleteTeamTable::class); //#fattoamano
-        $this->call(CsvCompanyTable::class); //#fattoamano
+        $this->call(CsvTeamTable::class); //#fattoamano
         $this->call(CsvAthleteTable::class); //#fattoamano
         $this->call(CsvSportTable::class); //#fattoamano
         //$this->call(CsvAthleteSportTable::class); //#fattoamano

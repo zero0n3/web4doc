@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Sport; //#fattoamano
-use App\Models\Company; //#fattoamano
+use App\Models\Team; //#fattoamano
 use App\Models\AthleteSport; //#fattoamano
 use Illuminate\Database\Eloquent\Relations\Pivot;
 
@@ -12,7 +12,7 @@ class Athlete extends Model
 {
     //
 	//nel caso i nomi non coincidessero
-	protected $table = 'athlete2s';
+	protected $table = 'athletes';
 	protected $primaryKey = 'id';
 	protected $fillable = [
 		'name',
@@ -46,7 +46,7 @@ class Athlete extends Model
 
     public function sports(){
       return $this->belongsToMany(Sport::class)
-      ->withPivot('company_id');
+      ->withPivot('team_id');
     }
 
     /*public function teams(){

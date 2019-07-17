@@ -4,20 +4,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-//use Laravel\Scout\Searchable;
-//use Spatie\Searchable\Searchable;
-//use Spatie\Searchable\SearchResult;
 use App\Models\Athlete;
 use App\Models\AthleteSport;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class Sport extends Model //implements Searchable
+class Sport extends Model
 {
 
-    //use Searchable;
-
 	//nel caso i nomi non coincidessero
-	protected $table = 'sport2s';
+	protected $table = 'sports';
 	protected $primaryKey = 'id';
 	protected $fillable = [
 		'name',
@@ -32,7 +27,7 @@ class Sport extends Model //implements Searchable
 
     public function athletes(){
         return $this->belongsToMany(Athlete::class)
-        ->withPivot('company_id');
+        ->withPivot('team_id');
     }
 
 

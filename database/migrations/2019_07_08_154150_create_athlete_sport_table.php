@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAthleteSportsTable extends Migration
+class CreateAthleteSportTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,18 @@ class CreateAthleteSportsTable extends Migration
      */
     public function up()
     {
-        Schema::create('athlete_sports', function (Blueprint $table) {
+        Schema::create('athlete_sport', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            //
             $table->unsignedBigInteger('athlete_id')->unsigned();
             $table->unsignedBigInteger('sport_id')->unsigned();
+            $table->unsignedBigInteger('team_id')->unsigned();
+            //
             $table->foreign('athlete_id')->references('id')->on('athletes')->onDelete('cascade');
             $table->foreign('sport_id')->references('id')->on('sports')->onDelete('cascade');
-            //$table->primary(['athlete_id', 'sport_id']);
+            $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade');
+            //
+            $table->unique(['athlete_id', 'sport_id']);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -31,6 +37,6 @@ class CreateAthleteSportsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('athlete_sports');
+        Schema::dropIfExists('athlete_sport');
     }
 }

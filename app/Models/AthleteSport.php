@@ -11,7 +11,14 @@ use app\Models\Athlete;
 class AthleteSport extends Pivot
 {
     //
-    protected $table = 'athlete_sport2s';
+    protected $table = 'athlete_sport';
+
+    protected $fillable = [
+        'id',
+        'athlete_id',
+        'sport_id',
+        'team_id'
+    ];
 
     //fiverr
     public function __construct($value = null, array $attributes = array()){
@@ -19,8 +26,8 @@ class AthleteSport extends Pivot
         parent::__construct($attributes);
     }
 
-    public function company(){
-        return $this->belongsTo(Company::class);
+    public function team(){
+        return $this->belongsTo(Team::class);
     } 
     //fiverr
 

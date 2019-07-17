@@ -80,12 +80,11 @@ $factory->define(User::class, function (Faker $faker) {
 
 
 //#fattoamano
-$factory->define(App\Models\Company::class, function (Faker $faker) {
+$factory->define(App\Models\Team::class, function (Faker $faker) {
 
     return [
-        'company_name' => $faker->company,
-        'company_status' => 0,
-        'user_id' => User::inRandomOrder()->first()->id,
+        'name' => $faker->company,
+        'status' => 0,
     ];
 });
 

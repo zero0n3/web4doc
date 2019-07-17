@@ -1,6 +1,0 @@
-athlete_id,company_id,sport_id,%created_at,%updated_at,%deleted_at
-1,1,1
-1,1,2
-2,1,1
-2,2,3
-3,2,1

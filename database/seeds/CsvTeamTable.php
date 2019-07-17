@@ -4,13 +4,13 @@ use App\User; //#fattoamano
 use Illuminate\Database\Seeder;
 use JeroenZwart\CsvSeeder\CsvSeeder;
 
-class CsvAthleteCompanyTable extends CsvSeeder {
+class CsvTeamTable extends CsvSeeder {
 
     public function __construct()
     {
-        $this->tablename = 'athlete_company2s';
+        $this->tablename = 'teams';
         $this->delimiter = ',';
-        $this->file = '\database\seeds\csvs\athlete_company.csv';
+        $this->file = '\database\seeds\csvs\team.csv';
         //dd($this->filename);
     }
 

@@ -4,26 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Storage;
-use App\Models\Team;
 use App\Models\Athlete;
-use App\Models\Company;
+use App\Models\Team;
 use App\Models\Sport;
-use App\Models\AthleteCompany;
 use DB;
 
 class AthleteController extends Controller
 {
-    public function index( Request $request ){
+    public function index( Request $request ) { 
         $queryBuilder = Athlete::with('sports');
         $athletes = $queryBuilder->get();        
-        
+        //dd($athletes);
         return view('athlete.athlete',
             [
                 'title' => 'Lista atleti',
                 'athletes' => $athletes
             ]);
     }
-
 
 
 /*

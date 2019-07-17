@@ -15,15 +15,12 @@ class CreateAthletesTable extends Migration
     {
         Schema::create('athletes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            //name - status - companyID
             $table->string('name');
             $table->date('dob');
             $table->char('sex', 1);
             $table->integer('status')->unsigned();
-            //$table->integer('company_id')->unsigned();
-            $table->unsignedBigInteger('company_id');
-            //$table->foreign('company_id')->on('company')->references('id')->onDelete('cascade');
-            $table->foreign('company_id')->references('id')->on('companys')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });
