@@ -14,7 +14,7 @@
             <td>
 
             </td>
-            <td><a href="/company/{{$searchResult->id}}/edit" class="waves-effect waves-light btn-small"><i class="tiny material-icons left">edit</i>UPDATE</a></td>
+            <td><a href="/team/{{$searchResult->id}}/edit" class="waves-effect waves-light btn-small"><i class="tiny material-icons left">edit</i>UPDATE</a></td>
           </tr>
     @endforeach
         </tbody>

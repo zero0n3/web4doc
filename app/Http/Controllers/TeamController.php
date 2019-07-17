@@ -81,10 +81,10 @@ class TeamController extends Controller
     public function create()
     {
         //
-        $companys = Company::all();
+        $companys = Team::all();
         return view('team.create', [
                 'title' => 'Crea Team',
-                'companys' => $companys,
+                'teams' => $teams,
                 ]);
     }
 
@@ -98,9 +98,9 @@ class TeamController extends Controller
     {
         //
         $team = new Team();
-        $team->team_name = $request->input('team_name');
+        $team->name = $request->input('name');
         $team->team_status = 0;
-        $team->company_id = $request->input('company_id');
+        $team->id = $request->input('id');
        
          
         $res = $team->save();

@@ -33,8 +33,8 @@
               <th>Nome atleta</th>
               <th>Data di nascita</th>
               <th>Sesso</th>
-              <th>Società</th>
               <th>Sport</th>
+              <th>Team</th>
               <th>Azioni</th>
           </tr>
         </thead>
@@ -50,13 +50,17 @@
             <td><a href="{{ route('athlete.show', ['athlete' => $athlete->id]) }}">{{$athlete->name}}</a></td>
             <td>{{date('d-m-Y', strtotime($athlete->dob))}}</td>
             <td>{{$athlete->sex}}</td>
-            <td>
-              @foreach ($athlete->sports as $sport)
-                {{$sport->name}} - {{$sport->pivot->company->company_id}}<br>
-              @endforeach
-            </td>
-            <td>
-              sport
+            <td colspan="2">
+
+              <table>
+                @foreach ($athlete->sports as $sport)
+                  <tr>
+                    <td>{{$sport->name}}</td>
+                    <td>{{$sport->pivot->team->name}}</td>
+                  </tr>
+                @endforeach
+              </table>
+              
             </td>
              <td><a href="/athlete/{{$athlete->id}}/edit" class="waves-effect waves-light btn-small"><i class="tiny material-icons left">edit</i>UPDATE</a></td>
           </tr>

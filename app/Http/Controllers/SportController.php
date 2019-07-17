@@ -20,8 +20,11 @@ class SportController extends Controller
         $sports = $queryBuilder->get(); 
 
         
-        return view('sport_view')        
-        ->with('sports',$sports);   
+        return view('sport.sport',
+            [
+                'title' => 'Lista sport',
+                'sports' => $sports
+            ]); 
 
     }
     /*

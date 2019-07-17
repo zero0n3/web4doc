@@ -30,8 +30,8 @@
           <tr>
               <th>Id</th>
               <th>Sport</th>
-              <th>Numero di atleti che lo praticano</th>
-              <th>Azioni</th>
+              <th>Atleti</th>
+              <th>Team</th>
           </tr>
         </thead>
         <tbody>

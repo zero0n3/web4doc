@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Company;
+use App\Models\Team;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,12 +29,12 @@ Route::get('/', function () {
 //Route::get('/pagination', 'PaginationController@index');
 //Route::get('/pagination/fetch_data', 'PaginationController@fetch_data');
 
-// GESTIONE COMPANY SOCIETA
+// GESTIONE COMPANY SOCIETA TEAM
 // #fattoamano
 //Route::get('/company', 'CompanyController@index');   //-> qui uso il comando per creare un Controller da riga di comando
 //Route::get('/company/search','CompanyController@search')->name('search');
 //v2
-Route::resource('/company', 'CompanyController');
+Route::resource('/team', 'TeamController');
 
 
 // GESTIONE SPORTS
@@ -52,11 +52,6 @@ Route::resource('/athlete', 'AthleteController');
 //Route::get('/athlete', 'AthleteController@index');   //-> qui uso il comando per creare un Controller da riga di comando
 
 
-// GESTIONE TEAMS
-// #fattoamano
-//Route::get('/team', 'TeamController@index');   //-> qui uso il comando per creare un Controller da riga di comando
-Route::resource('/team', 'TeamController');
-
 
 // GESTIONE CHECKUPS
 // #fattoamano
@@ -68,9 +63,9 @@ Route::resource('/checkup', 'CheckupController');
 Route::get('/', 'AthleteController@index');   //-> qui uso il comando per creare un Controller da riga di comando
 
 
-Route::get('/companys', function(){
+Route::get('/teams', function(){
 
-	return Company::all();
+	return Team::all();
 
 });   //-> route di prova per vedere i dati json di company (o altro)
 
