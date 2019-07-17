@@ -559,7 +559,7 @@ class ComposerStaticInitbef0af9e13847b8ee786246778884aae
         'App\\Http\\Controllers\\CompanyController' => __DIR__ . '/../..' . '/app/Http/Controllers/CompanyController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
-        'App\\Http\\Controllers\\LSearchController' => __DIR__ . '/../..' . '/app/Http/Controllers/LSearchController.php',
+        'App\\Http\\Controllers\\LSearch' => __DIR__ . '/../..' . '/app/Http/Controllers/LSearchController.php',
         'App\\Http\\Controllers\\LiveSearchController' => __DIR__ . '/../..' . '/app/Http/Controllers/LiveSearchController.php',
         'App\\Http\\Controllers\\PageController' => __DIR__ . '/../..' . '/app/Http/Controllers/PageController.php',
         'App\\Http\\Controllers\\PaginationController' => __DIR__ . '/../..' . '/app/Http/Controllers/PaginationController.php',

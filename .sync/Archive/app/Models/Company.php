@@ -3,31 +3,37 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Spatie\Searchable\Searchable;
-use Spatie\Searchable\SearchResult;
+//use Spatie\Searchable\Searchable;
+//use Spatie\Searchable\SearchResult;
 
-class Company extends Model implements Searchable {
+class Company extends Model {
 //nel caso i nomi non coincidessero
-  protected $table = 'companys';
+  protected $table = 'company2s';
   protected $primaryKey = 'id';
   protected $fillable = [
     'company_name',
     'company_status'
   ];
 
-  public function athletes(){
-    return $this->hasMany(Athlete::class);
+  public function athletesports(){
+    return $this->hasMany(AthleteSport::class);
+    //return $this->belongsToMany(Athlete::class, 'athlete_company2s')->using(AthleteTeam::class);
   }
+  
 
-  public function teams(){
+
+
+/*
+  public function relations() {
+     return $this->hasMany(AthleteSportCompany::class);
+  }
+*/
+  /*public function teams(){
     return $this->hasMany(Team::class);
-  }
+  }*/
 
-	public function user()
-	{
-		return $this->belongsTo(User::class, 'user_id','id');
-	}
 
+  /*
   public function getSearchResult(): SearchResult
   {
     //$url = route('companies.show', $this->id);
@@ -38,6 +44,6 @@ class Company extends Model implements Searchable {
       $this->company_name,
       $url
     );
-  }
+  }*/
 
 }

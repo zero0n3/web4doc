@@ -8,38 +8,48 @@ class Athlete extends Model
 {
     //
 	//nel caso i nomi non coincidessero
-	protected $table = 'athletes';
+	protected $table = 'athlete2s';
 	protected $primaryKey = 'id';
 	protected $fillable = [
 		'name',
 		'status',
 		'sex', 
 		'dob',
-		'company_id'
+		//'company_id'
 	];
 
 	 /**
      * The sports that belong to the user.
      */
 
-    public function sports()
+
+
+	public function user()
 	{
-        //return $this->belongsToMany(Sport::class, 'athlete_sports');
-        return $this->belongsToMany('App\Models\Sport', 'athlete_sports');
-    }
+		return $this->belongsTo(User::class, 'user_id','id');
+	}
+	public function checkups(){
+		return $this->hasMany(Checkup::class);
+	}
 
-    public function teams()
+
+	public function sports()
 	{
-        //return $this->belongsToMany(Sport::class, 'athlete_sports');
-        return $this->belongsToMany('App\Models\Team', 'athlete_teams');
-    }
+	    return $this->belongsToMany(Sport::class, 'athlete_sport2s')->withPivot('company_id');
+	}
 
-    public function company()
-  	{
-    	return $this->belongsTo(Company::class, 'company_id','id');
-  	}
 
-    public function checkups(){
-      return $this->hasMany(Checkup::class);
-    }
+
+/*
+  public function companys()
+	{
+    return $this->belongsToMany(Company::class, 'athlete_company2s')->withPivot('sport_id');
+	}
+
+
+
+	public function relations() {
+	   return $this->hasMany(AthleteSportCompany::class);
+	}
+*/
 }

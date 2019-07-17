@@ -27,7 +27,7 @@
 
 </form>
 @endsection
-{{ $companys->links() }}
+
 @section('footer')
   @parent
 

@@ -4,13 +4,43 @@
 
 @section('content')
 
-  <h4>Aggiungi Società</h4>
-  <form action="{{route('company.store')}}" method="POST" enctype="multipart/form-data">
+
+    <div class="row">
+      <div class="col s12"><h4>Aggiungi Team</h4></div>
+
+      <div class="col s6">6-columns (one-half)</div>
+      <div class="col s6">6-columns (one-half)</div>
+    </div>
+
+
+
+
+
+
+  <form action="{{route('team.store')}}" method="POST" enctype="multipart/form-data">
     {{csrf_field()}}
-      <div class="form-group">
-          <label for="">Nome Società</label>
-          <input type="text" name="company_name" id="company_name" value="" class="form-control">
-      </div>
+
+
+
+        <div class="form-group">
+          <label for="">Nome Team</label>
+          <input type="text" name="team_name" id="team_name" value="" class="form-control">
+        </div>
+
+      
+
+
+        <select name="company_id">
+          @foreach($companys as $company)
+            <option value="{{ $company->id }}">{{ $company->company_name}}</option>
+          @endforeach
+        </select>
+        <label>Società di riferimento</label>
+
+
+
+
+
 
       
 
