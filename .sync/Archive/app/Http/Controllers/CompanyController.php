@@ -7,7 +7,7 @@ use Storage;
 use App\Models\Company;
 use App\Models\Athlete;
 use App\Models\Team;
-//use Spatie\Searchable\Search;
+use Spatie\Searchable\Search;
 use DB;
 
 class CompanyController extends Controller
@@ -141,19 +141,19 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destro($id)
     {
         //
     }
 
     public function search(Request $request)
     {
-        $search = $request->get('search');
-        $companys = DB::table('companys')->where('company_name', 'like', '%'.$search.'%')->paginate(5);
-        //dd($companys);
-        return view('company.search', [
-            'searchResults' => $companys,
-            'title' => 'Risultati',
+        $searchResults = (new Search())
+            ->registerModel(Company::class, 'company_name')
+            ->perform($request->input('query'));
+            //dd($searchResults);
+        return view('company.search', compact('searchResults'), [
+            'title' => 'Ricerca società',
         ]);
 
     

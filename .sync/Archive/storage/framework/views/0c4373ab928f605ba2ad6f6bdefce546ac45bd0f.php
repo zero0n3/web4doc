@@ -27,6 +27,7 @@
 
 </form>
 <?php $__env->stopSection(); ?>
+<?php echo e($companys->links()); ?>
 
 <?php $__env->startSection('footer'); ?>
   ##parent-placeholder-d7eb6b340a11a367a1bec55e4a421d949214759f##
