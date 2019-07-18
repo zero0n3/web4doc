@@ -30,24 +30,19 @@
           <tr>
               <th>Id</th>
               <th>Sport</th>
-              <th>Atleti</th>
-              <th>Team</th>
           </tr>
         </thead>
         <tbody>
-    @foreach ($sports as $sport)  
+
+
+
+    @foreach ($sports as $sport)        
           <tr>
             <td>{{$sport->id}}</td>
-            <td>{{$sport->name}}</td>
-
-            <td>
-            @if($sport->athletes_count)
-               {{$sport->athletes_count}}
-            @endif
-            </td>
-            <td><a href="/sport/{{$sport->id}}/edit" class="waves-effect waves-light btn-small"><i class="tiny material-icons left">edit</i>UPDATE</a></td>
-          </tr>
+            <td>{{$sport->name}}</a></td>
+             </tr>
     @endforeach
+
         </tbody>
       </table>
 

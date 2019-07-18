@@ -3,14 +3,12 @@
       <ul class="right hide-on-med-and-down">
         <li><a href="/team">Team</a></li>
         <li><a href="/athlete">Atleti</a></li>
-        <li><a href="/checkup">Visite</a></li>
         <li><a href="/sport">Sport</a></li>
       </ul>
 
       <ul id="nav-mobile" class="sidenav">
         <li><a href="/team">Team</a></li>
         <li><a href="/athlete">Atleti</a></li>
-        <li><a href="/checkup">Visite</a></li>
         <li><a href="/sport">Sport</a></li>
       </ul>
       <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
