@@ -14,35 +14,25 @@ class TeamController extends Controller
 {
 
    public function index(Request $request) {
-        $queryBuilder = Athlete::with('sports');
-        $athletes = $queryBuilder->get(); 
+        $queryBuilder = Team::orderBy('name','asc');
+        //$queryBuilder = Team::with('company');
 
-        $queryBuilder2 = DB::table('athlete_sport');
-        $athlete_sports = $queryBuilder2->get()->groupBy('team_id'); 
-
-        //dd($athlete_sports);
-
-        foreach($athlete_sports as $athlete_sp){ //dd($athlete_sp[0]);
-            $groupBySport=$athlete_sp->groupBy('sport_id');
-
-            //dd($groupBySport);
-
-            foreach($groupBySport as $gs){
-                $groupByAthlete=$gs->groupBy('athlete_id');
-
-                //dd($groupByAthlete);
-            }
+        if($request->has('id')){
+            $queryBuilder->where('ID','=', $request->input('id'));
         }
+
+        if($request->has('name')){
+            $queryBuilder->where('name','like', '%'.$request->input('name').'%');
+        }
+
+        $teams = $queryBuilder->get();
+        //dd($teams);
         
-        $teams=Team::all();
-        $sports=Sport::all();
-        $athletes=Athlete::all();
-        
-        return view('team_view')
-        ->with('athlete_sports',$athlete_sports)
-        ->with('teams',$teams)
-        ->with('sports',$sports)
-        ->with('athletes',$athletes);    
+        return view('team.team',
+            [
+                'title' => 'Lista team',
+                'teams' => $teams
+            ]); 
 
     }
 
@@ -81,10 +71,10 @@ class TeamController extends Controller
     public function create()
     {
         //
-        $companys = Team::all();
+        $teams = Team::all();
         return view('team.create', [
                 'title' => 'Crea Team',
-                'teams' => $teams,
+                //'teams' => $teams,
                 ]);
     }
 
@@ -99,15 +89,13 @@ class TeamController extends Controller
         //
         $team = new Team();
         $team->name = $request->input('name');
-        $team->team_status = 0;
-        $team->id = $request->input('id');
+        $team->status = 0;
+        //$team->id = $request->input('id');
        
-         
         $res = $team->save();
-       
         
-        $team_name = request()->input('team_name');
-        $messaggio = $res ? 'Team   ' . $team_name . ' creato' : 'Team ' . $team_name . ' non creato';
+        $name = request()->input('name');
+        $messaggio = $res ? 'Team   ' . $name . ' creato' : 'Team ' . $name . ' non creato';
         session()->flash('message', $messaggio);
         return redirect()->route('team.index');
     }
@@ -137,14 +125,12 @@ class TeamController extends Controller
         //$sql = 'SELECT id, album_name, description from albums WHERE ID = :id';
         //$album = DB::select($sql, ['id'=>$id]);
         $team = Team::find($id);
-        $companys = Company::all();
         //dd($team);
         //return view('albums.edit')->with('album', $album[0]);
         return view('team.edit',
             [
                 'title' => 'Modifica Team',
-                'team' => $team,
-                'companys' => $companys,
+                'team' => $team
             ]);
 
     }
@@ -168,8 +154,8 @@ class TeamController extends Controller
         );
         */
         $team = Team::find($id);
-        $team->team_name = request()->input('name');
-        $team->company_id = request()->input('company_id');
+        $team->name = request()->input('name');
+        $team->id = request()->input('id');
         //$album->user_id = 1;
         $res = $team->save();
 

@@ -32,9 +32,6 @@
           <tr>
               <th>Id</th>
               <th>Nome Team</th>
-              <th>Numero di atleti</th>
-              <th>Numero di team</th>
-              <th>Azioni</th>
           </tr>
         </thead>
         <tbody>
@@ -42,19 +39,6 @@
           <tr>
             <td>{{$team->id}}</td>
             <td>{{$team->name}}</td>
-
-            <td>
-            @if($team->athletes_count)
-               {{$team->athletes_count}}
-            @endif
-            </td>
-
-            <td>
-            @if($team->teams_count)
-               {{$team->teams_count}}
-            @endif
-            </td>
-            <td><a href="/team/{{$team->id}}/edit" class="waves-effect waves-light btn-small"><i class="tiny material-icons left">edit</i>UPDATE</a></td>
           </tr>
     @endforeach
         </tbody>

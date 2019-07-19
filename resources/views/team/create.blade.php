@@ -4,13 +4,13 @@
 
 @section('content')
 
-  <h4>Aggiungi Società</h4>
+  <h4>Aggiungi Team</h4>
   <form action="{{route('team.store')}}" method="POST" enctype="multipart/form-data">
     {{csrf_field()}}
   <div class="row">
       <div class="form-group">
-          <label for="">Nome Società</label>
-          <input type="text" name="name" id="name" value="" class="form-control">
+          <label for="">Nome Team</label>
+          <input type="text" name="name" id="name" class="form-control">
       </div>
 
       

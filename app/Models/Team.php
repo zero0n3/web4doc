@@ -17,10 +17,11 @@ class Team extends Model {
   ];
 
 //fiverr
-    public function __construct($value = null, array $attributes = array()){
+    
+    /*public function __construct($value = null, array $attributes = array()){
         $this->value = $value;
         parent::__construct($attributes);
-    }
+    }*/
 
     public function athletesports(){
         return $this->hasMany(AthleteSport::class);
