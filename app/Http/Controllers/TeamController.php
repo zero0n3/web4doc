@@ -109,7 +109,12 @@ class TeamController extends Controller
     public function show($id)
     {
         //
-
+        $team = Team::find($id);
+        dd($team->athletesports);
+        return view('team.dashboard', [
+                'title' => $team->name,
+                'team' => $team,
+                ]);
     }
 
     /**

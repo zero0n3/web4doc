@@ -11,7 +11,7 @@
   </tr>
   <tr>
     <td>  <div class="section">
-    <h5><h5>Data di nascita</h5>
+    <h5>Data di nascita</h5>
     <p><h6>{{date('d-m-Y', strtotime($athlete->dob))}}</h6></p>
   </div></td>
     <td>  <div class="section">
@@ -20,7 +20,7 @@
   </div></td>
     <td>  <div class="section">
     <h5><h5>Società</h5>
-    <p><h6>{{$athlete->company->company_name}}</h6></p>
+    <p><h6>TESTO FISSO</h6></p>
   </div></td></td>
   </tr>
 </table>

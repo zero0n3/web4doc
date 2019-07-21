@@ -38,7 +38,7 @@
     @foreach ($teams as $team)     
           <tr>
             <td>{{$team->id}}</td>
-            <td>{{$team->name}}</td>
+            <td><a href="{{ route('team.show', ['team' => $team->id]) }}">{{$team->name}}</a></td>
           </tr>
     @endforeach
         </tbody>

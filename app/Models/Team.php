@@ -29,6 +29,19 @@ class Team extends Model {
 //fiverr
 
 
+    public function athletes()
+    {
+        return $this->hasManyThrough(
+          Athlete::class,
+          AthleteSport::class,
+          'team_id',
+          'user_id',
+          'id',
+          'id'
+
+        );
+    }
+
 
 /*
 
