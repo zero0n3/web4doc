@@ -12,9 +12,11 @@ use DB;
 class AthleteController extends Controller
 {
     public function index( Request $request ) { 
-        $queryBuilder = Athlete::with('sports');
-        $athletes = $queryBuilder->get();        
-        //dd($athletes);
+        $queryBuilder = Athlete::with(['checkups.team']);
+        $athletes = $queryBuilder->get(); 
+
+
+        dd($athletes);
         return view('athlete.athlete',
             [
                 'title' => 'Lista atleti',

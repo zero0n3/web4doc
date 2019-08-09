@@ -19,7 +19,12 @@ class Sport extends Model
 		'status'
 	];
 
+    public function checkups(){
+        return $this->hasMany(Checkup::class);
+    }
+
     //fiverr
+    /*
     public function __construct($value = null, array $attributes = array()){
         $this->value = $value;
         parent::__construct($attributes);
@@ -36,7 +41,7 @@ class Sport extends Model
              return new AthleteSport($parent, $attributes, $table, $exists,"");
          }
          return parent::newPivot($parent, $attributes, $table, $exists,"");
-     }
+     }*/
     //fiverr
 
 

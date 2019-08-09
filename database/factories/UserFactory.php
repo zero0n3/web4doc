@@ -140,6 +140,8 @@ $factory->define(App\Models\Checkup::class, function (Faker $faker){
         'chest_L' => $faker->randomFloat,
         'status' => 0,
         'athlete_id' => Athlete::inRandomOrder()->first()->id,
+        'team_id' => Team::inRandomOrder()->first()->id,
+        'sport_id' => Sport::inRandomOrder()->first()->id,
 
     ];
 });

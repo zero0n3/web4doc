@@ -39,6 +39,7 @@ class Athlete extends Model
 
 
 	//fiverr
+  /*
     public function __construct($value = null, array $attributes = array()){
       $this->value = $value;
       parent::__construct($attributes);
@@ -49,16 +50,13 @@ class Athlete extends Model
       ->withPivot('team_id');
     }
 
-    /*public function teams(){
-      return $this->belongstoMany(Team::class);
-    }*/  
 
      public function newPivot(Model $parent, array $attributes, $table, $exists,$using = null) {
       if ($parent instanceof Sport) {
            return new AthleteSport($parent, $attributes, $table, $exists,"");
        }
        return parent::newPivot($parent, $attributes, $table, $exists,"");
-   }
+   }*/
    //fiverr
 
 

@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CsvAthleteTable::class); //#fattoamano
         $this->call(CsvSportTable::class); //#fattoamano
         //$this->call(CsvAthleteSportTable::class); //#fattoamano
-        $this->call(CsvAthleteSportTable::class); //#fattoamano
+            //$this->call(CsvAthleteSportTable::class); //#fattoamano
         //$this->call(CsvAthleteSportCompanyTable::class); //#fattoamano
         $this->call(SeedCheckupTable::class); //#fattoamano
         

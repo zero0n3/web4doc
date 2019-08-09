@@ -25,6 +25,12 @@ class CreateCheckupsTable extends Migration
             $table->integer('status')->unsigned();
             $table->unsignedBigInteger('athlete_id');
             $table->foreign('athlete_id')->references('id')->on('athletes')->onDelete('cascade');
+            //nuova versione agosto 2019
+            $table->unsignedBigInteger('team_id');
+            $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade');
+            $table->unsignedBigInteger('sport_id');
+            $table->foreign('sport_id')->references('id')->on('sports')->onDelete('cascade');
+            // fine
             $table->timestamps();
             $table->softDeletes();
         });

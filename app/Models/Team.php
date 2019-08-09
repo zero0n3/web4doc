@@ -16,19 +16,27 @@ class Team extends Model {
     'status'
   ];
 
+
+  public function checkups(){
+    return $this->hasMany(Checkup::class);
+  }
+
+
+
+
 //fiverr
     
     /*public function __construct($value = null, array $attributes = array()){
         $this->value = $value;
         parent::__construct($attributes);
     }*/
-
+/*
     public function athletesports(){
         return $this->hasMany(AthleteSport::class);
-    }
+    }*/
 //fiverr
 
-
+/*
     public function athletes()
     {
         return $this->hasManyThrough(
@@ -42,7 +50,7 @@ class Team extends Model {
         );
     }
 
-
+*/
 /*
 
   public function athletesports(){
