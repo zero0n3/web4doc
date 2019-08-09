@@ -34,8 +34,13 @@ class Athlete extends Model
 	}
 	
 	public function checkups(){
-		return $this->hasMany(Checkup::class);
+		return $this->hasMany(Checkup::class)->with('team');
 	}
+
+  public function teams()
+  {
+      return $this->belongsToMany(Team::class);
+  }
 
 
 	//fiverr
