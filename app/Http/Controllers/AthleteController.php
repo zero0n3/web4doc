@@ -12,7 +12,7 @@ use DB;
 class AthleteController extends Controller
 {
     public function index( Request $request ) { 
-        $queryBuilder = Athlete::all(); 
+        $queryBuilder = Athlete::all();
 
         //$user = Athlete::with(['teams',])->get();  
          
