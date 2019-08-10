@@ -21,7 +21,10 @@ class Team extends Model {
     return $this->hasMany(Checkup::class);
   }
 
-
+  public function athletes()
+  {
+      return $this->belongsToMany(Athlete::class, 'checkups');
+  }
 
 
 //fiverr

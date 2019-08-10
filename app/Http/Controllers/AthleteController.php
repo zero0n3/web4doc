@@ -12,15 +12,16 @@ use DB;
 class AthleteController extends Controller
 {
     public function index( Request $request ) { 
-        $queryBuilder = Athlete::with('checkups');
-        $athletes = $queryBuilder->get(); 
+        $queryBuilder = Athlete::all(); 
 
+        //$user = Athlete::with(['teams',])->get();  
+         
+        //dd($queryBuilder);
 
-        dd($athletes->teams->name);
         return view('athlete.athlete',
             [
                 'title' => 'Lista atleti',
-                'athletes' => $athletes
+                'athletes' => $queryBuilder
             ]);
     }
 
@@ -61,10 +62,8 @@ class AthleteController extends Controller
     public function create()
     {
         //
-        $companys = Company::all();
         return view('athlete.create', [
                 'title' => 'Crea Atleta',
-                'companys' => $companys,
                 ]);
     }
 
@@ -82,7 +81,7 @@ class AthleteController extends Controller
         $athlete->dob = $request->input('dob');
         $athlete->sex = $request->input('sex');
         $athlete->status = 0;
-        $athlete->company_id = $request->input('company_id');
+        $athlete->user_id = 1;
        
          
         $res = $athlete->save();
@@ -126,13 +125,11 @@ class AthleteController extends Controller
         //$sql = 'SELECT id, album_name, description from albums WHERE ID = :id';
         //$album = DB::select($sql, ['id'=>$id]);
         $athlete = Athlete::find($id);
-        $companys = Company::all();
         //dd($athlete);
         //return view('albums.edit')->with('album', $album[0]);
         return view('athlete.edit',[
                                     'title' => 'Modifica Atleta',
                                     'athlete' => $athlete,
-                                    'companys' => $companys,
                                 ]);
         
     }
@@ -159,7 +156,6 @@ class AthleteController extends Controller
         $athlete->name = request()->input('name');
         $athlete->dob = request()->input('dob');
         $athlete->sex = request()->input('sex');
-        $athlete->company_id = request()->input('company_id');
         //$album->user_id = 1;
         $res = $athlete->save();
 

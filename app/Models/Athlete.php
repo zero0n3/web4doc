@@ -39,7 +39,12 @@ class Athlete extends Model
 
   public function teams()
   {
-      return $this->belongsToMany(Team::class);
+      return $this->belongsToMany(Team::class, 'checkups');
+  }
+
+  public function sports()
+  {
+      return $this->belongsToMany(Sport::class, 'checkups');
   }
 
 

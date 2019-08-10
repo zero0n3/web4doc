@@ -18,7 +18,9 @@ class Checkup extends Model
 		'chest_R',
 		'chest_L',
 		'status',
-		'athlete_id'
+		'athlete_id',
+		'team_id',
+		'sport_id',
 	];
 
     public function athlete()
