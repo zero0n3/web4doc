@@ -57,6 +57,7 @@
 
 
 </form>
+{{--$athletes->links('vendor.pagination.default')--}}
 @endsection
 
 @section('footer')

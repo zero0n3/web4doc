@@ -14,9 +14,10 @@ class AthleteController extends Controller
     public function index( Request $request ) { 
         $queryBuilder = Athlete::all();
 
-        //$user = Athlete::with(['teams',])->get();  
-         
-        //dd($queryBuilder);
+        //$user = Athlete::with('teams')->get();
+
+        //$user = Athlete::with(['checkups', 'sports'])->get();
+        //dd($user);
 
         return view('athlete.athlete',
             [
