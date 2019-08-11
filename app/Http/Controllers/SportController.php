@@ -16,10 +16,14 @@ class SportController extends Controller
 
     //
     public function index(Request $request) {
-        $queryBuilder = Sport::with('athletes');
-        $sports = $queryBuilder->get(); 
+        $queryBuilder = Sport::orderBy('name','asc');
 
-        
+        if($request->has('name')){
+            $queryBuilder->where('name','like', '%'.$request->input('name').'%');
+        }
+
+        $sports = $queryBuilder->get();
+
         return view('sport.sport',
             [
                 'title' => 'Lista sport',

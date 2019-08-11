@@ -11,18 +11,21 @@ use DB;
 
 class AthleteController extends Controller
 {
-    public function index( Request $request ) { 
-        $queryBuilder = Athlete::all();
-
+    public function index( Request $request ) {
+        $queryBuilder = Athlete::orderBy('name', 'desc');
         //$user = Athlete::with('teams')->get();
 
         //$user = Athlete::with(['checkups', 'sports'])->get();
         //dd($user);
+        if($request->has('name')){
+            $queryBuilder->where('name','like', '%'.$request->input('name').'%');
+        }
 
+        $athletes = $queryBuilder->get();
         return view('athlete.athlete',
             [
                 'title' => 'Lista atleti',
-                'athletes' => $queryBuilder
+                'athletes' => $athletes
             ]);
     }
 

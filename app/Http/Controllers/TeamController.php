@@ -16,11 +16,11 @@ class TeamController extends Controller
    public function index(Request $request) {
         $queryBuilder = Team::orderBy('name','asc');
         //$queryBuilder = Team::with('company');
-
+/*
         if($request->has('id')){
             $queryBuilder->where('ID','=', $request->input('id'));
         }
-
+*/
         if($request->has('name')){
             $queryBuilder->where('name','like', '%'.$request->input('name').'%');
         }
@@ -160,7 +160,7 @@ class TeamController extends Controller
         */
         $team = Team::find($id);
         $team->name = request()->input('name');
-        $team->id = request()->input('id');
+        //$team->id = request()->input('id');
         //$album->user_id = 1;
         $res = $team->save();
 

@@ -32,13 +32,16 @@
           <tr>
               <th>Id</th>
               <th>Nome Team</th>
+              <th>Azioni</th>
           </tr>
         </thead>
         <tbody>
     @foreach ($teams as $team)     
           <tr>
             <td>{{$team->id}}</td>
-            <td><a href="{{ route('team.show', ['team' => $team->id]) }}">{{$team->name}}</a></td>
+            <!--<td><a href="{{ route('team.show', ['team' => $team->id]) }}">{{$team->name}}</a></td>-->
+            <td>{{$team->name}}</td>
+            <td><a href="/team/{{$team->id}}/edit" class="waves-effect waves-light btn-small"><i class="tiny material-icons left">edit</i>UPDATE</a></td>
           </tr>
     @endforeach
         </tbody>
