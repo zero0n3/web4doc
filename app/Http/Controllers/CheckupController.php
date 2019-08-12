@@ -12,8 +12,8 @@ class CheckupController extends Controller
 {
     public function index( Request $request ){
     	
-    	$queryBuilder = Checkup::orderBy('date','desc')->with('athlete');
-
+    	$queryBuilder = Checkup::orderBy('date','desc')->with('athlete')->get();
+        dd($queryBuilder);
         if($request->has('id')){
             $queryBuilder->where('ID','=', $request->input('id'));
         }

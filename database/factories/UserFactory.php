@@ -165,8 +165,8 @@ $factory->define(App\Models\Checkup::class, function (Faker $faker){
 
         'status' => 0,
         'athlete_id' => Athlete::inRandomOrder()->first()->id,
-        'team' => Team::inRandomOrder()->first()->name,
-        'sport' => Sport::inRandomOrder()->first()->name,
+        'team_id' => Team::inRandomOrder()->first()->id,
+        'sport_id' => Sport::inRandomOrder()->first()->id,
 
     ];
 });

@@ -51,7 +51,7 @@ class Checkup extends Model
   	{
     	return $this->belongsTo(Athlete::class, 'athlete_id','id');
   	}
-/*
+
     public function team()
   	{
     	return $this->belongsTo(Team::class, 'team_id','id');
@@ -61,5 +61,5 @@ class Checkup extends Model
   	{
     	return $this->belongsTo(Sport::class, 'sport_id','id');
   	}
-*/
+
 }

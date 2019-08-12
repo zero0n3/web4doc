@@ -15,8 +15,8 @@
               <th>Id</th>
               <th>Data</th>
               <th>Nome atleta</th>
-              <th>Altezza</th>
-              <th>Peso</th>
+              <th>Team</th>
+              <th>Sport</th>
               <th>Azioni</th>
           </tr>
         </thead>
