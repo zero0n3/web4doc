@@ -28,86 +28,24 @@ class Athlete extends Model
 
 
 
-	public function user()
-	{
-		return $this->belongsTo(User::class, 'user_id','id');
-	}
-	
-	public function checkups(){
-		return $this->hasMany(Checkup::class)->with('team');
-	}
-
-  public function teams()
-  {
-      return $this->belongsToMany(Team::class, 'checkups');
-  }
-
-  public function sports()
-  {
-      return $this->belongsToMany(Sport::class, 'checkups');
-  }
-
-
-	//fiverr
-  /*
-    public function __construct($value = null, array $attributes = array()){
-      $this->value = $value;
-      parent::__construct($attributes);
-    }
-
-    public function sports(){
-      return $this->belongsToMany(Sport::class)
-      ->withPivot('team_id');
-    }
-
-
-     public function newPivot(Model $parent, array $attributes, $table, $exists,$using = null) {
-      if ($parent instanceof Sport) {
-           return new AthleteSport($parent, $attributes, $table, $exists,"");
-       }
-       return parent::newPivot($parent, $attributes, $table, $exists,"");
-   }*/
-   //fiverr
-
-
-
-
-
-/*
-    public function companys()
+    public function user()
     {
-        return $this->hasManyThrough(
-            Company::class,
-            AthleteSport::class,
-            'company_id', // Foreign key on users table...
-            'id', // Foreign key on posts table...
-            'id', // Local key on countries table...
-            'id' // Local key on users table...
-        );
+        return $this->belongsTo(User::class);
+    }
+
+    public function checkups(){
+        return $this->hasMany(Checkup::class);
+    }
+
+    public function teams()
+    {
+        return $this->belongsToMany(Team::class, 'checkups');
+    }
+
+    public function sports()
+    {
+        return $this->belongsToMany(Sport::class, 'checkups');
     }
 
 
-
-
-	public function sports()
-	{
-
-	    return $this->belongsToMany(Sport::class, 'athlete_sport2s')->withPivot('company_id');
-
-	}
-
-*/
-
-/*
-  public function companys()
-	{
-    return $this->belongsToMany(Company::class, 'athlete_company2s')->withPivot('sport_id');
-	}
-
-
-
-	public function relations() {
-	   return $this->hasMany(AthleteSportCompany::class);
-	}
-*/
 }

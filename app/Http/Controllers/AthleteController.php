@@ -12,7 +12,7 @@ use DB;
 class AthleteController extends Controller
 {
     public function index( Request $request ) {
-        $queryBuilder = Athlete::orderBy('name', 'desc');
+        $queryBuilder = Athlete::where('id','1')->with(['teams','sports']);
         //$user = Athlete::with('teams')->get();
 
         //$user = Athlete::with(['checkups', 'sports'])->get();
@@ -22,6 +22,7 @@ class AthleteController extends Controller
         }
 
         $athletes = $queryBuilder->get();
+        dd($athletes);
         return view('athlete.athlete',
             [
                 'title' => 'Lista atleti',

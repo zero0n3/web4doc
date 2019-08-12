@@ -49,17 +49,17 @@ class Checkup extends Model
 
     public function athlete()
   	{
-    	return $this->belongsTo(Athlete::class, 'athlete_id','id');
+    	return $this->belongsTo(Athlete::class);
   	}
 
     public function team()
   	{
-    	return $this->belongsTo(Team::class, 'team_id','id');
+    	return $this->belongsTo(Team::class);
   	}
 
     public function sport()
   	{
-    	return $this->belongsTo(Sport::class, 'sport_id','id');
+    	return $this->belongsTo(Sport::class);
   	}
 
 }
