@@ -3,10 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Sport; //#fattoamano
-use App\Models\Team; //#fattoamano
-use App\Models\AthleteSport; //#fattoamano
-use Illuminate\Database\Eloquent\Relations\Pivot;
 
 class Athlete extends Model
 {

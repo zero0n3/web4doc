@@ -27,8 +27,8 @@
             <td>{{$checkup->id}}</td>
             <td>{{ date('d-m-Y', strtotime($checkup->date)) }}</td>
             <td>{{$checkup->athlete->name}}</td>
-            <td>{{$checkup->height}}</td>
-            <td>{{$checkup->weight}}</td>
+            <td>{{$checkup->team->name}}</td>
+            <td>{{$checkup->sport->name}}</td>
             <td><a href="/checkup/{{$checkup->id}}/edit" class="waves-effect waves-light btn-small"><i class="tiny material-icons left">edit</i>UPDATE</a></td>
           </tr>
     @empty

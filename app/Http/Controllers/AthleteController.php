@@ -5,24 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Storage;
 use App\Models\Athlete;
-use App\Models\Team;
-use App\Models\Sport;
 use DB;
 
 class AthleteController extends Controller
 {
     public function index( Request $request ) {
-        $queryBuilder = Athlete::where('id','1')->with(['teams','sports']);
-        //$user = Athlete::with('teams')->get();
+        $queryBuilder = Athlete::with(['teams','sports']);
 
-        //$user = Athlete::with(['checkups', 'sports'])->get();
-        //dd($user);
         if($request->has('name')){
             $queryBuilder->where('name','like', '%'.$request->input('name').'%');
         }
 
         $athletes = $queryBuilder->get();
-        dd($athletes);
+        //dd($athletes);
         return view('athlete.athlete',
             [
                 'title' => 'Lista atleti',

@@ -3,10 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\Pivot;
-use Illuminate\Database\Eloquent\Model;
-use App\Models\Team;
-use App\Models\Sport;
-use app\Models\Athlete;
 
 class AthleteSport extends Pivot
 {

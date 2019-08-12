@@ -12,10 +12,10 @@ class CheckupController extends Controller
 {
     public function index( Request $request ){
     	
-    	$queryBuilder = Checkup::orderBy('date','desc')->with('athlete')->get();
-        dd($queryBuilder);
+    	$queryBuilder = Checkup::orderBy('date','desc')->with(['athlete','team','sport']);
+        //dd($queryBuilder);
         if($request->has('id')){
-            $queryBuilder->where('ID','=', $request->input('id'));
+            $queryBuilder->where('id','=', $request->input('id'));
         }
 
         $checkups = $queryBuilder->paginate(25);
