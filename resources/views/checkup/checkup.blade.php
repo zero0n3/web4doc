@@ -3,7 +3,82 @@
 @section('title', $title)
 
 @section('content')
- <h3>{{$title}}</h3>
+    <div class="row">
+        <div class="col s12"><h3>{{$title}}</h3></div>
+    </div>
+
+    <div class="row">
+        <div class="col s3">
+            <h6>Ricerca per ID</h6>
+        </div>
+        <div class="col s3">
+            <h6>Ricerca per Nome atleta</h6>
+        </div>
+        <div class="col s3">
+            <h6>Ricerca per Team</h6>
+        </div>
+        <div class="col s3">
+            <h6>Ricerca per sport</h6>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s3">
+            <nav>
+                <div class="nav-wrapper">
+                    <form action="{{ route('checkup.index') }}" method="get">
+                        <div class="input-field">
+                            <input id="search" type="search" name="id" required>
+                            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                            <i class="material-icons">close</i>
+                        </div>
+                    </form>
+                </div>
+            </nav>
+        </div>
+        <div class="col s3">
+            <nav>
+                <div class="nav-wrapper">
+                    <form action="{{ route('checkup.index') }}" method="get">
+                        <div class="input-field">
+                            <input id="search" type="search" name="name" required>
+                            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                            <i class="material-icons">close</i>
+                        </div>
+                    </form>
+                </div>
+            </nav>
+        </div>
+        <div class="col s3">
+            <nav>
+                <div class="nav-wrapper">
+                    <form action="{{ route('checkup.index') }}" method="get">
+                        <div class="input-field">
+                            <input id="search" type="search" name="team" required>
+                            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                            <i class="material-icons">close</i>
+                        </div>
+                    </form>
+                </div>
+            </nav>
+        </div>
+        <div class="col s3">
+            <nav>
+                <div class="nav-wrapper">
+                    <form action="{{ route('checkup.index') }}" method="get">
+                        <div class="input-field">
+                            <input id="search" type="search" name="sport" required>
+                            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                            <i class="material-icons">close</i>
+                        </div>
+                    </form>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+
+
+
 
   <form>
   <input type="hidden" name="_token" id="_token" value="{{csrf_token()}}">

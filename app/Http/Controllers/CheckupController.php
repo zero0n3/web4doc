@@ -3,19 +3,36 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Storage;
-use App\Models\Athlete;
+use Illuminate\Database\Eloquent\Builder;
 use App\Models\Checkup;
-use DB;
 
 class CheckupController extends Controller
 {
     public function index( Request $request ){
     	
-    	$queryBuilder = Checkup::orderBy('date','desc')->with(['athlete','team','sport']);
-        //dd($queryBuilder);
+    	//$queryBuilder = Checkup::orderBy('date','desc')->with(['athlete','team','sport']);
+        $queryBuilder = Checkup::orderBy('date','desc');
+
         if($request->has('id')){
             $queryBuilder->where('id','=', $request->input('id'));
+        }
+
+        if($request->has('name')){
+            $queryBuilder->whereHas('athlete',function (Builder $query) use($request) {
+                $query->where('name', 'like', '%'.$request->input('name').'%');
+            });
+        }
+
+        if($request->has('team')){
+            $queryBuilder->whereHas('team',function (Builder $query) use($request) {
+                $query->where('name', 'like', '%'.$request->input('team').'%');
+            });
+        }
+
+        if($request->has('sport')){
+            $queryBuilder->whereHas('sport',function (Builder $query) use($request) {
+                $query->where('name', 'like', '%'.$request->input('sport').'%');
+            });
         }
 
         $checkups = $queryBuilder->paginate(25);

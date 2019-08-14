@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Checkup;
 use Illuminate\Http\Request;
 use Storage;
 use App\Models\Athlete;
-use DB;
 
 class AthleteController extends Controller
 {
+    protected $sex = [
+        'M',
+        'F',
+    ];
+
     public function index( Request $request ) {
         $queryBuilder = Athlete::with(['teams','sports']);
 
@@ -103,12 +108,23 @@ class AthleteController extends Controller
     {
         //
         $athlete = Athlete::find($id);
-        //$companys = Company::all();
-        //dd($athlete);
-        //return view('albums.edit')->with('album', $album[0]);
+        $visite = Checkup::where('athlete_id','=',$id)->get()->transpose();
+        //dd($visite);
+        /*
+        @foreach ($athletes as $athlete)
+    <tr>
+        <td>{{$athlete->id}}</td>
+        <td><a href="{{ route('athlete.show', ['athlete' => $athlete->id]) }}">{{$athlete->name}}</a></td>
+        <td>{{date('d-m-Y', strtotime($athlete->dob))}}</td>
+        <td>{{$athlete->sex}}</td>
+        <td><a href="/athlete/{{$athlete->id}}/edit" class="waves-effect waves-light btn-small"><i class="tiny material-icons left">edit</i>UPDATE</a></td>
+    </tr>
+@endforeach
+        */
         return view('athlete.dashboard', [
                 'title' => $athlete->name,
                 'athlete' => $athlete,
+                'visite' => $visite,
                 ]);
     }
 
