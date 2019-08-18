@@ -66,7 +66,10 @@
 
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <script src="/js/form-validation.js"></script>
 
   <script>
   @if (session()->has('message'))
@@ -108,18 +111,19 @@
       });
     });
 
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('select');
-    var instances = M.FormSelect.init(elems, options);
-  });
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems, options);
+    });
 
   // Or with jQuery
 
-  $(document).ready(function(){
-    $('select').formSelect();
-  });
+    $(document).ready(function(){
+        $('select').formSelect();
+    });
 
 
+@yield('calc')
     </script>
 
 @show

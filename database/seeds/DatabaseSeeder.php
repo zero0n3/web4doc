@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
         User::truncate();
         Sport::truncate();
         Team::truncate();
-        AthleteSport::truncate();
+        //AthleteSport::truncate();
         Athlete::truncate();
         Checkup::truncate();
         //AthleteTeam::truncate();

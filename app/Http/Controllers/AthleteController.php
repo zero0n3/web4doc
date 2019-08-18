@@ -6,14 +6,10 @@ use App\Models\Checkup;
 use Illuminate\Http\Request;
 use Storage;
 use App\Models\Athlete;
+use Illuminate\Database\Eloquent\Collection;
 
 class AthleteController extends Controller
 {
-    protected $sex = [
-        'M',
-        'F',
-    ];
-
     public function index( Request $request ) {
         $queryBuilder = Athlete::with(['teams','sports']);
 
@@ -108,8 +104,17 @@ class AthleteController extends Controller
     {
         //
         $athlete = Athlete::find($id);
-        $visite = Checkup::where('athlete_id','=',$id)->get()->transpose();
-        //dd($visite);
+        $visite = Checkup::with(['team:id,name','sport:id,name'])
+            ->where('athlete_id','=',$id)
+            ->orderBy('date','desc')
+            ->get()
+            ->transpose();
+            //->transpose()->toArray();
+        $visite->forget(['1','2','3','35','36','37','38']);
+
+        //$visite->all();
+
+        dd($visite);
         /*
         @foreach ($athletes as $athlete)
     <tr>

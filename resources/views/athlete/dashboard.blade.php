@@ -27,23 +27,37 @@
 
  <div class="divider"></div>
 
-<div class="zui-wrapper">
-    <div class="zui-scroller">
-        <table class="zui-table">
-            <tbody>
-            @foreach ($visite as $visita)
-                <tr>
-                    <td class="zui-sticky-col">{{$loop->index}}</td>
-                    <td>15</td>
-                    <td>C</td>
-                    <td>6'11"</td>
-                    <td>08-13-1990</td>
-                    <td>$4,917,000</td>
-                    <td>Kentucky/USA</td>
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
+<div class="row">
+    <div class="col s6"><h5>Visite</h5></div>
+    <div class="col s6"><a href="/checkup/{{$athlete->id}}/add" class="waves-effect waves-light btn-small"><i class="tiny material-icons left">edit</i>AGGIUNGI</a></div>
+</div>
+
+<div class="row">
+    <div class="col s12">
+        <div class="zui-wrapper">
+            <div class="zui-scroller">
+                <table class="zui-table">
+                    <tbody>
+
+                    @foreach ($visite as $visita)
+                        @if ($loop->index < 1 OR $loop->index > 3)
+                                <tr>
+                                    <td class="zui-sticky-col">{{$loop->index}}</td>
+                                    @foreach ($visita as $item)
+                                        @if (is_array($item))
+                                            <td>{{$item['name']}}</td>
+                                        @else
+                                            <td>{{$item}}</td>
+                                        @endif
+                                    @endforeach
+                                </tr>
+                        @endif
+                    @endforeach
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 

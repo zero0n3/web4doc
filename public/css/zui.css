@@ -29,7 +29,7 @@
     overflow-x: scroll;
     overflow-y: visible;
     padding-bottom: 5px;
-    width: 300px;
+    width: auto;
 }
 .zui-table .zui-sticky-col {
     border-left: solid 1px #DDEFEF;
