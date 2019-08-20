@@ -107,14 +107,90 @@ class AthleteController extends Controller
         $visite = Checkup::with(['team:id,name','sport:id,name'])
             ->where('athlete_id','=',$id)
             ->orderBy('date','desc')
-            ->get()
-            ->transpose();
-            //->transpose()->toArray();
-        $visite->forget(['1','2','3','35','36','37','38']);
+            ->orderBy('id','desc')
+            ->get();//->toArray();
+            //->transpose();
+        //$visite->forget(['1','2','3','35','36','37','38']);
 
-        //$visite->all();
+        $collection = collect([
+            ['name' => 'iPhone 6', 'brand' => 'Apple', 'type' => 'phone'],
+            ['name' => 'iPhone 5', 'brand' => 'Apple', 'type' => 'phone'],
+            ['name' => 'Apple Watch', 'brand' => 'Apple', 'type' => 'watch'],
+            ['name' => 'Galaxy S6', 'brand' => 'Samsung', 'type' => 'phone'],
+            ['name' => 'Galaxy Gear', 'brand' => 'Samsung', 'type' => 'watch'],
+        ]);
 
-        dd($visite);
+
+        $visite_purged = $visite->map(function ($item, $key) {
+            return collect($item)->forget([
+                'created_at',
+                'deleted_at',
+                'updated_at',
+                'status',
+                'athlete_id',
+                'sport_id',
+                'team_id'
+            ]);
+        });
+
+        $visite_purged->prepend([
+            '1',
+            '2',
+            '3',
+            '4',
+            '5',
+            '6',
+            '7',
+            '8',
+            '9',
+            '10',
+            '11',
+            '12',
+            '13',
+            '14',
+            '15',
+            '16',
+            '17',
+            '18',
+            '19',
+            '20',
+            '21',
+            '22',
+            '23',
+            '24',
+            '25',
+            '26',
+            '27',
+            '28',
+            '29',
+            '30',
+            '31',
+            '32',
+            '33',
+            '34',
+        ]);
+
+        //$visite_purged->all();
+        $visite_trans = $visite_purged->transpose();
+        //dd($visite_trans->rotate(-2));
+        //$multiplied->all();
+        //dd($multiplied);
+
+        /*
+        $visite_sorted = $visite_trans->map(function ($item, $key) {
+            return collect($item)->rotate(-2);
+        });
+        */
+
+        $visite_sorted = $visite_trans->rotate(-2);
+
+        //dd($visite_sorted);
+
+        $visite = $visite_sorted;//->transpose();
+        //dd($visite);
+        //$collection->forget('name');
+        //dd($multiplied1);
+        //dd(collect($visite)->transpose());
         /*
         @foreach ($athletes as $athlete)
     <tr>

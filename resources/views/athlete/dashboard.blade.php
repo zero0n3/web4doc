@@ -32,26 +32,32 @@
     <div class="col s6"><a href="/checkup/{{$athlete->id}}/add" class="waves-effect waves-light btn-small"><i class="tiny material-icons left">edit</i>AGGIUNGI</a></div>
 </div>
 
+<div class="divider"></div>
+
+
+
+<div class="divider"></div>
+<div class="divider"></div>
+<div class="divider"></div>
+<div class="divider"></div>
+
 <div class="row">
     <div class="col s12">
         <div class="zui-wrapper">
             <div class="zui-scroller">
                 <table class="zui-table">
                     <tbody>
-
                     @foreach ($visite as $visita)
-                        @if ($loop->index < 1 OR $loop->index > 3)
                                 <tr>
-                                    <td class="zui-sticky-col">{{$loop->index}}</td>
+
                                     @foreach ($visita as $item)
                                         @if (is_array($item))
-                                            <td>{{$item['name']}}</td>
+                                            <td{{@if($loop->index === '0')}}>{{$item['name']}}</td>
                                         @else
-                                            <td>{{$item}}</td>
+                                            <td>{{$loop->index}} - {{$item}}</td>
                                         @endif
                                     @endforeach
                                 </tr>
-                        @endif
                     @endforeach
 
                     </tbody>

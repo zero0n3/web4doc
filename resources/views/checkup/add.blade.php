@@ -17,7 +17,7 @@
             <!-- data -->
             <div class="col s6">
                 <label for="readonly">Data della visita</label>
-                <input readonly type="date" step="any" name="data" id="data" value="{{date('Y-m-d')}}" class="form-control">
+                <input readonly type="date" step="any" name="date" id="date" value="{{date('Y-m-d')}}" class="form-control">
             </div>
         </div>
 

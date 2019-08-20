@@ -128,7 +128,7 @@ class CheckupController extends Controller
         $checkup->athlete_id = $request->input('id');
         $checkup->team_id = 1;
         $checkup->sport_id = 1;
-        $checkup->date = $request->input('data');
+        $checkup->date = $request->input('date');
 
 
         $res = $checkup->save();
