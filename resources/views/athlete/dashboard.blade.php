@@ -51,10 +51,18 @@
                                 <tr>
 
                                     @foreach ($visita as $item)
-                                        @if (is_array($item))
-                                            <td{{@if($loop->index === '0')}}>{{$item['name']}}</td>
+                                        @if ($loop->index === 0)
+                                            @if (is_array($item))
+                                                <td class="zui-sticky-col">{{$item['name']}}</td>
+                                            @else
+                                                <td class="zui-sticky-col">{{$item}}</td>
+                                            @endif
                                         @else
-                                            <td>{{$loop->index}} - {{$item}}</td>
+                                             @if (is_array($item))
+                                                <td>{{$item['name']}}</td>
+                                            @else
+                                                <td>{{$item}}</td>
+                                            @endif
                                         @endif
                                     @endforeach
                                 </tr>
