@@ -55,7 +55,7 @@
 
                                 @if ($loop->first)
                                     <!-- colonna testi fissi iniziale -->
-                                        <td class="zui-sticky-col">{{$item}}</td>
+                                        <td class="zui-sticky-col"><b>{{$item}}</b></td>
                                 @else
                                     <!-- colonne valori -->
                                     @if (is_array($item))
@@ -73,9 +73,9 @@
                                             <td>
                                               @if($item > $check[$loop->index+1]) <span class="blue-text text-darken-2"><b/>
                                               @elseif($item < $check[$loop->index+1]) <span class="red-text text-darken-2">
-                                              @else <span class="black-text text-darken-2">
+                                              @else <span class="black-text text-darken-2"><i/>
                                               @endif
-                                              {{$item}}</span></td>
+                                              {{number_format($item, 2, ',', '.')}}</span></td>
                                           @endif
 
 
