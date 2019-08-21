@@ -52,12 +52,10 @@
 
                                     @foreach ($visita as $item)
                                         @if ($loop->index === 0)
-                                            @if (is_array($item))
-                                                <td class="zui-sticky-col">{{$item['name']}}</td>
-                                            @else
-                                                <td class="zui-sticky-col">{{$item}}</td>
-                                            @endif
+                                            <!-- colonna testi fissi iniziale -->
+                                            <td class="zui-sticky-col">{{$item}}</td>
                                         @else
+                                            <!-- colonne valori -->
                                              @if (is_array($item))
                                                 <td>{{$item['name']}}</td>
                                             @else

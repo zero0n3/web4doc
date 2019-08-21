@@ -46,6 +46,9 @@ class Checkup extends Model
         'team',
         'sport',
 	];
+    protected $casts = [
+        'date' => 'datetime:d-m-Y',
+    ];
 
     public function athlete()
   	{

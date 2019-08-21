@@ -113,12 +113,15 @@ class AthleteController extends Controller
         //$visite->forget(['1','2','3','35','36','37','38']);
 
         $collection = collect([
-            ['name' => 'iPhone 6', 'brand' => 'Apple', 'type' => 'phone'],
-            ['name' => 'iPhone 5', 'brand' => 'Apple', 'type' => 'phone'],
-            ['name' => 'Apple Watch', 'brand' => 'Apple', 'type' => 'watch'],
-            ['name' => 'Galaxy S6', 'brand' => 'Samsung', 'type' => 'phone'],
-            ['name' => 'Galaxy Gear', 'brand' => 'Samsung', 'type' => 'watch'],
+            ['id' => '1','date' => '01-05-2019','height' => '10', 'weight' => '100', 'bmi' => '23'],
+            ['id' => '2','date' => '02-05-2019','height' => '9', 'weight' => '102', 'bmi' => '22'],
+            ['id' => '3','date' => '03-05-2019','height' => '8', 'weight' => '103', 'bmi' => '25'],
+            ['id' => '4','date' => '04-05-2019','height' => '7', 'weight' => '99', 'bmi' => '28'],
+            ['id' => '5','date' => '05-05-2019','height' => '9', 'weight' => '98', 'bmi' => '30'],
         ]);
+
+
+        dd($collection);
 
 
         $visite_purged = $visite->map(function ($item, $key) {
@@ -132,9 +135,9 @@ class AthleteController extends Controller
                 'team_id'
             ]);
         });
-        //dd($visite_purged);
+
         $visite_purged->prepend([
-            'id',
+            'id Visita',
             'Data visita',
             'Altezza',
             'Peso',
@@ -170,6 +173,7 @@ class AthleteController extends Controller
             'Sport',
         ]);
 
+        //dd($visite_purged);
         //$visite_purged->all();
         $visite_trans = $visite_purged->transpose();
         //dd($visite_trans->rotate(-2));
@@ -186,7 +190,8 @@ class AthleteController extends Controller
 
         //dd($visite_sorted);
 
-        $visite = $visite_sorted;//->transpose();
+        //$visite = $visite_sorted;//->transpose();
+
         //dd($visite);
         //$collection->forget('name');
         //dd($multiplied1);
@@ -205,7 +210,7 @@ class AthleteController extends Controller
         return view('athlete.dashboard', [
                 'title' => $athlete->name,
                 'athlete' => $athlete,
-                'visite' => $visite,
+                'visite' => $visite_sorted,
                 ]);
     }
 
