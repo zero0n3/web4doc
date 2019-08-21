@@ -123,6 +123,7 @@
     });
 
 
+
 @yield('calc')
     </script>
 
