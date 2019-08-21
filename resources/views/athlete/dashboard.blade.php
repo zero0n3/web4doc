@@ -4,6 +4,18 @@
 
 @section('content')
 
+<style type="text/css">
+.blue {
+  color: blue;
+}
+.red {
+  color: red;
+}
+.black {
+  color: yellow;
+}
+</style>
+
 <table>
   <tr>
     <th colspan="3"><h4>Dashboard {{$athlete->name}}</h4></th>
@@ -47,24 +59,42 @@
             <div class="zui-scroller">
                 <table class="zui-table">
                     <tbody>
-                    @foreach ($visite as $visita)
-                                <tr>
+                    
+                    @foreach ($visite as $check)
+                        <tr>
+                          @foreach ($check as $item)
+                            
+                            @if ($loop->first)
+                                <!-- colonna testi fissi iniziale -->
+                                <td class="zui-sticky-col">{{$item}}</td>
+                            @else
+                                <!-- colonne valori -->
+                                @if (is_array($item))
+                                  <td>{{$item['name']}}
+                                @else
 
-                                    @foreach ($visita as $item)
-                                        @if ($loop->index === 0)
-                                            <!-- colonna testi fissi iniziale -->
-                                            <td class="zui-sticky-col">{{$item}}</td>
-                                        @else
-                                            <!-- colonne valori -->
-                                             @if (is_array($item))
-                                                <td>{{$item['name']}}</td>
-                                            @else
-                                                <td>{{$item}}</td>
-                                            @endif
-                                        @endif
-                                    @endforeach
-                                </tr>
+                                  @if($loop->last)
+                                    <td>{{$item}}</td>
+                                  @else
+                                    <td
+                                      @if($item > $check[$loop->index+1]) class="blue" 
+                                      @elseif($item < $check[$loop->index+1]) class="red" 
+                                      @else class="black"
+                                      @endif
+                                    >{{$item}}</td>
+                                  @endif
+
+                                @endif
+
+                            @endif
+
+                          @endforeach
+                        </tr>
                     @endforeach
+
+
+
+                  
 
                     </tbody>
                 </table>

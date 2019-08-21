@@ -113,15 +113,19 @@ class AthleteController extends Controller
         //$visite->forget(['1','2','3','35','36','37','38']);
 
         $collection = collect([
-            ['id' => '1','date' => '01-05-2019','height' => '10', 'weight' => '100', 'bmi' => '23'],
+            ['id' => '1','date' => '01-05-2019','height' => '9', 'weight' => '100', 'bmi' => '23'],
             ['id' => '2','date' => '02-05-2019','height' => '9', 'weight' => '102', 'bmi' => '22'],
             ['id' => '3','date' => '03-05-2019','height' => '8', 'weight' => '103', 'bmi' => '25'],
             ['id' => '4','date' => '04-05-2019','height' => '7', 'weight' => '99', 'bmi' => '28'],
             ['id' => '5','date' => '05-05-2019','height' => '9', 'weight' => '98', 'bmi' => '30'],
         ]);
 
-
-        dd($collection);
+        $collection = $collection->transpose();
+        
+        //dd($collection);
+       // return view('athlete.test', [
+         //       'visite' => $collection,
+           //     ]);
 
 
         $visite_purged = $visite->map(function ($item, $key) {
@@ -207,6 +211,9 @@ class AthleteController extends Controller
     </tr>
 @endforeach
         */
+ /*return view('athlete.test', [
+                'visite' => $visite_sorted,
+                ]);*/
         return view('athlete.dashboard', [
                 'title' => $athlete->name,
                 'athlete' => $athlete,
