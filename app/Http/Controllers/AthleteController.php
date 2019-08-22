@@ -12,14 +12,14 @@ use Illuminate\Database\Eloquent\Collection;
 class AthleteController extends Controller
 {
     public function index( Request $request ) {
-        $queryBuilder = Athlete::with(['teams','sports']);
+        $queryBuilder = Athlete::orderBy('name','asc');//with(['teams','sports']);
 
         if($request->has('name')){
             $queryBuilder->where('name','like', '%'.$request->input('name').'%');
         }
 
         //id user da login
-        $queryBuilder->where('user_id','=',Auth::user()->id);
+        $queryBuilder->where('user_id',Auth::user()->id);
 
         $athletes = $queryBuilder->get();
         //dd($athletes);
