@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Athlete;
+use App\Models\Sport;
+use App\Models\Team;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
 use App\Models\Checkup;
@@ -55,12 +57,16 @@ class CheckupController extends Controller
      */
     public function add($id)
     {
+        $teams = Team::orderBy('name','asc')->get();
+        $sports = Sport::orderBy('name','asc')->get();
         $athlete = Athlete::find($id);
 
 
         return view('checkup.add', [
             'title' => 'Visita '.$athlete->name,
             'athlete' => $athlete,
+            'teams' => $teams,
+            'sports' => $sports,
         ]);
     }
 
@@ -126,8 +132,8 @@ class CheckupController extends Controller
         $checkup->bmi = $request->input('bmi');
         $checkup->status = 0;
         $checkup->athlete_id = $request->input('id');
-        $checkup->team_id = 1;
-        $checkup->sport_id = 1;
+        $checkup->team_id = $request->input('team_id');
+        $checkup->sport_id = $request->input('sport_id');
         $checkup->date = $request->input('date');
 
 

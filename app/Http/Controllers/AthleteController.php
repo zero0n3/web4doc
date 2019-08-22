@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Checkup;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Storage;
 use App\Models\Athlete;
 use Illuminate\Database\Eloquent\Collection;
@@ -16,6 +17,9 @@ class AthleteController extends Controller
         if($request->has('name')){
             $queryBuilder->where('name','like', '%'.$request->input('name').'%');
         }
+
+        //id user da login
+        $queryBuilder->where('user_id','=',Auth::user()->id);
 
         $athletes = $queryBuilder->get();
         //dd($athletes);
@@ -82,7 +86,7 @@ class AthleteController extends Controller
         $athlete->dob = $request->input('dob');
         $athlete->sex = $request->input('sex');
         $athlete->status = 0;
-        $athlete->user_id = 1;
+        $athlete->user_id = $request->user()->id;
        
          
         $res = $athlete->save();

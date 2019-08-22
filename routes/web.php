@@ -71,7 +71,7 @@ Route::get('/teams', function(){
 });   //-> route di prova per vedere i dati json di company (o altro)
 
 // questo lo passo al welcome Controller
-Route::get('/{name?}/{lastname?}', 'WelcomeController@welcome')
+//Route::get('/{name?}/{lastname?}', 'WelcomeController@welcome')
 
 /*
 Route::get('/{name?}/{lastname?}', function ($name = '', $lastname = '') {  // ? indica che è opzionale
@@ -82,10 +82,18 @@ Route::get('/{name?}/{lastname?}', function ($name = '', $lastname = '') {  // ?
 	//->where('lastname','[a-zA-Z]+')
 	
 	//2 metodo
+/*
 	-> where([
 		'name' => '[a-zA-Z]+',
 		'lastname' => '[a-zA-Z]+'
 
 	]);
-
+*/
 	
+
+Auth::routes();
+
+Route::get('/home', 'AthleteController@index');
+//Route::get('/home', 'HomeController@index')->name('home');
+
+

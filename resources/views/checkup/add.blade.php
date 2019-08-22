@@ -19,6 +19,22 @@
                 <label for="readonly">Data della visita</label>
                 <input readonly type="date" step="any" name="date" id="date" value="{{date('Y-m-d')}}" class="form-control">
             </div>
+            <div class="input-field col s3">
+                <select name="team_id">
+                    @foreach ($teams as $team)
+                        <option value="{{$team->id}}" @if($loop->first)selected @endif>{{$team->name}}</option>
+                    @endforeach
+                </select>
+                <label>Team</label>
+            </div>
+            <div class="input-field col s3">
+                <select name="sport_id">
+                    @foreach ($sports as $sport)
+                        <option value="{{$sport->id}}" @if($loop->first)selected @endif>{{$sport->name}}</option>
+                    @endforeach
+                </select>
+                <label>Sport</label>
+            </div>
         </div>
 
         <!-- 2° riga -->
