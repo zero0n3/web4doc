@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Athlete;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -37,7 +38,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function companys(){
-        return $this->hasMany(Company::class);
+    public function athletes(){
+        return $this->hasMany(Athlete::class);
     }
+
 }

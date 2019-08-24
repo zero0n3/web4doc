@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Checkup;
+use Gate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Storage;
@@ -108,117 +109,125 @@ class AthleteController extends Controller
     {
         //
         $athlete = Athlete::find($id);
+        $this->authorize($athlete);
+
         $visite = Checkup::with(['team:id,name','sport:id,name'])
             ->where('athlete_id','=',$id)
             ->orderBy('date','desc')
             ->orderBy('id','desc')
             ->get();//->toArray();
             //->transpose();
-        //$visite->forget(['1','2','3','35','36','37','38']);
 
-        $collection = collect([
-            ['id' => '1','date' => '01-05-2019','height' => '9', 'weight' => '100', 'bmi' => '23'],
-            ['id' => '2','date' => '02-05-2019','height' => '9', 'weight' => '102', 'bmi' => '22'],
-            ['id' => '3','date' => '03-05-2019','height' => '8', 'weight' => '103', 'bmi' => '25'],
-            ['id' => '4','date' => '04-05-2019','height' => '7', 'weight' => '99', 'bmi' => '28'],
-            ['id' => '5','date' => '05-05-2019','height' => '9', 'weight' => '98', 'bmi' => '30'],
-        ]);
+        if ($visite->count() > 0) {
+            //$visite->forget(['1','2','3','35','36','37','38']);
 
-        $collection = $collection->transpose();
-        
-        //dd($collection);
-       // return view('athlete.test', [
-         //       'visite' => $collection,
-           //     ]);
-
-
-        $visite_purged = $visite->map(function ($item, $key) {
-            return collect($item)->forget([
-                'created_at',
-                'deleted_at',
-                'updated_at',
-                'status',
-                'athlete_id',
-                'sport_id',
-                'team_id'
+            /*$collection = collect([
+                ['id' => '1','date' => '01-05-2019','height' => '9', 'weight' => '100', 'bmi' => '23'],
+                ['id' => '2','date' => '02-05-2019','height' => '9', 'weight' => '102', 'bmi' => '22'],
+                ['id' => '3','date' => '03-05-2019','height' => '8', 'weight' => '103', 'bmi' => '25'],
+                ['id' => '4','date' => '04-05-2019','height' => '7', 'weight' => '99', 'bmi' => '28'],
+                ['id' => '5','date' => '05-05-2019','height' => '9', 'weight' => '98', 'bmi' => '30'],
             ]);
-        });
 
-        $visite_purged->prepend([
-            'id Visita',
-            'Data visita',
-            'Altezza',
-            'Peso',
-            'Tricipite Dx',
-            'Tricipite Sx',
-            'Petto Dx',
-            'Petto Sx',
-            'Ascella Dx',
-            'Ascella Sx',
-            'Iliaca Dx',
-            'Iliaca Sx',
-            'Addominale Dx',
-            'Addominale Sx',
-            'Coscia Dx',
-            'Coscia Sx',
-            'Spalle',
-            'Petto',
-            'Anche',
-            'Braccio Dx',
-            'Braccio Sx',
-            'Gamba Dx',
-            'Gamba Sx',
-            'Spirometria',
-            'Massa grassa',
-            'BMI',
-            'Frq Riposo',
-            'Frq Stress',
-            'Frq 1min',
-            'Step 1',
-            'Step 2',
-            'Step 3',
-            'Team',
-            'Sport',
-        ]);
+            $collection = $collection->transpose();
+            */
+            //dd($collection);
+            // return view('athlete.test', [
+            //       'visite' => $collection,
+            //     ]);
 
-        //dd($visite_purged);
-        //$visite_purged->all();
-        $visite_trans = $visite_purged->transpose();
-        //dd($visite_trans->rotate(-2));
-        //$multiplied->all();
-        //dd($multiplied);
 
-        /*
-        $visite_sorted = $visite_trans->map(function ($item, $key) {
-            return collect($item)->rotate(-2);
-        });
-        */
+            $visite_purged = $visite->map(function ($item, $key) {
+                return collect($item)->forget([
+                    'created_at',
+                    'deleted_at',
+                    'updated_at',
+                    'status',
+                    'athlete_id',
+                    'sport_id',
+                    'team_id'
+                ]);
+            });
 
-        $visite_sorted = $visite_trans->rotate(-2);
+            $visite_purged->prepend([
+                'id Visita',
+                'Data visita',
+                'Altezza',
+                'Peso',
+                'Tricipite Dx',
+                'Tricipite Sx',
+                'Petto Dx',
+                'Petto Sx',
+                'Ascella Dx',
+                'Ascella Sx',
+                'Iliaca Dx',
+                'Iliaca Sx',
+                'Addominale Dx',
+                'Addominale Sx',
+                'Coscia Dx',
+                'Coscia Sx',
+                'Spalle',
+                'Petto',
+                'Anche',
+                'Braccio Dx',
+                'Braccio Sx',
+                'Gamba Dx',
+                'Gamba Sx',
+                'Spirometria',
+                'Massa grassa',
+                'BMI',
+                'Frq Riposo',
+                'Frq Stress',
+                'Frq 1min',
+                'Step 1',
+                'Step 2',
+                'Step 3',
+                'Team',
+                'Sport',
+            ]);
 
-        //dd($visite_sorted);
+            //dd($visite_purged);
+            //$visite_purged->all();
+            $visite_trans = $visite_purged->transpose();
+            //dd($visite_trans->rotate(-2));
+            //$multiplied->all();
+            //dd($multiplied);
 
-        //$visite = $visite_sorted;//->transpose();
+            /*
+            $visite_sorted = $visite_trans->map(function ($item, $key) {
+                return collect($item)->rotate(-2);
+            });
+            */
 
-        //dd($visite);
-        //$collection->forget('name');
-        //dd($multiplied1);
-        //dd(collect($visite)->transpose());
-        /*
-        @foreach ($athletes as $athlete)
-    <tr>
-        <td>{{$athlete->id}}</td>
-        <td><a href="{{ route('athlete.show', ['athlete' => $athlete->id]) }}">{{$athlete->name}}</a></td>
-        <td>{{date('d-m-Y', strtotime($athlete->dob))}}</td>
-        <td>{{$athlete->sex}}</td>
-        <td><a href="/athlete/{{$athlete->id}}/edit" class="waves-effect waves-light btn-small"><i class="tiny material-icons left">edit</i>UPDATE</a></td>
-    </tr>
-@endforeach
-        */
- /*return view('athlete.test', [
-                'visite' => $visite_sorted,
-                ]);*/
-        return view('athlete.dashboard', [
+            $visite_sorted = $visite_trans->rotate(-2);
+
+            //dd($visite_sorted);
+
+            //$visite = $visite_sorted;//->transpose();
+
+            //dd($visite);
+            //$collection->forget('name');
+            //dd($multiplied1);
+            //dd(collect($visite)->transpose());
+            /*
+            @foreach ($athletes as $athlete)
+        <tr>
+            <td>{{$athlete->id}}</td>
+            <td><a href="{{ route('athlete.show', ['athlete' => $athlete->id]) }}">{{$athlete->name}}</a></td>
+            <td>{{date('d-m-Y', strtotime($athlete->dob))}}</td>
+            <td>{{$athlete->sex}}</td>
+            <td><a href="/athlete/{{$athlete->id}}/edit" class="waves-effect waves-light btn-small"><i class="tiny material-icons left">edit</i>UPDATE</a></td>
+        </tr>
+    @endforeach
+            */
+            /*return view('athlete.test', [
+                           'visite' => $visite_sorted,
+                           ]);*/
+        } else {
+            $visite_sorted = collect([]);
+        }
+
+         return view('athlete.dashboard', [
                 'title' => $athlete->name,
                 'athlete' => $athlete,
                 'visite' => $visite_sorted,
@@ -238,6 +247,11 @@ class AthleteController extends Controller
         //$sql = 'SELECT id, album_name, description from albums WHERE ID = :id';
         //$album = DB::select($sql, ['id'=>$id]);
         $athlete = Athlete::find($id);
+        /*
+        if(Gate::denies('manage-athlete', $athlete)){
+            abort(401,'Unauthorized');
+        }*/
+        $this->authorize($athlete);
         //dd($athlete);
         //return view('albums.edit')->with('album', $album[0]);
         return view('athlete.edit',[
@@ -266,6 +280,7 @@ class AthleteController extends Controller
         );
         */
         $athlete = Athlete::find($id);
+        $this->authorize($athlete);
         $athlete->name = request()->input('name');
         $athlete->dob = request()->input('dob');
         $athlete->sex = request()->input('sex');
@@ -298,6 +313,7 @@ class AthleteController extends Controller
     public function destroy($id)
     {
         //
+        $this->authorize($athlete);
     }
 
 }

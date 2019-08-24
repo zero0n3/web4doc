@@ -172,12 +172,15 @@ class CheckupController extends Controller
         //$sql = 'SELECT id, album_name, description from albums WHERE ID = :id';
         //$album = DB::select($sql, ['id'=>$id]);
         $checkup = Checkup::find($id);
-        //$companys = Company::all();
+        $teams = Team::all();
+        $sports = Sport::all();
         //dd($checkup);
         //return view('albums.edit')->with('album', $album[0]);
         return view('checkup.edit',[
                                     'title' => 'Modifica Visita',
                                     'checkup' => $checkup,
+                                    'teams' => $teams,
+                                    'sports' => $sports,
                                     //'companys' => $companys,
                                 ]);
 
@@ -201,14 +204,44 @@ class CheckupController extends Controller
           ]
         );
         */
+
         $checkup = Checkup::find($id);
+
+        $checkup->altezza = request()->input('altezza');
+        $checkup->peso = request()->input('peso');
+        $checkup->tricipite_R = request()->input('tricipite_R');
+        $checkup->tricipite_L = request()->input('tricipite_L');
+        $checkup->petto_R = request()->input('petto_R');
+        $checkup->petto_L = request()->input('petto_L');
+        $checkup->ascella_R = request()->input('ascella_R');
+        $checkup->ascella_L = request()->input('ascella_L');
+        $checkup->iliaca_R = request()->input('iliaca_R');
+        $checkup->iliaca_L = request()->input('iliaca_L');
+        $checkup->addominale_R = request()->input('addominale_R');
+        $checkup->addominale_L = request()->input('addominale_L');
+        $checkup->coscia_R = request()->input('coscia_R');
+        $checkup->coscia_L = request()->input('coscia_L');
+        $checkup->braccio_R = request()->input('braccio_R');
+        $checkup->braccio_L = request()->input('braccio_L');
+        $checkup->gamba_R = request()->input('gamba_R');
+        $checkup->gamba_L = request()->input('gamba_L');
+        $checkup->spalle = request()->input('spalle');
+        $checkup->petto = request()->input('petto');
+        $checkup->anche = request()->input('anche');
+        $checkup->spirometria = request()->input('spirometria');
+        $checkup->frq_riposo = request()->input('frq_riposo');
+        $checkup->frq_stress = request()->input('frq_stress');
+        $checkup->frq_1min = request()->input('frq_1min');
+        $checkup->step1 = request()->input('step1');
+        $checkup->step2 = request()->input('step2');
+        $checkup->step3 = request()->input('step3');
+        $checkup->massa_grassa = request()->input('massa_grassa');
+        $checkup->bmi = request()->input('bmi');
+        $checkup->status = 0;
+        //$checkup->athlete_id = request()->input('athlete_id');
+        $checkup->team_id = request()->input('team_id');
+        $checkup->sport_id = request()->input('sport_id');
         $checkup->date = request()->input('date');
-        $checkup->height = request()->input('height');
-        $checkup->weight = request()->input('weight');
-        $checkup->triceps_L = request()->input('triceps_L');
-        $checkup->triceps_R = request()->input('triceps_R');
-        $checkup->chest_L = request()->input('chest_L');
-        $checkup->chest_R = request()->input('chest_R');
         //$album->user_id = 1;
         $res = $checkup->save();
 

@@ -47,8 +47,7 @@
             <div class="zui-scroller">
                 <table class="zui-table">
                     <tbody>
-                    
-                    @foreach ($visite as $check)
+                    @forelse ($visite as $check)
 
                             <tr>
                               @foreach ($check as $item)
@@ -88,7 +87,15 @@
                               @endforeach
                             </tr>
 
-                    @endforeach
+                    @empty
+                          <tr>
+                            <td colspan="4"><b>Nessuna visita inserita</b></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                    @endforelse
 
 
 

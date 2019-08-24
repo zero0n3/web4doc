@@ -24,7 +24,7 @@
                   <div class="input-field col s3">
                       <select name="team_id">
                           @foreach ($teams as $team)
-                              <option value="{{$team->id}}" @if($loop->first)selected @endif>{{$team->name}}</option>
+                              <option value="{{$team->id}}" @if($team->id === $checkup->team->id)selected @endif>{{$team->name}}</option>
                           @endforeach
                       </select>
                       <label>Team</label>
@@ -32,7 +32,7 @@
                   <div class="input-field col s3">
                       <select name="sport_id">
                           @foreach ($sports as $sport)
-                              <option value="{{$sport->id}}" @if($loop->first)selected @endif>{{$sport->name}}</option>
+                              <option value="{{$sport->id}}" @if($sport->id === $checkup->sport->id)selected @endif>{{$sport->name}}</option>
                           @endforeach
                       </select>
                       <label>Sport</label>
