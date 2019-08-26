@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+
 use Illuminate\Database\Eloquent\Model;
 
 class Checkup extends Model
@@ -46,6 +47,7 @@ class Checkup extends Model
         'team',
         'sport',
 	];
+
     protected $casts = [
         'date' => 'datetime:d-m-Y',
     ];
@@ -64,5 +66,6 @@ class Checkup extends Model
   	{
     	return $this->belongsTo(Sport::class);
   	}
+
 
 }

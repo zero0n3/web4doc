@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SportRequest;
 use Illuminate\Http\Request;
 use Storage;
 use App\Models\Sport;
@@ -13,6 +14,14 @@ use DB;
 
 class SportController extends Controller
 {
+
+    protected $rules = [
+        'name' => 'required',
+    ];
+
+    protected $errorMessages = [
+        'name.required' => 'Il campo Nome è obbligatorio',
+    ];
 
     //
     public function index(Request $request) {
@@ -72,18 +81,19 @@ class SportController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SportRequest $request)
     {
         //
+        $this->validate($request, $this->rules, $this->errorMessages);
         $sport = new Sport();
-        $sport->name = $request->input('sport_name');
+        $sport->name = $request->input('name');
         $sport->status = 0;       
          
         $res = $sport->save();
-       
-        
-        $sport_name = request()->input('sport_name');
-        $messaggio = $res ? 'Sport   ' . $sport_name . ' creato' : 'Sport ' . $sport_name . ' non creato';
+
+
+        //$sport_name = request()->input('sport_name');
+        $messaggio = $res ? 'Sport   ' . $request->input('name') . ' creato' : 'Sport ' . $request->input('name') . ' non creato';
         session()->flash('message', $messaggio);
         return redirect()->route('sport.index');
     }
@@ -130,7 +140,7 @@ class SportController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SportRequest $request, $id)
     {
         //$res = DB::table('albums')->where('id', $id)->update(
 /*
@@ -141,8 +151,9 @@ class SportController extends Controller
           ]
         );
         */
+        $this->validate($request, $this->rules, $this->errorMessages);
         $sport = Sport::find($id);
-        $sport->name = request()->input('name');
+        $sport->name = $request->input('name');
         //$album->user_id = 1;
         $res = $sport->save();
 

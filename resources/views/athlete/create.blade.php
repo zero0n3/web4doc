@@ -5,6 +5,7 @@
 @section('content')
 
   <form action="{{route('athlete.store')}}" method="POST" enctype="multipart/form-data">
+      @include('partials.inputerrors')
     {{csrf_field()}}
 
 
@@ -17,11 +18,11 @@
     <div class="row">
       <div class="col s12">
           <label for="">Nome Atleta</label>
-          <input type="text" name="name" id="name" class="form-control" >
+          <input required type="text" name="name" id="name" class="form-control" value="{{ old('name') }}">
       </div>
       <div class="col s3">
         <label for="">Data di nascita</label>
-        <input type="date" name="dob" id="dob" class="form-control">
+        <input required type="date" name="dob" id="dob" class="form-control" value="{{ old('dob') }}">
       </div>
 
       <div class="input-field col s3">
@@ -37,7 +38,7 @@
 
     <div class="row">
       <div class="col s6 offset-s9"><span class="flow-text">
-        <button class="btn waves-effect waves-light btn-small" type="submit" name="action">Aggiungi
+        <button class="btn waves-effect waves-light btn-small" type="submit" id="submit" name="action">Aggiungi
           <i class="material-icons right">add</i>
         </button>
 
@@ -46,6 +47,19 @@
       
 
   </form>
+
+
+@endsection
+
+@section('validazione')
+
+    $(document).ready(function() {
+        $("#submit").click(function(event) {
+            if( !confirm('Confermi l\'inserimento dell\'atleta?') ){
+                event.preventDefault();
+            }
+        });
+    });
 
 
 @endsection

@@ -18,6 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 */
+
 Route::group(['middleware' => 'auth'],
     function() {
         Route::resource('/team', 'TeamController');
@@ -37,4 +38,9 @@ Route::group(['middleware' => 'auth'],
 
 
 Auth::routes();
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
 

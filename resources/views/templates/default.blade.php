@@ -1,6 +1,15 @@
+<?php
+use DebugBar\StandardDebugBar;
+
+$debugbar = new StandardDebugBar();
+$debugbarRenderer = $debugbar->getJavascriptRenderer();
+
+$debugbar["messages"]->addMessage("hello world!");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <?php echo $debugbarRenderer->renderHead() ?>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
     <title>@yield('title', 'Home')</title>
@@ -70,7 +79,6 @@
   <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-  <script src="/js/form-validation.js"></script>
 
   <script>
   @if (session()->has('message'))
@@ -80,7 +88,8 @@
   @endif
 
     $('document').ready(function(){
-      $('div.alert').fadeOut(1500);
+      //$('div.alert').fadeOut(4000);
+      $('div.card-panel').fadeOut(4000);
       $('ul').on('click', 'a.btn-danger', function(ele) {
       //$('#delete').click(function(ele) {
         ele.preventDefault();
@@ -125,9 +134,18 @@
 
 
 
+
+
+
+
+
+
 @yield('calc')
+
+@yield('validazione')
     </script>
 
 @show
+<?php echo $debugbarRenderer->render() ?>
   </body>
 </html>

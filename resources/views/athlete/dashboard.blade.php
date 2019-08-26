@@ -47,6 +47,7 @@
             <div class="zui-scroller">
                 <table class="zui-table">
                     <tbody>
+                    <!-- CICLO RIGHE, SEMPRE LO STESSO NUMERO IN BASE ALLE MISURAZIONI -->
                     @forelse ($visite as $check)
 
                             <tr>
@@ -62,12 +63,20 @@
                                     @else
 
                                       @if($loop->last)
-                                        <td>{{$item}}</td>
+                                        <td>
+                                            @if($loop->parent->index === 2)
+                                                <a href="/checkup/{{$item}}/edit"/>
+                                            @endif
+                                            {{$item}}</td>
                                       @else
 
                                           @if ($loop->parent->index < 4)
                                             <!-- prime 4 righe - non faccio alcun controllo numerico ma stampo e basta -->
-                                            <td><b>{{$item}}</b></td>
+                                            <td><b>
+                                                    @if($loop->parent->index === 2)
+                                                        <a href="/checkup/{{$item}}/edit"/>
+                                                    @endif
+                                                    {{$item}}</b></td>
                                           @else
                                             <td>
                                               @if($item > $check[$loop->index+1]) <span class="blue-text text-darken-2"><b/>

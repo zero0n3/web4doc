@@ -2,20 +2,64 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CheckupRequest;
 use App\Models\Athlete;
 use App\Models\Sport;
 use App\Models\Team;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
 use App\Models\Checkup;
+use Illuminate\Support\Facades\Auth;
+
 //use Kris\LaravelFormBuilder\FormBuilder;
 
 class CheckupController extends Controller
 {
+
+    protected $rules = [
+        'date' => 'required|date',
+        'altezza' => 'required|numeric',
+        'peso' => 'required|numeric',
+        'tricipite_R' => 'required|numeric',
+        'tricipite_L' => 'required|numeric',
+        'petto_R' => 'required|numeric',
+        'petto_L' => 'required|numeric',
+        'ascella_R' => 'required|numeric',
+        'ascella_L' => 'required|numeric',
+        'iliaca_R' => 'required|numeric',
+        'iliaca_L' => 'required|numeric',
+        'addominale_R' => 'required|numeric',
+        'addominale_L' => 'required|numeric',
+        'coscia_R' => 'required|numeric',
+        'coscia_L' => 'required|numeric',
+        'spalle' => 'required|numeric',
+        'petto' => 'required|numeric',
+        'anche' => 'required|numeric',
+        'braccio_R' => 'required|numeric',
+        'braccio_L' => 'required|numeric',
+        'gamba_R' => 'required|numeric',
+        'gamba_L' => 'required|numeric',
+        'spirometria' => 'required|numeric',
+        'massa_grassa' => 'required|numeric',
+        'bmi' => 'required|numeric',
+        'frq_riposo' => 'required|numeric',
+        'frq_stress' => 'required|numeric',
+        'frq_1min' => 'required|numeric',
+        'step1' => 'required|numeric',
+        'step2' => 'required|numeric',
+        'step3' => 'required|numeric',
+    ];
+
     public function index( Request $request ){
     	
     	//$queryBuilder = Checkup::orderBy('date','desc')->with(['athlete','team','sport']);
         $queryBuilder = Checkup::orderBy('date','desc');
+        //$queryBuilder->ofType(Auth::user()->id);
+
+        $queryBuilder->whereHas('athlete',function (Builder $query) use($request) {
+            $query->where('user_id',Auth::user()->id);
+        });
+        //$this->authorize($queryBuilder);
 
         if($request->has('id')){
             $queryBuilder->where('id','=', $request->input('id'));
@@ -39,12 +83,14 @@ class CheckupController extends Controller
             });
         }
 
+        $queryBuilder->with('athlete');
         $checkups = $queryBuilder->paginate(25);
+        //devo fare il filtro su athlete id e user id
         //dd($checkups);
 
         return view('checkup.checkup',
             [
-                'title' => 'Lista visite',
+                'title' => 'Lista visite per i mutuati di '.Auth::user()->name,
                 'checkups' => $checkups
             ]);
 
@@ -99,6 +145,8 @@ class CheckupController extends Controller
     {
         //
         //dd($request);
+        //$this->validate($request, $this->rules);
+
         $checkup = new Checkup();
         $checkup->altezza = $request->input('altezza');
         $checkup->peso = $request->input('peso');
@@ -131,7 +179,7 @@ class CheckupController extends Controller
         $checkup->massa_grassa = $request->input('massa_grassa');
         $checkup->bmi = $request->input('bmi');
         $checkup->status = 0;
-        $checkup->athlete_id = $request->input('id');
+        $checkup->athlete_id = $request->input('athlete_id');
         $checkup->team_id = $request->input('team_id');
         $checkup->sport_id = $request->input('sport_id');
         $checkup->date = $request->input('date');
@@ -165,7 +213,7 @@ class CheckupController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request,$id)
     {
 
         //dd($id);
@@ -193,8 +241,9 @@ class CheckupController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CheckupRequest $request, $id)
     {
+
         //$res = DB::table('albums')->where('id', $id)->update(
 /*
         $res = Album::where('id', $id)->update(
@@ -205,6 +254,7 @@ class CheckupController extends Controller
         );
         */
 
+        //$this->validate($request, $this->rules);
         $checkup = Checkup::find($id);
 
         $checkup->altezza = request()->input('altezza');

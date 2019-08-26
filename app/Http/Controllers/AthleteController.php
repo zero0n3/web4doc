@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AthleteRequest;
 use App\Models\Checkup;
 use Gate;
 use Illuminate\Http\Request;
@@ -12,6 +13,18 @@ use Illuminate\Database\Eloquent\Collection;
 
 class AthleteController extends Controller
 {
+
+    protected $rules = [
+        'name' => 'required',
+        'dob' => 'required|date',
+    ];
+
+    protected $errorMessages = [
+        'name.required' => 'Il campo Nome è obbligatorio',
+        'dob.required' => 'Il campo Data di Nascita è obbligatorio'
+    ];
+
+
     public function index( Request $request ) {
         $queryBuilder = Athlete::orderBy('name','asc');//with(['teams','sports']);
 
@@ -79,8 +92,9 @@ class AthleteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AthleteRequest $request)
     {
+        $this->validate($request, $this->rules, $this->errorMessages);
         //
         $athlete = new Athlete();
         $athlete->name = $request->input('name');
@@ -93,7 +107,7 @@ class AthleteController extends Controller
         $res = $athlete->save();
        
         
-        $name = request()->input('name');
+        $name = $request->input('name');
         $messaggio = $res ? 'Atleta   ' . $name . ' creato' : 'Atleta ' . $name . ' non creato';
         session()->flash('message', $messaggio);
         return redirect()->route('athlete.index');
@@ -268,7 +282,7 @@ class AthleteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AthleteRequest $request, $id)
     {
         //$res = DB::table('albums')->where('id', $id)->update(
 /*
@@ -279,11 +293,12 @@ class AthleteController extends Controller
           ]
         );
         */
+        $this->validate($request, $this->rules, $this->errorMessages);
         $athlete = Athlete::find($id);
         $this->authorize($athlete);
-        $athlete->name = request()->input('name');
-        $athlete->dob = request()->input('dob');
-        $athlete->sex = request()->input('sex');
+        $athlete->name = $request->input('name');
+        $athlete->dob = $request->input('dob');
+        $athlete->sex = $request->input('sex');
         //$album->user_id = 1;
         $res = $athlete->save();
 

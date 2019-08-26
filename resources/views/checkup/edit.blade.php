@@ -5,12 +5,16 @@
 @section('content')
 
   <h4>Modifica Visita codice {{$checkup->id}} dell'atleta <b>{{$checkup->athlete->name}}</b></h4>
-  <form action="/checkup/{{$checkup->id}}" method="POST" enctype="multipart/form-data">
-    {{csrf_field()}}
+  <form action="/checkup/{{$checkup->id}}" method="POST" enctype="multipart/form-data" name="editcheckup" id="editcheckup">
+      @include('partials.inputerrors')
+      {{csrf_field()}}
+
     <input type="hidden" name="_method" value="PATCH">
 
 
       <input type="hidden" id="age" name="age" value="{{date("Y")-date('Y', strtotime($checkup->athlete->dob))}}">
+
+
           {{csrf_field()}}
 
           <!-- 1° riga -->
@@ -292,51 +296,119 @@
           var fat_mass;
           var bmi;
           $('input').keyup(function(){ // run anytime the value changes
-          var peso  = Number($('#peso').val());   // get value of field
-          var altezza = Number($('#altezza').val()); // convert it to a float
-          var r1  = Number($('#petto_R').val());
-          var l1 = Number($('#petto_L').val());
-          var r2  = Number($('#addominale_R').val());
-          var l2 = Number($('#addominale_L').val());
-          var r3 = Number($('#coscia_R').val());
-          var l3 = Number($('#coscia_L').val());
+              var peso  = Number($('#peso').val());   // get value of field
+              var altezza = Number($('#altezza').val()); // convert it to a float
+              var r1  = Number($('#petto_R').val());
+              var l1 = Number($('#petto_L').val());
+              var r2  = Number($('#addominale_R').val());
+              var l2 = Number($('#addominale_L').val());
+              var r3 = Number($('#coscia_R').val());
+              var l3 = Number($('#coscia_L').val());
 
-          somma = ((r1 + l1) / 2) + ((r2 + l2) / 2) + ((r3 + l3) / 2);
-          age = Number($('#age').val());
-          delta = 1.10938 - (0.0008267 * somma) + (0.0000016 * Math.pow(somma,2)) - (0.0002574 * age);
-          fat_mass = ((4.95 / delta)-4.50)*100;
+              somma = ((r1 + l1) / 2) + ((r2 + l2) / 2) + ((r3 + l3) / 2);
+              age = Number($('#age').val());
+              delta = 1.10938 - (0.0008267 * somma) + (0.0000016 * Math.pow(somma,2)) - (0.0002574 * age);
+              fat_mass = ((4.95 / delta)-4.50)*100;
 
-          //bmi
-          bmi = peso / (altezza/100 * altezza/100);
+              //bmi
+              bmi = peso / (altezza/100 * altezza/100);
 
-          //$('#total_expenses1').html(firstValue + secondValue + thirdValue + fourthValue); // questo serve in una label se non vuoi avere un textbox tipo <span id="total_expenses1"></span>
-          document.getElementById('bmi').value = bmi;
-          document.getElementById('massa_grassa').value = fat_mass;
-          // add them and output it
+              //$('#total_expenses1').html(firstValue + secondValue + thirdValue + fourthValue); // questo serve in una label se non vuoi avere un textbox tipo <span id="total_expenses1"></span>
+              document.getElementById('bmi').value = bmi;
+              document.getElementById('massa_grassa').value = fat_mass;
+              // add them and output it
 
           });
 
-
-          $(document).ready(function() {
-          $("#submit").click(function(event) {
-          if( !confirm('Confermi l\'inserimento della visita?') ){
-          event.preventDefault();
-          }
-          /*
-          $("<input />").attr("type", "hidden")
-          .attr("name", "massa_grassa")
-          .attr("value", fat_mass)
-          .appendTo("#addcheckup");
-          $("<input />").attr("type", "hidden")
-          .attr("name", "bmi")
-          .attr("value", bmi)
-          .appendTo("#addcheckup");
-          */
-          });
-          });
+@endsection
 
 
+@section('validazione')
+    $(document).ready(function() {
+        $("#submit").click(function(event) {
+            if( !confirm('Confermi l\'aggiornamento della visita?') ){
+                event.preventDefault();
+            }
+        });
+    });
 
 
+// Wait for the DOM to be ready
+$(function() {
+    // Initialize form validation on the registration form.
+    // It has the name attribute "registration"
+    $("form[name='editcheckup']").validate({
+        // Specify validation rules
+        rules: {
+            // The key name on the left side is the name attribute
+            // of an input field. Validation rules are defined
+            // on the right side
+            altezza: "required",
+            peso: "required",
+            tricipite_R: "required",
+            tricipite_L: "required",
+            petto_R: "required",
+            petto_L: "required",
+            ascella_R: "required",
+            ascella_L: "required",
+            iliaca_R: "required",
+            iliaca_L: "required",
+            addominale_R: "required",
+            addominale_L: "required",
+            coscia_R: "required",
+            coscia_L: "required",
+            braccio_R: "required",
+            braccio_L: "required",
+            gamba_R: "required",
+            gamba_L: "required",
+            spalle: "required",
+            petto: "required",
+            anche: "required",
+            spirometria: "required",
+            frq_riposo: "required",
+            frq_stress: "required",
+            frq_1min: "required",
+            step1: "required",
+            step2: "required",
+            step3: "required",
 
+        },
+        // Specify validation error messages
+        messages: {
+            altezza: "Campo obbligatorio",
+            peso: "Campo obbligatorio",
+            tricipite_R: "Campo obbligatorio",
+            tricipite_L: "Campo obbligatorio",
+            petto_R: "Campo obbligatorio",
+            petto_L: "Campo obbligatorio",
+            ascella_R: "Campo obbligatorio",
+            ascella_L: "Campo obbligatorio",
+            iliaca_R: "Campo obbligatorio",
+            iliaca_L: "Campo obbligatorio",
+            addominale_R: "Campo obbligatorio",
+            addominale_L: "Campo obbligatorio",
+            coscia_R: "Campo obbligatorio",
+            coscia_L: "Campo obbligatorio",
+            braccio_R: "Campo obbligatorio",
+            braccio_L: "Campo obbligatorio",
+            gamba_R: "Campo obbligatorio",
+            gamba_L: "Campo obbligatorio",
+            spalle: "Campo obbligatorio",
+            petto: "Campo obbligatorio",
+            anche: "Campo obbligatorio",
+            spirometria: "Campo obbligatorio",
+            frq_riposo: "Campo obbligatorio",
+            frq_stress: "Campo obbligatorio",
+            frq_1min: "Campo obbligatorio",
+            step1: "Campo obbligatorio",
+            step2: "Campo obbligatorio",
+            step3: "Campo obbligatorio",
+        },
+        // Make sure the form is submitted to the destination defined
+        // in the "action" attribute of the form when valid
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });
+});
 @endsection

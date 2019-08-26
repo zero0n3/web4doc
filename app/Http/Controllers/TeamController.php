@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TeamRequest;
 use Illuminate\Http\Request;
 use Storage;
 use App\Models\Team;
@@ -12,6 +13,14 @@ use DB;
 
 class TeamController extends Controller
 {
+
+    protected $rules = [
+        'name' => 'required',
+    ];
+
+    protected $errorMessages = [
+        'name.required' => 'Il campo Nome è obbligatorio',
+    ];
 
    public function index(Request $request) {
         $queryBuilder = Team::orderBy('name','asc');
@@ -84,9 +93,10 @@ class TeamController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TeamRequest $request)
     {
         //
+        $this->validate($request, $this->rules, $this->errorMessages);
         $team = new Team();
         $team->name = $request->input('name');
         $team->status = 0;
@@ -94,8 +104,8 @@ class TeamController extends Controller
        
         $res = $team->save();
         
-        $name = request()->input('name');
-        $messaggio = $res ? 'Team   ' . $name . ' creato' : 'Team ' . $name . ' non creato';
+        //$name = request()->input('name');
+        $messaggio = $res ? 'Team   ' . $request->input('name') . ' creato' : 'Team ' . $request->input('name') . ' non creato';
         session()->flash('message', $messaggio);
         return redirect()->route('team.index');
     }
@@ -147,7 +157,7 @@ class TeamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TeamRequest $request, $id)
     {
         //$res = DB::table('albums')->where('id', $id)->update(
 /*
@@ -158,8 +168,9 @@ class TeamController extends Controller
           ]
         );
         */
+        $this->validate($request, $this->rules, $this->errorMessages);
         $team = Team::find($id);
-        $team->name = request()->input('name');
+        $team->name = $request->input('name');
         //$team->id = request()->input('id');
         //$album->user_id = 1;
         $res = $team->save();

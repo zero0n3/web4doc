@@ -30,6 +30,7 @@
           <tr>
               <th>Id</th>
               <th>Sport</th>
+              <th>Azioni</th>
           </tr>
         </thead>
         <tbody>

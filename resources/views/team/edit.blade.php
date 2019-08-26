@@ -4,7 +4,8 @@
 
 @section('content')
 
-  <h3>MODIFICA</h3>
+  <h3>Modifica {{$team->name}}</h3>
+  @include('partials.inputerrors')
   <form action="/team/{{$team->id}}" method="POST" enctype="multipart/form-data">
     {{csrf_field()}}
     <input type="hidden" name="_method" value="PATCH">
