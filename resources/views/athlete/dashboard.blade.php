@@ -43,9 +43,9 @@
 
 <div class="row">
     <div class="col s12">
-        <div class="zui-wrapper">
-            <div class="zui-scroller">
-                <table class="zui-table">
+        <!--<div class="zui-wrapper">-->
+            <div id="table-scroll" class="table-scroll">
+                <table id="main-table" class="main-table">
                     <tbody>
                     <!-- CICLO RIGHE, SEMPRE LO STESSO NUMERO IN BASE ALLE MISURAZIONI -->
                     @forelse ($visite as $check)
@@ -55,7 +55,7 @@
 
                                 @if ($loop->first)
                                     <!-- colonna testi fissi iniziale -->
-                                        <td class="zui-sticky-col"><b>{{$item}}</b></td>
+                                        <th><b>{{$item}}</b></th>
                                 @else
                                     <!-- colonne valori -->
                                     @if (is_array($item))
@@ -113,7 +113,7 @@
                     </tbody>
                 </table>
             </div>
-        </div>
+        <!--</div>-->
     </div>
 </div>
 
