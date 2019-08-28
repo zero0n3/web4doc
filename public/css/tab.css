@@ -5,6 +5,7 @@
   margin: auto;
   overflow: auto;
   height: auto;
+  font-family: 'Roboto', sans-serif;
 }
 .table-scroll table {
   width: 80%;
@@ -20,8 +21,10 @@
 .table-scroll td {
   padding: 5px 10px;
   border: 1px solid #000;
+  border-radius: unset;
   background: #fff;
   vertical-align: top;
+  white-space: nowrap;
 }
 .table-scroll thead th {
   background: #333;
