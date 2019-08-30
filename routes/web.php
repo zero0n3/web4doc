@@ -37,7 +37,4 @@ Route::group(['middleware' => 'auth'],
     });
 
 
-Auth::routes();
-
-
-
+Auth::routes(['register' => false]);
