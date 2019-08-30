@@ -3,7 +3,7 @@
           @if (Auth::guest())
               <ul class="right hide-on-med-and-down">
                   <li><a class="navbar-item " href="{{ route('login') }}">Login</a></li>
-                  
+                  <!--<li><a class="navbar-item " href="{{-- route('register') --}}">Register</a></li>-->
               </ul>
           @else
 
