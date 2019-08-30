@@ -48,7 +48,8 @@
             <td><a href="{{ route('athlete.show', ['athlete' => $athlete->id]) }}">{{$athlete->name}}</a></td>
             <td>{{date('d-m-Y', strtotime($athlete->dob))}}</td>
             <td>{{$athlete->sex}}</td>
-             <td><a href="/athlete/{{$athlete->id}}/edit" class="waves-effect waves-light btn-small"><i class="tiny material-icons left">edit</i>UPDATE</a></td>
+             <td><a href="/athlete/{{$athlete->id}}/edit" class="waves-effect waves-light btn-small"><i class="tiny material-icons left">edit</i>UPDATE</a>
+              <a href="/checkup/{{$athlete->id}}/add" class="waves-effect waves-light btn-small"><i class="tiny material-icons left">edit</i>Add CheckupE</a></td>
           </tr>
     @endforeach
         </tbody>
