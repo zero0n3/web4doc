@@ -305,7 +305,7 @@ class CheckupController extends Controller
         */
         $message = $res ? 'Visita aggiornata':'Visita NON aggiornata';
         session()->flash('message', $message);
-        return redirect()->route('checkup.index');
+        return redirect()->route('athlete.index');
         /*return view('company.company',
             [
                 'title' => 'Lista società'
