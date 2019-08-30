@@ -33,89 +33,83 @@
 
 <div class="divider"></div>
 
+<br>
 
+  <div class="row">
+      <div class="col s12">
+          <!--<div class="zui-wrapper">-->
+              <div id="table-scroll" class="table-scroll">
+                  <table id="main-table" class="main-table">
+                      <tbody>
+                      <!-- CICLO RIGHE, SEMPRE LO STESSO NUMERO IN BASE ALLE MISURAZIONI -->
+                      @forelse ($visite as $check)
 
-<div class="divider"></div>
-<div class="divider"></div>
-<div class="divider"></div>
-<div class="divider"></div>
+                              <tr>
+                                @foreach ($check as $item)
 
-
-<div class="row">
-    <div class="col s12">
-        <!--<div class="zui-wrapper">-->
-            <div id="table-scroll" class="table-scroll">
-                <table id="main-table" class="main-table">
-                    <tbody>
-                    <!-- CICLO RIGHE, SEMPRE LO STESSO NUMERO IN BASE ALLE MISURAZIONI -->
-                    @forelse ($visite as $check)
-
-                            <tr>
-                              @foreach ($check as $item)
-
-                                @if ($loop->first)
-                                    <!-- colonna testi fissi iniziale -->
-                                        <th><b>{{$item}}</b></th>
-                                @else
-                                    <!-- colonne valori -->
-                                    @if (is_array($item))
-                                      <td><b>{{$item['name']}}</b></td>
-                                    @else
-
-                                      @if($loop->last)
-                                        <td>
-                                            @if($loop->parent->index === 2)
-                                                <a href="/checkup/{{$item}}/edit"/>
-                                            @endif
-                                            {{$item}}</td>
+                                  @if ($loop->first)
+                                      <!-- colonna testi fissi iniziale -->
+                                          <th><b>{{$item}}</b></th>
+                                  @else
+                                      <!-- colonne valori -->
+                                      @if (is_array($item))
+                                        <td><b>{{$item['name']}}</b></td>
                                       @else
 
-                                          @if ($loop->parent->index < 4)
-                                            <!-- prime 4 righe - non faccio alcun controllo numerico ma stampo e basta -->
-                                            <td><b>
-                                                    @if($loop->parent->index === 2)
-                                                        <a href="/checkup/{{$item}}/edit"/>
-                                                    @endif
-                                                    {{$item}}</b></td>
-                                          @else
-                                            <td>
-                                              @if($item > $check[$loop->index+1]) <span class="blue-text text-darken-2"><b/>
-                                              @elseif($item < $check[$loop->index+1]) <span class="red-text text-darken-2">
-                                              @else <span class="black-text text-darken-2"><i/>
+                                        @if($loop->last)
+                                          <td>
+                                              @if($loop->parent->index === 2)
+                                                  <a href="/checkup/{{$item}}/edit"/>
                                               @endif
-                                              {{number_format($item, 2, ',', '.')}}</span></td>
-                                          @endif
+                                              {{$item}}</td>
+                                        @else
 
+                                            @if ($loop->parent->index < 4)
+                                              <!-- prime 4 righe - non faccio alcun controllo numerico ma stampo e basta -->
+                                              <td><b>
+                                                      @if($loop->parent->index === 2)
+                                                          <a href="/checkup/{{$item}}/edit"/>
+                                                      @endif
+                                                      {{$item}}</b></td>
+                                            @else
+                                              <td>
+                                                @if($item > $check[$loop->index+1]) <span class="blue-text text-darken-2"><b/>
+                                                @elseif($item < $check[$loop->index+1]) <span class="red-text text-darken-2">
+                                                @else <span class="black-text text-darken-2"><i/>
+                                                @endif
+                                                {{number_format($item, 2, ',', '.')}}</span></td>
+                                            @endif
+
+
+                                        @endif
 
                                       @endif
 
-                                    @endif
+                                  @endif
 
-                                @endif
+                                @endforeach
+                              </tr>
 
-                              @endforeach
+                      @empty
+                            <tr>
+                              <td colspan="4"><b>Nessuna visita inserita</b></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
                             </tr>
-
-                    @empty
-                          <tr>
-                            <td colspan="4"><b>Nessuna visita inserita</b></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-                    @endforelse
+                      @endforelse
 
 
 
-                  
+                    
 
-                    </tbody>
-                </table>
-            </div>
-        <!--</div>-->
-    </div>
-</div>
+                      </tbody>
+                  </table>
+              </div>
+          <!--</div>-->
+      </div>
+  </div>
 
 <div class="divider"></div>
 
