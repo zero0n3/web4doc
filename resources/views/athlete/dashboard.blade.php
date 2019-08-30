@@ -92,11 +92,7 @@
 
                       @empty
                             <tr>
-                              <td colspan="4"><b>Nessuna visita inserita</b></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
+                              <td><b>Nessuna visita inserita</b></td>
                             </tr>
                       @endforelse
 
