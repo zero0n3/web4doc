@@ -10,7 +10,7 @@
         <input type="hidden" id="age" name="age" value="{{date("Y")-date('Y', strtotime($athlete->dob))}}">
         <input type="hidden" id="name" name="name" value="{{$athlete->name}}">
         <input type="hidden" id="athlete_id" name="athlete_id" value="{{$athlete->id}}">
-        <input type="hidden" id="date" name="date" value="{{date('Y-m-d')}}">
+        <!--<input type="hidden" id="date" name="date" value="{{date('Y-m-d')}}">-->
         {{csrf_field()}}
 
         <!-- 1° riga -->
@@ -20,7 +20,7 @@
             <div class="col s6">
                 <label for="readonly">Data della visita</label>
                 <!--<input readonly type="text" step="any" name="data" id="data" value="{{date('d-m-Y')}}" class="form-control">-->
-                <input type="date" step="any" name="data" id="data" value="{{date('d-m-Y')}}" class="form-control">
+                <input type="date" step="any" name="date" id="date" value="{{date('d-m-Y')}}" class="form-control">
             </div>
             <div class="input-field col s3">
                 <select name="team_id">
