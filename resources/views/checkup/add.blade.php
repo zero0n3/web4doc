@@ -19,7 +19,8 @@
             <!-- data -->
             <div class="col s6">
                 <label for="readonly">Data della visita</label>
-                <input readonly type="text" step="any" name="data" id="data" value="{{date('d-m-Y')}}" class="form-control">
+                <!--<input readonly type="text" step="any" name="data" id="data" value="{{date('d-m-Y')}}" class="form-control">-->
+                <input type="date" step="any" name="data" id="data" value="{{date('d-m-Y')}}" class="form-control">
             </div>
             <div class="input-field col s3">
                 <select name="team_id">
