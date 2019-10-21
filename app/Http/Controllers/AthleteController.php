@@ -174,6 +174,8 @@ class AthleteController extends Controller
                 'Petto Sx',
                 'Ascella Dx',
                 'Ascella Sx',
+                'Scapola Dx',
+                'Scapola Sx',
                 'Iliaca Dx',
                 'Iliaca Sx',
                 'Addominale Dx',

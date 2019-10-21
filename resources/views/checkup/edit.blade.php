@@ -114,6 +114,23 @@
                   </div>
               </div>
 
+
+              <!-- 5bis° riga -->
+              <div class="row">
+
+                  <!-- scapola L -->
+                  <div class="col s6">
+                      <label for="">Scapola SX</label>
+                      <input type="number" step="any" name="scapola_L" id="scapola_L" class="form-control" placeholder="Scapola SX" value="{{$checkup->scapola_L}}">
+                  </div>
+
+                  <!-- scapola R -->
+                  <div class="col s6">
+                      <label for="">Scapola DX</label>
+                      <input type="number" step="any" name="scapola_R" id="scapola_R" class="form-control" placeholder="Scapola DX" value="{{$checkup->scapola_R}}">
+                  </div>
+              </div>
+
               <!-- 6° riga -->
               <div class="row">
 
@@ -351,6 +368,8 @@ $(function() {
             petto_L: "required",
             ascella_R: "required",
             ascella_L: "required",
+            scapola_R: "required",
+            scapola_L: "required",
             iliaca_R: "required",
             iliaca_L: "required",
             addominale_R: "required",
@@ -383,6 +402,8 @@ $(function() {
             petto_L: "Campo obbligatorio",
             ascella_R: "Campo obbligatorio",
             ascella_L: "Campo obbligatorio",
+            scapola_R: "Campo obbligatorio",
+            scapola_L: "Campo obbligatorio",
             iliaca_R: "Campo obbligatorio",
             iliaca_L: "Campo obbligatorio",
             addominale_R: "Campo obbligatorio",

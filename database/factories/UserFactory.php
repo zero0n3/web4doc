@@ -140,6 +140,8 @@ $factory->define(App\Models\Checkup::class, function (Faker $faker){
         'petto_L' => $faker->randomFloat($nbMaxDecimals = 2, $min = 1, $max = 100),
         'ascella_R' => $faker->randomFloat($nbMaxDecimals = 2, $min = 1, $max = 100),
         'ascella_L' => $faker->randomFloat($nbMaxDecimals = 2, $min = 1, $max = 100),
+        'scapola_R' => $faker->randomFloat($nbMaxDecimals = 2, $min = 1, $max = 100),
+        'scapola_L' => $faker->randomFloat($nbMaxDecimals = 2, $min = 1, $max = 100),
         'iliaca_R' => $faker->randomFloat($nbMaxDecimals = 2, $min = 1, $max = 100),
         'iliaca_L' => $faker->randomFloat($nbMaxDecimals = 2, $min = 1, $max = 100),
         'addominale_R' => $faker->randomFloat($nbMaxDecimals = 2, $min = 1, $max = 100),
