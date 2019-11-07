@@ -10,6 +10,7 @@
       {{csrf_field()}}
 
     <input type="hidden" name="_method" value="PATCH">
+    <input type="hidden" id="sex" name="sex" value="{{$checkup->athlete->sex}}">
 
 
       <input type="hidden" id="age" name="age" value="{{date("Y")-date('Y', strtotime($checkup->athlete->dob))}}">
@@ -181,6 +182,24 @@
                   </div>
               </div>
 
+              <div class="row">
+
+                  <div class="col s4">
+                      <label for="">Spalle</label>
+                      <input type="number" step="any" name="spalle" id="spalle" class="form-control" placeholder="Spalle" value="{{$checkup->spalle}}">
+                  </div>
+
+                  <div class="col s4">
+                      <label for="">Petto</label>
+                      <input type="number" step="any" name="petto" id="petto" class="form-control" placeholder="Petto" value="{{$checkup->petto}}">
+                  </div>
+
+                  <div class="col s4">
+                      <label for="">Fianchi</label>
+                      <input type="number" step="any" name="anche" id="anche" class="form-control" placeholder="Anche" value="{{$checkup->anche}}">
+                  </div>
+              </div>
+
               <!-- 9° riga -->
               <div class="row">
 
@@ -215,24 +234,6 @@
               </div>
 
               <div class="divider"></div>
-
-              <div class="row">
-
-                  <div class="col s4">
-                      <label for="">Spalle</label>
-                      <input type="number" step="any" name="spalle" id="spalle" class="form-control" placeholder="Spalle" value="{{$checkup->spalle}}">
-                  </div>
-
-                  <div class="col s4">
-                      <label for="">Petto</label>
-                      <input type="number" step="any" name="petto" id="petto" class="form-control" placeholder="Petto" value="{{$checkup->petto}}">
-                  </div>
-
-                  <div class="col s4">
-                      <label for="">Anche</label>
-                      <input type="number" step="any" name="anche" id="anche" class="form-control" placeholder="Anche" value="{{$checkup->anche}}">
-                  </div>
-              </div>
 
               <!-- 11° riga -->
               <div class="row">
@@ -298,7 +299,7 @@
                   </div>
               </div>
 
-              <button class="btn waves-effect waves-light btn-small" type="submit" name="action" id="submit">Inserisci
+              <button class="btn waves-effect waves-light btn-small" type="submit" name="action" id="submit">Aggiorna
                   <i class="material-icons right">send</i>
               </button>
           </form>
@@ -321,10 +322,25 @@
               var l2 = Number($('#addominale_L').val());
               var r3 = Number($('#coscia_R').val());
               var l3 = Number($('#coscia_L').val());
+              var sex = $('#sex').val();
+
+              if(sex === "M"){
+                  //maschi
+                  fm1 = 1.10938;
+                  fm2 = 0.0008267;
+                  fm3 = 0.0000016;
+                  fm4 = 0.0002574;
+              } else {
+                  //femmine 
+                  fm1 = 1.0902369;
+                  fm2 = 0.0009379;
+                  fm3 = 0.0000026;
+                  fm4 = 0.00000979;            
+              }
 
               somma = ((r1 + l1) / 2) + ((r2 + l2) / 2) + ((r3 + l3) / 2);
               age = Number($('#age').val());
-              delta = 1.10938 - (0.0008267 * somma) + (0.0000016 * Math.pow(somma,2)) - (0.0002574 * age);
+              delta = fm1 - (fm2 * somma) + (fm3 * Math.pow(somma,2)) - (fm4 * age);
               fat_mass = ((4.95 / delta)-4.50)*100;
 
               //bmi

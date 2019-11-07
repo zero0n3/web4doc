@@ -184,7 +184,7 @@ class AthleteController extends Controller
                 'Coscia Sx',
                 'Spalle',
                 'Petto',
-                'Anche',
+                'Fianchi',
                 'Braccio Dx',
                 'Braccio Sx',
                 'Gamba Dx',
