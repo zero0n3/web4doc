@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
 class CheckupController extends Controller
 {
 
-    protected $rules = [ 
+    protected $rules = [
         'date' => 'required|date',
         'altezza' => 'required|numeric',
         'peso' => 'required|numeric',
