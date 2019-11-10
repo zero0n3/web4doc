@@ -10,7 +10,8 @@
         <input type="hidden" id="age" name="age" value="{{date("Y")-date('Y', strtotime($athlete->dob))}}">
         <input type="hidden" id="name" name="name" value="{{$athlete->name}}">
         <input type="hidden" id="athlete_id" name="athlete_id" value="{{$athlete->id}}">
-        <input type="hidden" id="date" name="date" value="{{date('Y-m-d')}}">
+        <input type="hidden" id="sex" name="sex" value="{{$athlete->sex}}">
+        <!--<input type="hidden" id="date" name="date" value="{{date('Y-m-d')}}">-->
         {{csrf_field()}}
 
         <!-- 1° riga -->
@@ -19,7 +20,8 @@
             <!-- data -->
             <div class="col s6">
                 <label for="readonly">Data della visita</label>
-                <input readonly type="text" step="any" name="data" id="data" value="{{date('d-m-Y')}}" class="form-control">
+                <!--<input readonly type="text" step="any" name="data" id="data" value="{{date('d-m-Y')}}" class="form-control">-->
+                <input type="date" step="any" name="date" id="date" value="{{date('d-m-Y')}}" class="form-control">
             </div>
             <div class="input-field col s3">
                 <select name="team_id">
@@ -45,13 +47,13 @@
             <!-- peso -->
             <div class="col s6">
                 <label for="">Altezza</label>
-                <input required type="number" step="any" name="altezza" id="altezza" class="form-control" placeholder="Altezza">
+                <input required type="number" step="any" name="altezza" id="altezza" class="form-control" value="0" placeholder="Altezza">
             </div>
 
             <!-- altezza -->
             <div class="col s6">
                 <label for="">Peso</label>
-                <input required type="number" step="any" name="peso" id="peso" class="form-control" placeholder="Peso">
+                <input required type="number" step="any" name="peso" id="peso" class="form-control" value="0" placeholder="Peso">
             </div>
         </div>
 
@@ -67,13 +69,13 @@
             <!-- tricep L -->
             <div class="col s6">
                 <label for="">Tricipite SX</label>
-                <input required type="number" step="any" name="tricipite_L" id="tricipite_L" class="form-control" placeholder="Tricipite SX">
+                <input required type="number" step="any" name="tricipite_L" id="tricipite_L" class="form-control" value="0" placeholder="Tricipite SX">
             </div>
 
             <!-- tricep R -->
             <div class="col s6">
                 <label for="">Tricipite DX</label>
-                <input required type="number" step="any" name="tricipite_R" id="tricipite_R" class="form-control" placeholder="Tricipite DX">
+                <input required type="number" step="any" name="tricipite_R" id="tricipite_R" class="form-control" value="0" placeholder="Tricipite DX">
             </div>
         </div>
 
@@ -84,13 +86,13 @@
             <!-- chest L -->
             <div class="col s6">
                 <label for="">Petto SX</label>
-                <input required type="number" step="any" name="petto_L" id="petto_L" class="form-control" placeholder="Petto SX">
+                <input required type="number" step="any" name="petto_L" id="petto_L" class="form-control" value="0" placeholder="Petto SX">
             </div>
 
             <!-- chest R -->
             <div class="col s6">
                 <label for="">Petto DX</label>
-                <input required type="number" step="any" name="petto_R" id="petto_R" class="form-control" placeholder="Petto DX">
+                <input required type="number" step="any" name="petto_R" id="petto_R" class="form-control" value="0" placeholder="Petto DX">
             </div>
         </div>
 
@@ -100,15 +102,34 @@
             <!-- ascella L -->
             <div class="col s6">
                 <label for="">Ascella SX</label>
-                <input required type="number" step="any" name="ascella_L" id="ascella_L" class="form-control" placeholder="Ascella SX">
+                <input required type="number" step="any" name="ascella_L" id="ascella_L" class="form-control" value="0" placeholder="Ascella SX">
             </div>
 
             <!-- ascella R -->
             <div class="col s6">
                 <label for="">Ascella DX</label>
-                <input required type="number" step="any" name="ascella_R" id="ascella_R" class="form-control" placeholder="Ascella DX">
+                <input required type="number" step="any" name="ascella_R" id="ascella_R" class="form-control" value="0" placeholder="Ascella DX">
             </div>
         </div>
+
+
+
+        <!-- 5bis° riga -->
+        <div class="row">
+
+            <!-- scapola L -->
+            <div class="col s6">
+                <label for="">Scapola SX</label>
+                <input required type="number" step="any" name="scapola_L" id="scapola_L" class="form-control" value="0" placeholder="Scapola SX">
+            </div>
+
+            <!-- scapola R -->
+            <div class="col s6">
+                <label for="">Scapola DX</label>
+                <input required type="number" step="any" name="scapola_R" id="scapola_R" class="form-control" value="0" placeholder="Scapola DX">
+            </div>
+        </div>
+
 
         <!-- 6° riga -->
         <div class="row">
@@ -116,13 +137,13 @@
             <!-- iliaca L -->
             <div class="col s6">
                 <label for="">Iliaca SX</label>
-                <input required type="number" step="any" name="iliaca_L" id="iliaca_L" class="form-control" placeholder="Iliaca SX">
+                <input required type="number" step="any" name="iliaca_L" id="iliaca_L" class="form-control" value="0" placeholder="Iliaca SX">
             </div>
 
             <!-- iliaca R -->
             <div class="col s6">
                 <label for="">Iliaca DX</label>
-                <input required type="number" step="any" name="iliaca_R" id="iliaca_R" class="form-control" placeholder="Iliaca DX">
+                <input required type="number" step="any" name="iliaca_R" id="iliaca_R" class="form-control" value="0" placeholder="Iliaca DX">
             </div>
         </div>
 
@@ -133,13 +154,13 @@
             <!-- addominale L -->
             <div class="col s6">
                 <label for="">Addominale SX</label>
-                <input required type="number" step="any" name="addominale_L" id="addominale_L" class="form-control" placeholder="Addominale SX">
+                <input required type="number" step="any" name="addominale_L" id="addominale_L" class="form-control" value="0" placeholder="Addominale SX">
             </div>
 
             <!-- addominale R -->
             <div class="col s6">
                 <label for="">Addominale DX</label>
-                <input required type="number" step="any" name="addominale_R" id="addominale_R" class="form-control" placeholder="Addominale DX">
+                <input required type="number" step="any" name="addominale_R" id="addominale_R" class="form-control" value="0" placeholder="Addominale DX">
             </div>
         </div>
 
@@ -150,13 +171,31 @@
             <!-- coscia L -->
             <div class="col s6">
                 <label for="">Coscia SX</label>
-                <input required type="number" step="any" name="coscia_L" id="coscia_L" class="form-control" placeholder="Coscia SX">
+                <input required type="number" step="any" name="coscia_L" id="coscia_L" class="form-control" value="0" placeholder="Coscia SX">
             </div>
 
             <!-- coscia R -->
             <div class="col s6">
                 <label for="">Coscia DX</label>
-                <input required type="number" step="any" name="coscia_R" id="coscia_R" class="form-control" placeholder="Coscia DX">
+                <input required type="number" step="any" name="coscia_R" id="coscia_R" class="form-control" value="0" placeholder="Coscia DX">
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col s4">
+                <label for="">Spalle</label>
+                <input required type="number" step="any" name="spalle" id="spalle" class="form-control" value="0" placeholder="Spalle">
+            </div>
+
+            <div class="col s4">
+                <label for="">Petto</label>
+                <input required type="number" step="any" name="petto" id="petto" class="form-control" value="0" placeholder="Petto">
+            </div>
+
+            <div class="col s4">
+                <label for="">Fianchi</label>
+                <input required type="number" step="any" name="anche" id="anche" class="form-control" value="0" placeholder="Fianchi">
             </div>
         </div>
 
@@ -166,13 +205,13 @@
             <!-- L -->
             <div class="col s6">
                 <label for="">Braccio SX</label>
-                <input required type="number" step="any" name="braccio_L" id="braccio_L" class="form-control" placeholder="Braccio SX">
+                <input required type="number" step="any" name="braccio_L" id="braccio_L" class="form-control" value="0" placeholder="Braccio SX">
             </div>
 
             <!-- R -->
             <div class="col s6">
                 <label for="">Braccio DX</label>
-                <input required type="number" step="any" name="braccio_R" id="braccio_R" class="form-control" placeholder="Braccio DX">
+                <input required type="number" step="any" name="braccio_R" id="braccio_R" class="form-control" value="0" placeholder="Braccio DX">
             </div>
         </div>
 
@@ -183,35 +222,17 @@
             <!-- L -->
             <div class="col s6">
                 <label for="">Gamba SX</label>
-                <input required type="number" step="any" name="gamba_L" id="gamba_L" class="form-control" placeholder="Gamba SX">
+                <input required type="number" step="any" name="gamba_L" id="gamba_L" class="form-control" value="0" placeholder="Gamba SX">
             </div>
 
             <!-- R -->
             <div class="col s6">
                 <label for="">Gamba DX</label>
-                <input required type="number" step="any" name="gamba_R" id="gamba_R" class="form-control" placeholder="Gamba DX">
+                <input required type="number" step="any" name="gamba_R" id="gamba_R" class="form-control" value="0" placeholder="Gamba DX">
             </div>
         </div>
 
         <div class="divider"></div>
-
-        <div class="row">
-
-            <div class="col s4">
-                <label for="">Spalle</label>
-                <input required type="number" step="any" name="spalle" id="spalle" class="form-control" placeholder="Spalle">
-            </div>
-
-            <div class="col s4">
-                <label for="">Petto</label>
-                <input required type="number" step="any" name="petto" id="petto" class="form-control" placeholder="Petto">
-            </div>
-
-            <div class="col s4">
-                <label for="">Anche</label>
-                <input required type="number" step="any" name="anche" id="anche" class="form-control" placeholder="Anche">
-            </div>
-        </div>
 
         <!-- 11° riga -->
         <div class="row">
@@ -219,22 +240,22 @@
 
             <div class="col s3">
                 <label for="">Spirometria</label>
-                <input required type="number" step="any" name="spirometria" id="spirometria" class="form-control" placeholder="Spirometria">
+                <input required type="number" step="any" name="spirometria" id="spirometria" class="form-control" value="0" placeholder="Spirometria">
             </div>
 
             <div class="col s3">
                 <label for="">Frequenza a riposo</label>
-                <input required type="number" step="any" name="frq_riposo" id="frq_riposo" class="form-control" placeholder="Frequenza a riposo">
+                <input required type="number" step="any" name="frq_riposo" id="frq_riposo" class="form-control" value="0" placeholder="Frequenza a riposo">
             </div>
 
             <div class="col s3">
                 <label for="">Frequenza dopo stress</label>
-                <input required type="number" step="any" name="frq_stress" id="frq_stress" class="form-control" placeholder="Frequenza dopo stress">
+                <input required type="number" step="any" name="frq_stress" id="frq_stress" class="form-control" value="0" placeholder="Frequenza dopo stress">
             </div>
 
             <div class="col s3">
                 <label for="">Frequenza dopo 1 min</label>
-                <input required type="number" step="any" name="frq_1min" id="frq_1min" class="form-control" placeholder="Frequenza dopo 1 min">
+                <input required type="number" step="any" name="frq_1min" id="frq_1min" class="form-control" value="0" placeholder="Frequenza dopo 1 min">
             </div>
         </div>
 
@@ -244,19 +265,19 @@
 
             <div class="col s4">
                 <label for="">Step 1</label>
-                <input required type="number" step="any" name="step1" id="step1" class="form-control" placeholder="Step 1">
+                <input required type="number" step="any" name="step1" id="step1" class="form-control" value="0" placeholder="Step 1">
             </div>
 
             <!-- L -->
             <div class="col s4">
                 <label for="">Step 2</label>
-                <input required type="number" step="any" name="step2" id="step2" class="form-control" placeholder="Step 2">
+                <input required type="number" step="any" name="step2" id="step2" class="form-control" value="0" placeholder="Step 2">
             </div>
 
             <!-- R -->
             <div class="col s4">
                 <label for="">Step 3</label>
-                <input required type="number" step="any" name="step3" id="step3" class="form-control" placeholder="Step 3">
+                <input required type="number" step="any" name="step3" id="step3" class="form-control" value="0" placeholder="Step 3">
             </div>
         </div>
 
@@ -297,10 +318,25 @@
         var l2 = Number($('#addominale_L').val());
         var r3 = Number($('#coscia_R').val());
         var l3 = Number($('#coscia_L').val());
+        var sex = $('#sex').val();
+
+        if(sex === "M"){
+            //maschi
+            fm1 = 1.10938;
+            fm2 = 0.0008267;
+            fm3 = 0.0000016;
+            fm4 = 0.0002574;
+        } else {
+            //femmine 
+            fm1 = 1.0902369;
+            fm2 = 0.0009379;
+            fm3 = 0.0000026;
+            fm4 = 0.00000979;            
+        }
 
         somma = ((r1 + l1) / 2) + ((r2 + l2) / 2) + ((r3 + l3) / 2);
         age = Number($('#age').val());
-        delta = 1.10938 - (0.0008267 * somma) + (0.0000016 * Math.pow(somma,2)) - (0.0002574 * age);
+        delta = fm1 - (fm2 * somma) + (fm3 * Math.pow(somma,2)) - (fm4 * age);
         fat_mass = ((4.95 / delta)-4.50)*100;
 
         //bmi
@@ -349,6 +385,8 @@ $(function() {
             petto_L: "required",
             ascella_R: "required",
             ascella_L: "required",
+            scapola_R: "required",
+            scapola_L: "required",
             iliaca_R: "required",
             iliaca_L: "required",
             addominale_R: "required",
@@ -381,6 +419,8 @@ $(function() {
             petto_L: "Campo obbligatorio",
             ascella_R: "Campo obbligatorio",
             ascella_L: "Campo obbligatorio",
+            scapola_R: "Campo obbligatorio",
+            scapola_L: "Campo obbligatorio",
             iliaca_R: "Campo obbligatorio",
             iliaca_L: "Campo obbligatorio",
             addominale_R: "Campo obbligatorio",

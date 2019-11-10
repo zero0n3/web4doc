@@ -20,6 +20,8 @@ class Checkup extends Model
         'petto_L',
         'ascella_R',
         'ascella_L',
+        'scapola_R',
+        'scapola_L',
         'iliaca_R',
         'iliaca_L',
         'addominale_R',

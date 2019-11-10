@@ -24,6 +24,8 @@ class CreateCheckupsTable extends Migration
             $table->double('petto_L');
             $table->double('ascella_R');
             $table->double('ascella_L');
+            $table->double('scapola_R');
+            $table->double('scapola_L');
             $table->double('iliaca_R');
             $table->double('iliaca_L');
             $table->double('addominale_R');

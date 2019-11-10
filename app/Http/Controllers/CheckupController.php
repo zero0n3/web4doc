@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
 class CheckupController extends Controller
 {
 
-    protected $rules = [
+    protected $rules = [ 
         'date' => 'required|date',
         'altezza' => 'required|numeric',
         'peso' => 'required|numeric',
@@ -26,6 +26,8 @@ class CheckupController extends Controller
         'petto_L' => 'required|numeric',
         'ascella_R' => 'required|numeric',
         'ascella_L' => 'required|numeric',
+        'scapola_R' => 'required|numeric',
+        'scapola_L' => 'required|numeric',
         'iliaca_R' => 'required|numeric',
         'iliaca_L' => 'required|numeric',
         'addominale_R' => 'required|numeric',
@@ -156,6 +158,8 @@ class CheckupController extends Controller
         $checkup->petto_L = $request->input('petto_L');
         $checkup->ascella_R = $request->input('ascella_R');
         $checkup->ascella_L = $request->input('ascella_L');
+        $checkup->scapola_R = $request->input('scapola_R');
+        $checkup->scapola_L = $request->input('scapola_L');
         $checkup->iliaca_R = $request->input('iliaca_R');
         $checkup->iliaca_L = $request->input('iliaca_L');
         $checkup->addominale_R = $request->input('addominale_R');
@@ -265,6 +269,8 @@ class CheckupController extends Controller
         $checkup->petto_L = request()->input('petto_L');
         $checkup->ascella_R = request()->input('ascella_R');
         $checkup->ascella_L = request()->input('ascella_L');
+        $checkup->scapola_R = request()->input('scapola_R');
+        $checkup->scapola_L = request()->input('scapola_L');
         $checkup->iliaca_R = request()->input('iliaca_R');
         $checkup->iliaca_L = request()->input('iliaca_L');
         $checkup->addominale_R = request()->input('addominale_R');
