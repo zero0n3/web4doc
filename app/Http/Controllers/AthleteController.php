@@ -200,11 +200,49 @@ class AthleteController extends Controller
                 'Step 3',
                 'Team',
                 'Sport',
+            ])->prepend([
+                '3',
+                '4',
+                '5',
+                '6',
+                '7',
+                '8',
+                '9',
+                '10',
+                '11',
+                '12',
+                '13',
+                '14',
+                '15',
+                '16',
+                '17',
+                '18',
+                '19',
+                '20',
+                '21',
+                '22',
+                '23',
+                '24',
+                '25',
+                '26',
+                '27',
+                '28',
+                '29',
+                '30',
+                '31',
+                '32',
+                '33',
+                '34',
+                '35',
+                '36',
+                '1',
+                '2',
             ]);
 
             //dd($visite_purged);
             //$visite_purged->all();
             $visite_trans = $visite_purged->transpose();
+            //dd($visite_trans);
             //dd($visite_trans->rotate(-2));
             //$multiplied->all();
             //dd($multiplied);
@@ -215,7 +253,14 @@ class AthleteController extends Controller
             });
             */
 
-            $visite_sorted = $visite_trans->rotate(-2);
+            $visite_sorted = $visite_trans->sortBy(0);
+            $visite_sorted = $visite_sorted->map(function ($item, $key) {
+                return $item->forget(0);
+            });
+            //dd($visite_sorted);
+
+            //vecchio sorting fisso in cui spostavo gli ultimi due campi davanti
+            //$visite_sorted = $visite_trans->rotate(-2);
 
             //dd($visite_sorted);
 
