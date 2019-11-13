@@ -1,15 +1,8 @@
-<?php
-use DebugBar\StandardDebugBar;
 
-$debugbar = new StandardDebugBar();
-$debugbarRenderer = $debugbar->getJavascriptRenderer();
-
-$debugbar["messages"]->addMessage("hello world!");
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <?php echo $debugbarRenderer->renderHead() ?>
+  
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
     <title>@yield('title', 'Home')</title>
@@ -136,6 +129,6 @@ $debugbar["messages"]->addMessage("hello world!");
     </script>
 
 @show
-<?php echo $debugbarRenderer->render() ?>
+
   </body>
 </html>
