@@ -77,7 +77,7 @@
                                                 @elseif($item < $check[$loop->index+1]) <span class="red-text text-darken-2">
                                                 @else <span class="black-text text-darken-2"><i/>
                                                 @endif
-                                                {{number_format($item, 2)}}</span></td>
+                                                {{number_format($item, 2, ',', '.')}}</span></td>
                                             @endif
 
 
