@@ -58,10 +58,12 @@
 
                                         @if($loop->last)
                                           <td>
-                                              @if($loop->parent->index === 2)
-                                                  <a href="/checkup/{{$item}}/edit"/>
+                                              @if($loop->parent->index === 2) <b><a href="/checkup/{{$item}}/edit">{{$item}}</a></b>
+                                              @elseif($loop->parent->index >= 4) {{number_format($item, 2, ',', '.')}}
+                                              @else <b>{{$item}}</b>
                                               @endif
-                                              {{$item}}</td>
+                                              
+                                              </td>
                                         @else
 
                                             @if ($loop->parent->index < 4)
