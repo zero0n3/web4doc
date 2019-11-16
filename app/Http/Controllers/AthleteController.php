@@ -201,42 +201,42 @@ class AthleteController extends Controller
                 'Team',
                 'Sport',
             ])->prepend([
-                '3',
-                '4',
-                '5',
-                '6',
-                '7',
-                '8',
-                '9',
-                '10',
-                '11',
-                '12',
-                '13',
-                '14',
-                '15',
-                '16',
-                '17',
-                '18',
-                '19',
-                '20',
-                '21',
-                '22',
-                '23',
-                '24',
-                '25',
-                '26',
-                '27',
-                '28',
-                '29',
-                '30',
-                '31',
-                '32',
-                '33',
-                '34',
-                '35',
-                '36',
-                '1',
-                '2',
+                '3',            // id Visita
+                '4',            // Data visita
+                '5',            // Altezza
+                '6',            // Peso
+                '8',            // Tricipite Dx
+                '7',            // Tricipite Sx
+                '10',            // Petto Dx
+                '9',            // Petto Sx
+                '12',           // Ascella Dx
+                '11',           // Ascella Sx
+                '14',           // Scapola Dx
+                '13',           // Scapola Sx
+                '16',           // Iliaca Dx
+                '15',           // Iliaca Sx
+                '18',           // Addominale Dx
+                '17',           // Addominale Sx
+                '20',           // Coscia Dx
+                '19',           // Coscia Sx
+                '21',           // Spalle
+                '22',           // Petto
+                '23',           // Fianchi
+                '25',           // Braccio Dx
+                '24',           // Braccio Sx
+                '27',           // Gamba Dx
+                '26',           // Gamba Sx
+                '28',           // Spirometria
+                '29',           // Massa grassa
+                '30',           // BMI
+                '31',           // Frq Riposo
+                '32',           // Frq Stress
+                '33',           // Frq 1min
+                '34',           // Step 1
+                '35',           // Step 2
+                '36',           // Step 3
+                '1',            // Team
+                '2',            // Sport
             ]);
 
             //dd($visite_purged);
