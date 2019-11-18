@@ -11,7 +11,7 @@ class CsvAthleteSportTable extends CsvSeeder {
         $this->tablename = 'athlete_sport';
         $this->delimiter = ',';
         $this->file = '\database\seeds\csvs\athlete_sport.csv';
-        //dd($this->filename); //test
+        //dd($this->filename);
     }
 
     public function run()
