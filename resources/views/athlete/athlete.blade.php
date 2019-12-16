@@ -26,7 +26,7 @@
   <input type="hidden" name="_token" id="_token" value="{{csrf_token()}}">
 <h6>Atleti trovati: {{ $athletes->count() }}</h6>
 
-      <table class="responsive-table">
+      <table class="responsive-table striped">
         <thead>
           <tr>
               <th>Id</th>
@@ -49,7 +49,7 @@
             <td><a href="{{ route('athlete.show', ['athlete' => $athlete->id]) }}">{{$athlete->name}}</a></td>
             <td>{{date('d-m-Y', strtotime($athlete->dob))}}</td>
             <td>{{$athlete->sex}}</td>
-            <td align="right">{{$athlete->checkups->count()}}</td>
+            <td class="right-align">{{$athlete->checkups->count()}}</td>
              <td><a href="/athlete/{{$athlete->id}}/edit" class="waves-effect waves-light btn-small"><i class="tiny material-icons left">edit</i>UPDATE</a>
               <a href="/checkup/{{$athlete->id}}/add" class="waves-effect waves-light btn-small"><i class="tiny material-icons left">edit</i>Add Checkup</a></td>
           </tr>
