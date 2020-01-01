@@ -104,7 +104,8 @@
             <td>{{$checkup->athlete->name}}</td>
             <td>{{$checkup->team->name}}</td>
             <td>{{$checkup->sport->name}}</td>
-            <td><a href="/checkup/{{$checkup->id}}/edit" class="waves-effect waves-light btn-small"><i class="tiny material-icons left">edit</i>UPDATE</a></td>
+            <td><a href="/checkup/{{$checkup->id}}/edit" class="waves-effect waves-light btn-small"><i class="tiny material-icons left">edit</i>UPDATE</a>
+                <a href="{{route('checkup.destroy',$checkup->id)}}" class="waves-effect waves-light btn-small is-danger"><i class="tiny material-icons left">delete</i>DELETE</a></td>
           </tr>
     @empty
           <tr>
@@ -130,6 +131,45 @@
 @section('footer')
   @parent
 
+    <script>
+
+     $('document').ready(function () {
+        $('div.notification').fadeOut(2500);
+        
+        $('table').on('click', 'a.is-danger',function (ele) {
+          var confirmation = confirm("Sei sicuro di voler rimuovere la visita?");
+          ele.preventDefault();
+          var urlImg =   $(this).attr('href');
+          var tr = ele.target.parentNode.parentNode;
+
+          if (confirmation) {
+            $.ajax(
+              urlImg,
+              {
+                method: 'DELETE',
+                data : {
+                  '_token' : '{{csrf_token()}}'
+                },
+                complete : function (resp) {
+                  console.log(resp);
+                  if(resp.responseText == 1){
+                    tr.parentNode.removeChild(tr);
+
+
+                    
+                  } else {
+                    alert('Problem contacting server');
+                  }
+                }
+              }
+            )
+          }
+        });
+      });
+
+
+
+    </script>
 
 @endsection
 

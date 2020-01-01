@@ -326,7 +326,15 @@ class CheckupController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+        $res = Checkup::find($id)->delete();
+
+        if(request()->ajax()) {
+            return '' . $res;
+        } else {
+           return  redirect()->route('checkup.index');
+        }
+        
     }
 
 }
