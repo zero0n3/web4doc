@@ -53,17 +53,21 @@
                                   @else
                                       <!-- colonne valori -->
                                       @if (is_array($item))
+
                                         <td><b>{{$item['name']}}</b></td>
+
                                       @else
 
                                         @if($loop->last)
+
                                           <td>
                                               @if($loop->parent->index === 2) <b><a href="/checkup/{{$item}}/edit">{{$item}}</a></b>
                                               @elseif($loop->parent->index >= 4) {{number_format($item, 2, ',', '.')}}
                                               @else <b>{{$item}}</b>
                                               @endif
                                               
-                                              </td>
+                                          </td>
+
                                         @else
 
                                             @if ($loop->parent->index < 4)
@@ -74,12 +78,15 @@
                                                       @endif
                                                       {{$item}}</b></td>
                                             @else
+
                                               <td>
-                                                @if($item > $check[$loop->index+1]) <span class="blue-text text-darken-2"><b/>
-                                                @elseif($item < $check[$loop->index+1]) <span class="red-text text-darken-2">
+                                                @if($item > $check[$loop->index+2]) <span class="blue-text text-darken-2"><b/>
+                                                @elseif($item < $check[$loop->index+2]) <span class="red-text text-darken-2">
                                                 @else <span class="black-text text-darken-2"><i/>
                                                 @endif
-                                                {{number_format($item, 2, ',', '.')}}</span></td>
+                                                {{number_format($item, 2, ',', '.')}}</span>
+                                              </td>
+
                                             @endif
 
 
