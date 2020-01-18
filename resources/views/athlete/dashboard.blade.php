@@ -78,13 +78,28 @@
                                                       @endif
                                                       {{$item}}</b></td>
                                             @else
-
+                                              <!-- da altezza in poi - check valori -->
+                                              
                                               <td>
-                                                @if($item > $check[$loop->index+2]) <span class="blue-text text-darken-2"><b/>
-                                                @elseif($item < $check[$loop->index+2]) <span class="red-text text-darken-2">
-                                                @else <span class="black-text text-darken-2"><i/>
+                                                @if($item === $check[$loop->index+2])
+                                                  <span class="black-text text-darken-2"><i/>
+                                                @else
+                                                  @if($item > $check[$loop->index+2])
+                                                    @if ($loop->parent->index === 4 or ($loop->parent->index > 19 and $loop->parent->index < 28) or ($loop->parent->index > 32 and $loop->parent->index < 36))
+                                                      <span class="blue-text text-darken-2"><b/>
+                                                    @else 
+                                                      <span class="red-text text-darken-2">
+                                                    @endif
+                                                  @else
+                                                    @if ($loop->parent->index === 4 or ($loop->parent->index > 19 and $loop->parent->index < 28) or ($loop->parent->index > 32 and $loop->parent->index < 36))
+                                                      <span class="red-text text-darken-2">
+                                                    @else 
+                                                      <span class="blue-text text-darken-2"><b/>
+                                                    @endif 
+                                                  @endif
                                                 @endif
                                                 {{number_format($item, 2, ',', '.')}}</span>
+                                              
                                               </td>
 
                                             @endif
