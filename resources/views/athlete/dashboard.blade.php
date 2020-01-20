@@ -132,7 +132,7 @@
   </div>
 
 
-<button onclick="myFunction()">Beta</button>
+<a class="waves-effect waves-light btn-small" onclick="myFunction()">Beta</a>
 
 <div id="myDIV">
         <table class="responsive-table">
