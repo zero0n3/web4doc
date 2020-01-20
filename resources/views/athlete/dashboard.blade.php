@@ -131,10 +131,101 @@
       </div>
   </div>
 
-<div class="divider"></div>
 
+<button onclick="myFunction()">Beta</button>
 
+<div id="myDIV">
+        <table class="responsive-table">
+        <thead>
+          <tr>
+              <th class="rotate"><div><span>Team</span></div></th>
+              <th class="rotate"><div><span>Sport</span></div></th>
+              <th class="rotate"><div><span>iD Visita</span></div></th>
+              <th class="rotate"><div><span>Data visita</span></div></th>
+              <th class="rotate"><div><span>Altezza</span></div></th>
+              <th class="rotate"><div><span>Peso</span></div></th>
+              <th class="rotate"><div><span>Tricipite Sx</span></div></th>
+              <th class="rotate"><div><span>Tricipite Dx</span></div></th>
+              <th class="rotate"><div><span>Petto Sx</span></div></th>
+              <th class="rotate"><div><span>Petto Dx</span></div></th>
+              <th class="rotate"><div><span>Ascella Sx</span></div></th>
+              <th class="rotate"><div><span>Ascella Dx</span></div></th>
+              <th class="rotate"><div><span>Scapola Sx</span></div></th>
+              <th class="rotate"><div><span>Scapola Dx</span></div></th>
+              <th class="rotate"><div><span>Iliaca Sx</span></div></th>
+              <th class="rotate"><div><span>Iliaca Dx</span></div></th>
+              <th class="rotate"><div><span>Addominale Sx</span></div></th>
+              <th class="rotate"><div><span>Addominale Dx</span></div></th>
+              <th class="rotate"><div><span>Coscia Sx</span></div></th>
+              <th class="rotate"><div><span>Coscia Dx</span></div></th>
+              <th class="rotate"><div><span>Spalle</span></div></th>
+              <th class="rotate"><div><span>Petto</span></div></th>
+              <th class="rotate"><div><span>Fianchi</span></div></th>
+              <th class="rotate"><div><span>Braccio Sx</span></div></th>
+              <th class="rotate"><div><span>Braccio Dx</span></div></th>
+              <th class="rotate"><div><span>Gamba Sx</span></div></th>
+              <th class="rotate"><div><span>Gamba Dx</span></div></th>
+              <th class="rotate"><div><span>Spirometria</span></div></th>
+              <th class="rotate"><div><span>Massa grassa</span></div></th>
+              <th class="rotate"><div><span>BMI</span></div></th>
+              <th class="rotate"><div><span>Frq Riposo</span></div></th>
+              <th class="rotate"><div><span>Frq Stress</span></div></th>
+              <th class="rotate"><div><span>Frq 1min</span></div></th>
+              <th class="rotate"><div><span>Step 1</span></div></th>
+              <th class="rotate"><div><span>Step 2</span></div></th>
+              <th class="rotate"><div><span>Step 3</span></div></th>
+          </tr>
+        </thead>
 
+        <tbody>
+  @forelse ($visite_h as $visita)
+          <tr>
+            <td>{{$visita->team->name}}</td>
+            <td>{{$visita->sport->name}}</td>
+            <td><b><a href="/checkup/{{$visita->id}}/edit">{{$visita->id}}</a></b></td>
+            <td>{{date('d-m-Y', strtotime($visita->date))}}</td>
+            <td>{{number_format($visita->altezza, 2, ',', '.')}}</td>
+            <td>{{number_format($visita->peso, 2, ',', '.')}}</td>
+            <td>{{number_format($visita->tricipite_L, 2, ',', '.')}}</td>
+            <td>{{number_format($visita->tricipite_R, 2, ',', '.')}}</td>
+            <td>{{number_format($visita->petto_L, 2, ',', '.')}}</td>
+            <td>{{number_format($visita->petto_R, 2, ',', '.')}}</td>
+            <td>{{number_format($visita->ascella_L, 2, ',', '.')}}</td>
+            <td>{{number_format($visita->ascella_R, 2, ',', '.')}}</td>
+            <td>{{number_format($visita->scapola_L, 2, ',', '.')}}</td>
+            <td>{{number_format($visita->scapola_R, 2, ',', '.')}}</td>
+            <td>{{number_format($visita->iliaca_L, 2, ',', '.')}}</td>
+            <td>{{number_format($visita->iliaca_R, 2, ',', '.')}}</td>
+            <td>{{number_format($visita->addominale_L, 2, ',', '.')}}</td>
+            <td>{{number_format($visita->addominale_R, 2, ',', '.')}}</td>
+            <td>{{number_format($visita->coscia_L, 2, ',', '.')}}</td>
+            <td>{{number_format($visita->coscia_R, 2, ',', '.')}}</td>
+            <td>{{number_format($visita->spalle, 2, ',', '.')}}</td>
+            <td>{{number_format($visita->petto, 2, ',', '.')}}</td>
+            <td>{{number_format($visita->anche, 2, ',', '.')}}</td>
+            <td>{{number_format($visita->braccio_L, 2, ',', '.')}}</td>
+            <td>{{number_format($visita->braccio_R, 2, ',', '.')}}</td>
+            <td>{{number_format($visita->gamba_L, 2, ',', '.')}}</td>
+            <td>{{number_format($visita->gamba_R, 2, ',', '.')}}</td>
+            <td>{{number_format($visita->spirometria, 2, ',', '.')}}</td>
+            <td>{{number_format($visita->massa_grassa, 2, ',', '.')}}</td>
+            <td>{{number_format($visita->bmi, 2, ',', '.')}}</td>
+            <td>{{number_format($visita->frq_riposo, 2, ',', '.')}}</td>
+            <td>{{number_format($visita->frq_stress, 2, ',', '.')}}</td>
+            <td>{{number_format($visita->frq_1min, 2, ',', '.')}}</td>
+            <td>{{number_format($visita->step1, 2, ',', '.')}}</td>
+            <td>{{number_format($visita->step2, 2, ',', '.')}}</td>
+            <td>{{number_format($visita->step3, 2, ',', '.')}}</td>
+          </tr>
+  @empty
+        <tr>
+          <td><b>Nessuna visita inserita</b></td>
+        </tr>
+  @endforelse
+        </tbody>
+      </table>
+
+</div>
 
 
 @endsection

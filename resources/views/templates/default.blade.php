@@ -70,52 +70,61 @@
     @endcomponent
   @endif
 
-    $('document').ready(function(){
-      //$('div.alert').fadeOut(4000);
-      $('div.card-panel').fadeOut(4000);
-      $('ul').on('click', 'a.btn-danger', function(ele) {
-      //$('#delete').click(function(ele) {
-        ele.preventDefault();
-        /* Act on the event */
-        //console.log(ele);
-        var urlAlbum = $(this).attr('href');
+  $('document').ready(function(){
+    //$('div.alert').fadeOut(4000);
+    $('div.card-panel').fadeOut(4000);
+    $('ul').on('click', 'a.btn-danger', function(ele) {
+    //$('#delete').click(function(ele) {
+      ele.preventDefault();
+      /* Act on the event */
+      //console.log(ele);
+      var urlAlbum = $(this).attr('href');
 
-        //console.log(myvar);
-        //var li = ele.target.parentNode;
-        var li = ele.target.parentNode.parentNode;
+      //console.log(myvar);
+      //var li = ele.target.parentNode;
+      var li = ele.target.parentNode.parentNode;
 //console.log(li);
-        $.ajax(
-          urlAlbum,
-          {
-            method: 'DELETE',
-            data: {
-              '_token': $('#_token').val()
-            },
-            complete : function(resp){
+      $.ajax(
+        urlAlbum,
+        {
+          method: 'DELETE',
+          data: {
+            '_token': $('#_token').val()
+          },
+          complete : function(resp){
 
-              if (resp.responseText == 1){
-                li.parentNode.removeChild(li);
-              } else {
-                alert('Problem contacting server');
-              }
+            if (resp.responseText == 1){
+              li.parentNode.removeChild(li);
+            } else {
+              alert('Problem contacting server');
             }
-          })
+          }
+        })
 
-      });
     });
+  });
 
-    document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('select');
-        var instances = M.FormSelect.init(elems, options);
-    });
+  document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('select');
+      var instances = M.FormSelect.init(elems, options);
+  });
 
-  // Or with jQuery
+// Or with jQuery
 
-    $(document).ready(function(){
-        $('select').formSelect();
-    });
+  $(document).ready(function(){
+      $('select').formSelect();
+      document.getElementById("myDIV").style.display = "none";
+  });
 
 
+  function myFunction() {
+    var x = document.getElementById("myDIV");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
 
 
 

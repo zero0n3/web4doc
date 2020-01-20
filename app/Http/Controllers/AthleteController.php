@@ -292,6 +292,7 @@ class AthleteController extends Controller
                 'title' => $athlete->name,
                 'athlete' => $athlete,
                 'visite' => $visite_sorted,
+                'visite_h' => $visite,
                 ]);
     }
 
